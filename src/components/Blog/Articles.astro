@@ -27,7 +27,7 @@ const filters = [
 ];
 
 const posts =  await Astro.glob('../../posts/*.md');
-const sortedPosts = await posts.toSorted((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
+const sortedPosts = await [...posts].sort((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
 
 const count = 6;
 ---
