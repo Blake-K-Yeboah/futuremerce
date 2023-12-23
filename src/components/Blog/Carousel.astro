@@ -53,8 +53,10 @@ const filteredPosts = await posts.filter(post => featured.includes(post.frontmat
     var glide = new Glide('.carousel.glide', { type: 'carousel', focusAt: 'center', perView: 1, dragThreshold: 1}).mount({ Controls, Swipe });
 
     glide.on('run', function() {
+    // @ts-ignore
         window.dataLayer = window.dataLayer || [];
-        
+
+    // @ts-ignore
         window.dataLayer.push({
         event: 'carousel_interaction',
         });
