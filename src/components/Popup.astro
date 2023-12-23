@@ -16,24 +16,36 @@ import { Image } from 'astro:assets';
 </div>
 
 <script is:inline>
-    if (!localStorage.getItem('opt-popup-shown')) {
-        setTimeout(() => {
+
+    const openPopup = () => {
+        if (!localStorage.getItem('opt-popup-shown')) {
             document.querySelector('.popup').style.display = 'block';
             document.querySelector('body').classList.add('no-scroll');
             document.querySelector('html').classList.add('no-scroll');
 
-            setTimeout(() => {
-                document.querySelector('.popup').style.opacity = 1;
-            }, 200);
+            localStorage.setItem('opt-popup-shown', true);
+        }
+    }
 
-            localStorage.setItem('opt-popup-shown', true)
-        }, 6000);
-
-        document.querySelector('.popup_close').addEventListener('click', function() {
+    const closePopup = () => {
             document.querySelector('.popup').style.display = 'none';
             document.querySelector('body').classList.remove('no-scroll');
             document.querySelector('html').classList.remove('no-scroll');
-        });
+    }
+
+    document.querySelector('.popup_close').addEventListener('click', closePopup);
+    document.querySelector('.popup_backdrop').addEventListener('click', closePopup);
+
+    
+    // Show the popup and overlay when the user tries to leave the page
+    document.addEventListener('mouseleave', function(e) {
+        if (e.clientY < 0) {
+            openPopup();
+        }
+    });
+
+    if (window.innerWidth < 768) {
+        setTimeout(openPopup, 15 * 1000);
     }
 </script>
 
