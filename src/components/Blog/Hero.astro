@@ -1,0 +1,120 @@
+---
+import Container from '../Container.astro';
+import Carousel from './Carousel.astro';
+---
+
+<header class="blog-hero">
+    <Container>
+        <h1 class="blog-hero_title">Tips & Strategies to <br> help your <span>store grow</span></h1>
+        <p class="blog-hero_text">Discover valuable tips and strategies for optimizing your store to thrive in today’s competitive landscape.</p>
+        <Carousel />
+    </Container>
+</header>
+
+<style lang="scss">
+    .blog-hero {
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 72px;
+            max-width: 860px;
+            text-transform: capitalize;
+            margin: 0 auto;
+
+             > span {
+                 color: var(--lighter-purple);
+                 margin: 0 0 0 .5ch;
+                 position: relative;
+
+                 &:before {
+                    content: '';
+                    border: 1px solid var(--lighter-purple);
+                    background: #E8E5FF;
+                    width: 310px;
+                    height: 61px;
+                    position: absolute;
+                    z-index: -1;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                 }
+
+                 &:after {
+                    content: '';
+                    position: absolute;
+                    z-index: -1;
+                    bottom: -25px;
+                    right: -36px;
+                    width: 33px;
+                    height: 33px;
+                    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none"><path d="M23.7067 20.6548L31.6149 30.2422L28.4345 32.8669L20.5243 23.2817L16.5677 29.2878L11.6466 9.28214L30.3553 17.9118L23.7067 20.6548Z" fill="%23212121"/></svg>');
+                 }
+            }
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 50px;
+                max-width: 560px;
+
+                > span {
+                    margin: 0 0 0 .35ch;
+
+                    &:before {
+                        width: 202px;
+                        height: 45px;
+                    }
+
+                    &:after {
+                        right: -28px;
+                    }
+                }
+            }
+            
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 40px;
+                max-width: 250px;
+
+                br {
+                    display: none;
+                }
+
+                > span {
+                    display: inline-block;
+                }
+
+                > span:before {
+                    width: 170px;
+                    height: 40px;
+                    left: -10px;
+                    transform: translateY(-50%);
+                }
+
+                >span:after {
+                    right: -31px;
+                    bottom: -24px;
+                }
+            }
+        }
+
+        &_text {
+            margin: 32px auto 70px;
+            color: #7A7A7A;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 28px;
+            max-width: 581px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+                line-height: 24px;
+                max-width: 450px;
+            }
+        }
+    }
+</style>

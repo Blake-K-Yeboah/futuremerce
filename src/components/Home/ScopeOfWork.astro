@@ -1,0 +1,176 @@
+---
+import Badge from '../Badge.astro';
+import Container from '../Container.astro';
+
+const services = [
+    {
+        title: `App Installation`,
+        text: `Our team can help install apps to ensure a seamless integration with your store and no downtime for your customers.`,
+    },
+    {
+        title: `Ongoing Support`,
+        text: `We offer continuous support while you’re a member to troubleshoot issues and ensure your store operates smoothly.`,
+    },
+    {
+        title: `Speed Optimization`,
+        text: ` We can help a variety of ways including image compression , code optimization, app evaluation and more.`,
+    },
+    {
+        title: `Shopify Theme Changes`,
+        text: `From adding new features, to optimizing the layout for conversions, our experienced team can help with all your shopify theme needs.`,
+    },
+    {
+        title: `Analytics`,
+        text: `Our team can help analyze and setup customized reporting for your store, delivering clear and actionable insights.`,
+    },
+    {
+        title: `Audits & Consultancy`,
+        text: `We offer insights and strategy to help grow your Shopify business from technical performance to conversion optimization.`,
+    },
+]
+---
+<section class="scope-of-work">
+    <Container>
+        <Badge text="Scope Of Work"/>
+        <h2 class="scope-of-work_title">How We Can <span>Help</span>?</h2>
+        <div class="scope-of-work_grid">
+            {services.map((service, i) => { return <div class="scope-of-work_grid-item">
+                    <div class="scope-of-work_grid-item-icon">
+                        <div>
+                            <img src={`/Icons/scope-of-work/icon-${i + 1}.svg`} alt="">
+                        </div>
+                    </div>
+                    <h3 class="scope-of-work_grid-item-title">{service.title}</h3>
+                    <p class="scope-of-work_grid-item-text">{service.text}</p>
+                </div>
+            })}
+        </div>
+    </Container>
+</section>
+
+<style lang="scss">
+    .scope-of-work {
+        margin: 280px 0 0 0;
+        
+            @media screen and (max-width: 710px) {
+                margin-top: 165px;
+            }
+
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 42px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px;
+            max-width: 545px;
+            margin: 0 auto 100px auto;
+
+            > span {
+                color: var(--lighter-purple);
+            }
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+                margin-bottom: 45px;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        &_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1176px;
+            margin: 0 auto;
+            gap: 68px 42px;
+            
+            @media screen and (max-width: 942px) {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media screen and (max-width: 710px) {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                row-gap: 44px;
+            }
+
+            &-item {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                &-icon {
+                    width: 87px;
+                    height: 87px;
+                    background:var(--lighter-purple); 
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+            
+                    @media screen and (max-width: 450px) {
+                        transform: scale(.75);
+                    }
+
+                    > div {
+                        background:var(--lighter-purple); 
+                        border: 4px solid white;
+                        border-radius: 50%;
+                        position: relative;
+                        width: 77px;
+                        height: 77px;
+
+                        img {
+                            width: 56px;
+                            height: 56px;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+
+                &-title {
+                    margin: 12px 0;
+                    color: #575757;
+                    text-align: center;
+                    font-size: 24px;
+                    font-weight: 700;
+                    line-height: 32px;
+            
+                    @media screen and (max-width: 450px) {
+                        font-size: 20px;
+                        line-height: 28px;
+                        margin-top: 6px;
+                    }
+                }
+
+                &-text {
+                    color: #363636;
+                    text-align: center;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px; 
+            
+                    @media screen and (max-width: 450px) {
+                        font-size: 14.5px;
+                        line-height: 26px;
+                    }
+                }
+            }
+        }
+    }
+</style>

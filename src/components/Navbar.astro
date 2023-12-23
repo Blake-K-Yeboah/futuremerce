@@ -1,0 +1,362 @@
+---
+import logo from '../images/transparent-logo.svg';
+import { Image } from 'astro:assets';
+
+import Container from './Container.astro'
+
+interface Link {
+    label: string;
+    href: string;
+}
+
+const links: Link[] = [
+    {
+        label: 'How It Works',
+        href: '/#how-it-works',
+    },
+    {
+        label: 'Benefits',
+        href: '/#benefits'
+    },
+    {
+        label: 'Pricing',
+        href: '/#pricing'
+    },
+    {
+        label: 'FAQs',
+        href: '/#faqs'
+    },
+    {
+        label: 'Blog',
+        href: '/blog'
+    },
+]
+---
+
+<aside class="cvps">
+    <div class="cvps_item">
+        <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.11133 24.82V22.6267C4.11133 21.9449 4.27888 21.3973 4.61399 20.984C4.94911 20.5698 5.37311 20.2302 5.88599 19.9653C7.01933 19.3875 8.13488 18.9413 9.23266 18.6267C10.3296 18.312 11.734 18.1547 13.446 18.1547C14.1127 18.1547 14.7024 18.1755 15.2153 18.2173C15.7291 18.2582 16.1833 18.3195 16.578 18.4013L15.3727 19.6067C15.1282 19.5622 14.8384 19.5311 14.5033 19.5133C14.1673 19.4964 13.8144 19.488 13.4447 19.488C11.8669 19.488 10.5189 19.6515 9.40066 19.9787C8.28155 20.3049 7.322 20.6902 6.52199 21.1347C6.11666 21.348 5.83577 21.572 5.67933 21.8067C5.52288 22.0404 5.44466 22.3138 5.44466 22.6267V23.488H13.266L14.5993 24.8213L4.11133 24.82ZM20.5887 26.2773L16.9113 22.6L17.8553 21.656L20.5887 24.3893L27.322 17.656L28.266 18.6L20.5887 26.2773ZM13.4447 15.18C12.3451 15.18 11.4038 14.788 10.6207 14.004C9.83755 13.22 9.44555 12.2787 9.44466 11.18C9.44466 10.0795 9.83666 9.13733 10.6207 8.35333C11.4029 7.5711 12.3442 7.17999 13.4447 7.17999C14.5451 7.17999 15.4873 7.5711 16.2713 8.35333C17.0536 9.13733 17.4447 10.0795 17.4447 11.18C17.4447 12.2795 17.0536 13.2209 16.2713 14.004C15.4873 14.788 14.5451 15.18 13.4447 15.18ZM13.4447 13.8467C14.178 13.8467 14.806 13.5853 15.3287 13.0627C15.8513 12.54 16.1122 11.9124 16.1113 11.18C16.1113 10.4467 15.8504 9.81866 15.3287 9.29599C14.8069 8.77333 14.1789 8.51244 13.4447 8.51333C12.7113 8.51333 12.0838 8.77421 11.562 9.29599C11.0402 9.81777 10.7789 10.4458 10.778 11.18C10.778 11.9133 11.0393 12.5409 11.562 13.0627C12.0847 13.5844 12.7122 13.8458 13.4447 13.8467Z" fill="white"/></svg>
+        Simple, fast onboarding
+    </div>
+    <div class="cvps_item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 9.00001H9V7.00001C8.99854 6.4062 9.17334 5.82531 9.50226 5.33092C9.83118 4.83652 10.2994 4.45086 10.8477 4.22277C11.3959 3.99469 11.9996 3.93444 12.5821 4.04966C13.1646 4.16488 13.6999 4.45038 14.12 4.87001C14.4959 5.25408 14.7649 5.72984 14.9 6.25001C14.9328 6.37739 14.9904 6.49706 15.0695 6.60218C15.1486 6.70731 15.2476 6.79582 15.3609 6.86268C15.4742 6.92954 15.5995 6.97343 15.7298 6.99185C15.86 7.01026 15.9926 7.00284 16.12 6.97001C16.2474 6.93718 16.3671 6.87958 16.4722 6.8005C16.5773 6.72143 16.6658 6.62242 16.7327 6.50913C16.7995 6.39584 16.8434 6.27049 16.8618 6.14024C16.8802 6.00999 16.8728 5.87739 16.84 5.75001C16.6122 4.88481 16.1603 4.09495 15.53 3.46001C14.8302 2.76238 13.9393 2.28775 12.97 2.09605C12.0006 1.90436 10.9961 2.0042 10.0835 2.38297C9.17078 2.76173 8.3908 3.40244 7.84201 4.22418C7.29321 5.04593 7.00021 6.01186 7 7.00001V9.00001C6.20435 9.00001 5.44129 9.31608 4.87868 9.87869C4.31607 10.4413 4 11.2044 4 12V19C4 19.7957 4.31607 20.5587 4.87868 21.1213C5.44129 21.6839 6.20435 22 7 22H17C17.7956 22 18.5587 21.6839 19.1213 21.1213C19.6839 20.5587 20 19.7957 20 19V12C20 11.2044 19.6839 10.4413 19.1213 9.87869C18.5587 9.31608 17.7956 9.00001 17 9.00001ZM18 19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8947 17.2652 20 17 20H7C6.73478 20 6.48043 19.8947 6.29289 19.7071C6.10536 19.5196 6 19.2652 6 19V12C6 11.7348 6.10536 11.4804 6.29289 11.2929C6.48043 11.1054 6.73478 11 7 11H17C17.2652 11 17.5196 11.1054 17.7071 11.2929C17.8946 11.4804 18 11.7348 18 12V19Z" fill="white"/></svg>
+        No lock-in contracts
+    </div>
+    <div class="cvps_item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20.212L2.59599 8.923L5.30799 3.5H18.692L21.404 8.923L12 20.212ZM8.81699 8.5H15.183L13.183 4.5H10.817L8.81699 8.5ZM11.5 18.06V9.5H4.39199L11.5 18.06ZM12.5 18.06L19.608 9.5H12.5V18.06ZM16.292 8.5H20.058L18.058 4.5H14.292L16.292 8.5ZM3.94199 8.5H7.70799L9.70799 4.5H5.94199L3.94199 8.5Z" fill="white"/></svg>
+        Exceptional quality
+    </div>
+</aside>
+<aside class="cvps glide">
+    <div class="glide__track" data-glide-el="track">
+        <ul class="glide__slides">
+            <div class="glide__slide cvps_item">
+                <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.11133 24.82V22.6267C4.11133 21.9449 4.27888 21.3973 4.61399 20.984C4.94911 20.5698 5.37311 20.2302 5.88599 19.9653C7.01933 19.3875 8.13488 18.9413 9.23266 18.6267C10.3296 18.312 11.734 18.1547 13.446 18.1547C14.1127 18.1547 14.7024 18.1755 15.2153 18.2173C15.7291 18.2582 16.1833 18.3195 16.578 18.4013L15.3727 19.6067C15.1282 19.5622 14.8384 19.5311 14.5033 19.5133C14.1673 19.4964 13.8144 19.488 13.4447 19.488C11.8669 19.488 10.5189 19.6515 9.40066 19.9787C8.28155 20.3049 7.322 20.6902 6.52199 21.1347C6.11666 21.348 5.83577 21.572 5.67933 21.8067C5.52288 22.0404 5.44466 22.3138 5.44466 22.6267V23.488H13.266L14.5993 24.8213L4.11133 24.82ZM20.5887 26.2773L16.9113 22.6L17.8553 21.656L20.5887 24.3893L27.322 17.656L28.266 18.6L20.5887 26.2773ZM13.4447 15.18C12.3451 15.18 11.4038 14.788 10.6207 14.004C9.83755 13.22 9.44555 12.2787 9.44466 11.18C9.44466 10.0795 9.83666 9.13733 10.6207 8.35333C11.4029 7.5711 12.3442 7.17999 13.4447 7.17999C14.5451 7.17999 15.4873 7.5711 16.2713 8.35333C17.0536 9.13733 17.4447 10.0795 17.4447 11.18C17.4447 12.2795 17.0536 13.2209 16.2713 14.004C15.4873 14.788 14.5451 15.18 13.4447 15.18ZM13.4447 13.8467C14.178 13.8467 14.806 13.5853 15.3287 13.0627C15.8513 12.54 16.1122 11.9124 16.1113 11.18C16.1113 10.4467 15.8504 9.81866 15.3287 9.29599C14.8069 8.77333 14.1789 8.51244 13.4447 8.51333C12.7113 8.51333 12.0838 8.77421 11.562 9.29599C11.0402 9.81777 10.7789 10.4458 10.778 11.18C10.778 11.9133 11.0393 12.5409 11.562 13.0627C12.0847 13.5844 12.7122 13.8458 13.4447 13.8467Z" fill="white"/></svg>
+                Simple, fast onboarding
+            </div>
+            <div class="glide__slide cvps_item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 9.00001H9V7.00001C8.99854 6.4062 9.17334 5.82531 9.50226 5.33092C9.83118 4.83652 10.2994 4.45086 10.8477 4.22277C11.3959 3.99469 11.9996 3.93444 12.5821 4.04966C13.1646 4.16488 13.6999 4.45038 14.12 4.87001C14.4959 5.25408 14.7649 5.72984 14.9 6.25001C14.9328 6.37739 14.9904 6.49706 15.0695 6.60218C15.1486 6.70731 15.2476 6.79582 15.3609 6.86268C15.4742 6.92954 15.5995 6.97343 15.7298 6.99185C15.86 7.01026 15.9926 7.00284 16.12 6.97001C16.2474 6.93718 16.3671 6.87958 16.4722 6.8005C16.5773 6.72143 16.6658 6.62242 16.7327 6.50913C16.7995 6.39584 16.8434 6.27049 16.8618 6.14024C16.8802 6.00999 16.8728 5.87739 16.84 5.75001C16.6122 4.88481 16.1603 4.09495 15.53 3.46001C14.8302 2.76238 13.9393 2.28775 12.97 2.09605C12.0006 1.90436 10.9961 2.0042 10.0835 2.38297C9.17078 2.76173 8.3908 3.40244 7.84201 4.22418C7.29321 5.04593 7.00021 6.01186 7 7.00001V9.00001C6.20435 9.00001 5.44129 9.31608 4.87868 9.87869C4.31607 10.4413 4 11.2044 4 12V19C4 19.7957 4.31607 20.5587 4.87868 21.1213C5.44129 21.6839 6.20435 22 7 22H17C17.7956 22 18.5587 21.6839 19.1213 21.1213C19.6839 20.5587 20 19.7957 20 19V12C20 11.2044 19.6839 10.4413 19.1213 9.87869C18.5587 9.31608 17.7956 9.00001 17 9.00001ZM18 19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8947 17.2652 20 17 20H7C6.73478 20 6.48043 19.8947 6.29289 19.7071C6.10536 19.5196 6 19.2652 6 19V12C6 11.7348 6.10536 11.4804 6.29289 11.2929C6.48043 11.1054 6.73478 11 7 11H17C17.2652 11 17.5196 11.1054 17.7071 11.2929C17.8946 11.4804 18 11.7348 18 12V19Z" fill="white"/></svg>
+                No lock-in contracts
+            </div>
+            <div class="glide__slide cvps_item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 20.212L2.59599 8.923L5.30799 3.5H18.692L21.404 8.923L12 20.212ZM8.81699 8.5H15.183L13.183 4.5H10.817L8.81699 8.5ZM11.5 18.06V9.5H4.39199L11.5 18.06ZM12.5 18.06L19.608 9.5H12.5V18.06ZM16.292 8.5H20.058L18.058 4.5H14.292L16.292 8.5ZM3.94199 8.5H7.70799L9.70799 4.5H5.94199L3.94199 8.5Z" fill="white"/></svg>
+                Exceptional quality
+            </div>
+        </ul>
+    </div>        
+</aside>
+<nav class="navbar">
+    <Container type="nav">
+        <a class="navbar_brand" href="/">
+            <Image src={logo} alt="Futuremerce Logo">
+        </a>
+        <div class="navbar_links">
+            {links.map(link => <a href={link.href} class="navbar_link">{link.label}</a>)}
+        </div>
+        <div class="navbar_btns">
+            <a href="/contact#book-a-call" class="navbar_btn">Book A Call</a>
+            <a class="navbar_menu-btn"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.33331 23.0267V21.6933H26.6666V23.0267H5.33331ZM5.33331 16.6667V15.3333H26.6666V16.6667H5.33331ZM5.33331 10.3067V8.97333H26.6666V10.3067H5.33331Z" fill="#232323"/></svg></a>
+        </div>
+    </Container>
+    <div class="mobile-menu">
+        <div class="mobile-menu_links">
+            {links.map(link => <a href={link.href} class="navbar_link">{link.label}</a>)}
+        </div>
+            <a href="/contact#book-a-call" class="navbar_btn mobile">Book A Call</a>
+    </div>
+</nav>
+
+<script is:inline>
+    document.querySelector('.navbar_menu-btn').addEventListener('click', () => {
+        const menu = document.querySelector('.mobile-menu');
+
+        if (menu.classList.contains('active')) {
+            menu.classList.remove('active');
+            document.querySelector('body').classList.remove('no-scroll');
+            document.querySelector('html').classList.remove('no-scroll');
+        } else {
+            menu.classList.add('active');
+            document.querySelector('body').classList.add('no-scroll');
+            document.querySelector('html').classList.add('no-scroll');
+        }
+    });
+
+    document.querySelectorAll('.mobile-menu .navbar_link').forEach(link => {
+        link.addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.remove('active');
+            document.querySelector('body').classList.remove('no-scroll');
+            document.querySelector('html').classList.remove('no-scroll');
+        });
+    });
+
+        document.querySelector('.navbar_btn').addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'button_click',
+                button_text: e.target.textContent,
+                button_url: e.target.href,
+                button_location: 'Navigation',
+            });
+        });
+
+    document.querySelectorAll('.navbar_link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'link_click',
+                link_text: e.target.textContent,
+                link_url: e.target.href,
+            });
+        });
+    });
+</script>
+
+<style lang="scss">
+    .cvps {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 40px;
+        background: var(--lighter-purple);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99;
+
+        &_item {
+            margin: 0 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #FFF;
+            font-size: 14px;
+            font-weight: 600;
+
+            @media screen and (max-width: 710px) {
+                justify-content: center;
+                margin: 0;
+            }
+        }
+
+        &.glide {
+            display: none;
+
+            .glide__track {
+                height: 40px;
+            } 
+
+            .glide__slides {
+                height: 40px;
+                display: flex;
+                align-items: center;
+
+            }
+        }
+
+        @media screen and (max-width: 710px) {
+            display: none;
+
+            &.glide {
+                display: block;
+            }
+        }
+    }
+    .navbar {
+        background: #fff;
+        position: fixed;
+        top:40px;
+        left: 0;
+        width: 100vw;
+        height: 115px;
+        z-index: 98;
+        transition: .4s ease-in-out;
+        
+        @media screen and (max-width: 942px) {
+            height: 75px;
+        }
+
+        &_menu-btn {
+            display: none;
+
+            @media screen and (max-width: 942px) {
+                display: block;
+            }
+        }
+
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            width: 620px;
+            height: 100vh;
+            max-width: 75vw;
+            background: #fff;
+            right: -620px;
+                transition: .6s ease-in-out;
+
+            &:before {
+                content: '';
+                position: absolute;
+                right: calc(100% - 100vw);
+                top: 0;
+                height: 100vh;
+                width: 100vw;
+                background: rgba(0,0,0,0.5);
+                transition: .6s ease-in-out;
+                opacity: 0;
+                z-index: -1;
+            }
+
+            &.active {
+                right: 0;
+
+                &:before {
+                    opacity: 1;
+                    right: 100%;
+                }
+            }
+
+            &_links {
+                display: flex;
+                flex-direction: column;
+                padding: 48px;
+            }
+        }
+
+        &.scrolled {
+            height: 75px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        &_brand {
+            width: 227px;
+            
+        @media screen and (max-width: 710px) {
+            width: 175px;
+        }
+
+            img {
+                width: 100%;
+            }
+        }
+
+        &_links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+
+            @media screen and (max-width: 942px) {
+                display: none;
+            }
+        }
+
+        &_link {
+            color: #232323;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            text-decoration: none;
+            transition: .2s ease-in-out;
+
+            &:hover {
+                color: var(--lighter-purple);
+            }
+
+            
+            @media screen and (max-width: 942px) {
+                font-size: 20px;
+                margin-bottom: 18px;
+            }
+        }
+
+        &_btns {
+            width: 227px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: flex-end;
+
+            @media screen and (max-width: 400px) {
+                width: fit-content;
+            }
+        }
+
+        &_btn {
+            color: var(--lighter-purple);
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            border-radius: 8px;
+            // border-radius: 99px;
+            border: 1px solid rgba(74, 58, 255, 0.19);
+            background: #E8E5FF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 146px;
+            height: 37px;
+            text-decoration: none;
+            transition: .2s ease-in-out;
+
+            &:hover {
+                        box-shadow: 6px 6px 0px rgba(0,0,0,0.15);
+            }
+
+            &.mobile {
+                display: none;
+            }
+
+            @media screen and (max-width: 400px) {
+                display: none;
+
+                &.mobile {
+                    display: flex;
+                    margin-left: 48px;
+                    margin-top: -24px;
+                 }
+            }
+        }
+    }
+</style>
+
+
+<script>
+    
+import Glide, { Swipe, Autoplay } from '@glidejs/glide/dist/glide.modular.esm';
+// @ts-ignore
+var glide = new Glide('.cvps.glide', { type: 'carousel', focusAt: 'center', perView: 1, dragThreshold: 1, autoplay: 2000 }).mount({ Swipe, Autoplay });
+glide.play();
+</script>
+
+<script is:inline>
+    window.addEventListener('scroll', () => {
+        const scrollDistance = window.scrollY;
+
+       if (scrollDistance > 99) {
+        document.querySelector('.navbar').classList.add('scrolled')
+       } else {
+        document.querySelector('.navbar').classList.remove('scrolled')
+       }
+    });
+</script>

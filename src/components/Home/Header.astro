@@ -1,0 +1,233 @@
+---
+import heroImage from '../../images/hero-image.png';
+import { Image } from 'astro:assets';
+---
+
+<header class="header">
+    <h1 class="header_title">Streamline Your  <span>  Shopify Success</span> 
+    with a Development Plan.</h1>
+    <p class="header_text">We replace unreliable freelancers and expensive agencies with a simple, subscription service.</p>
+    <div class="header_btns">
+        <a href="#pricing" class="primary">Get Started</a>
+        <a href="#how-it-works" class="secondary">How It Works</a>
+    </div>
+    <Image class="header_image" src={heroImage} alt="">
+</header>
+
+<script is:inline>
+    document.querySelectorAll('.header_btns a').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'button_click',
+                button_text: e.target.textContent,
+                button_url: e.target.href,
+                button_location: 'Header',
+            });
+        });
+    });
+</script>
+
+<style lang="scss">
+    .header {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 96px 0 0;
+        min-height: 80vh;
+
+        @media screen and (min-height: 1200px) {
+            justify-content: center;
+        }
+
+        
+            @media screen and (max-width: 710px) {
+                padding-top: 40px;
+            }
+
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 48px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 72px;
+            max-width: 860px;
+
+             > span {
+                 color: var(--lighter-purple);
+                 margin: 0 0 0 .5ch;
+                 position: relative;
+
+                 &:before {
+                    content: '';
+                    border: 1px solid var(--lighter-purple);
+                    background: #E8E5FF;
+                    width: 434.5px;
+                    height: 75px;
+                    position: absolute;
+                    z-index: -1;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                 }
+
+                 &:after {
+                    content: '';
+                    position: absolute;
+                    z-index: -1;
+                    bottom: -31px;
+                    right: -34px;
+                    width: 33px;
+                    height: 33px;
+                    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none"><path d="M23.7067 20.6548L31.6149 30.2422L28.4345 32.8669L20.5243 23.2817L16.5677 29.2878L11.6466 9.28214L30.3553 17.9118L23.7067 20.6548Z" fill="%23212121"/></svg>');
+                 }
+            }
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 50px;
+                max-width: 560px;
+
+                > span {
+                    margin: 0 0 0 .35ch;
+
+                    &:before {
+                        width: 285px;
+                        height: 55px;
+                    }
+
+                    &:after {
+                        right: -28px;
+                    }
+                }
+            }
+
+            
+            @media screen and (max-width: 710px) {
+                padding: 0 24px;
+                line-height: 58px;
+                max-width: 425px;
+
+                > span {
+                    margin: 0 .35ch 0 0;
+                    display: inline-block;
+
+                    &:before {
+                        left: -10px;
+                        top: 2.5px;
+                        transform: none;
+                        height: 50px;
+                    }
+                    
+                    &:after {
+                        bottom: -15px;
+                        transform: scale(.75);
+                        right: -25px;
+
+                    }
+                }
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 46px;
+
+                > span:before {
+                    width: 235px;
+                    height: 40px;
+                }
+            }
+        }
+
+        &_text {
+            color: #7A7A7A;
+            text-align: center;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px;
+            margin: 28px auto;
+            max-width: 581px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+                line-height: 125%;
+                max-width: 480px;
+                margin: 16px auto 20px;
+                padding: 0 24px;
+            }
+
+            
+            @media screen and (max-width: 450px) {
+                margin: 20px auto 40px;
+            }
+        }
+
+        &_btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 21px;
+
+                @media screen and (max-width: 710px) {
+                    padding: 0 24px;
+                    width: 100%;
+                    max-width: 450px;
+                }
+
+            > a {
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                padding: 16px 20px;
+                border-radius: 8px;
+                text-decoration: none;
+                transition: .25s ease-in-out;
+                
+                @media screen and (max-width: 942px) {
+                    font-size: 14px;
+                    padding: 12px 16px;
+                }
+
+                @media screen and (max-width: 710px) {
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    padding: 16px 0;
+                }
+
+                &.primary {
+                    color: #fff;
+                    background: var(--lighter-purple);
+
+                    &:hover {
+                        box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+                    }
+                }
+
+                &.secondary {
+                    color: #FFBC3A;
+                    background: rgba(255, 188, 58, 0.14);
+                    border: 1px solid #FFBC3A;
+                    
+                    &:hover {
+                        box-shadow: 8px 8px 0px rgba(0,0,0, .15);
+                    }
+                }
+
+            }
+        }
+
+        @media screen and (max-width: 942px) {
+            &_image {
+                max-width: 90vw;
+                width: 500px;
+                height: fit-content;
+                margin-top: 50px;
+            }
+        }
+    }
+</style>

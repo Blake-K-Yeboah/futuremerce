@@ -1,0 +1,242 @@
+---
+import Container from '../Container.astro';
+---
+
+<section class="form">
+    <Container>
+        <h1 class="form_title">Get In Touch</h1>
+        <p class="form_text">Please fill out the form and we’ll be in touch as soon as we can.</p>
+        <div class="form_container">
+            <div class="top-left"><svg width="203" height="203" viewBox="0 0 203 203" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.722621 56.5212C-1.88561 45.7879 4.70109 34.9724 15.4344 32.3642L145.645 0.722621C156.378 -1.88561 167.194 4.70109 169.802 15.4344L201.444 145.645C204.052 156.378 197.465 167.194 186.732 169.802L56.5212 201.444C45.7879 204.052 34.9724 197.465 32.3642 186.732L0.722621 56.5212Z" fill="#8B81FF" fill-opacity="0.4"/></svg></div>
+            <form method="POST" action="https://formie.io/form/16ddaaba-268b-49fd-bfd9-74a7ee7baa2a">
+                <input name="_redirect" type="hidden" value="http://localhost:4321/contact#success">
+                <div class="form_success" style="display: none;">
+                    Thanks for reaching out! We'll be in touch as soon as we can.
+                </div>
+                <div class="form_failure" style="display: none;">
+                   Please fill out all fields.
+                </div>
+                <div class="form_group grid">
+                    <div>
+                        <label for="first-name">First Name</label>
+                        <input id="first-name" name="name" type="text" placeholder="Your name"/>
+                    </div>
+                    <div>
+                        <label for="company">Company</label>
+                        <input id="company" name="company" type="text" placeholder="Your company/store name"/>
+                    </div>
+                </div>
+                <div class="form_group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="Your email"/>
+                </div>
+                <div class="form_group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="form_btn">Send Message</button>
+            </form>
+            <div class="bottom-right"><svg width="245" height="229" viewBox="0 0 245 229" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M224.134 0.448736C238.73 -0.0129325 248.884 14.8162 243.175 28.2573L163.442 215.987C157.265 230.53 137.458 232.505 128.531 219.468L4.40572 38.1862C-4.52081 25.1493 4.48343 7.39646 20.2757 6.89694L224.134 0.448736Z" fill="#8B81FF"/></svg></div>
+        </div>
+    </Container>
+</section>
+
+<script is:inline>
+    if (window.location.href.includes('#success')) {
+        document.querySelector('.form_success').style.display = 'block';
+    }
+
+    document.querySelector('.form_btn').addEventListener('click', function(e) {
+        dataLayer.push({
+            event: 'button_click',
+            button_text: e.target.textContent,
+            button_url: e.target.href,
+            button_location: 'Contact Form',
+        });
+    });
+
+    document.querySelector('.form_container form').addEventListener('submit', function(e){
+        if (!document.getElementById('first-name').value || !document.getElementById('email').value || !document.getElementById('company').value || !document.getElementById('message').value) {
+            e.preventDefault();
+        document.querySelector('.form_success').style.display = 'none';
+        document.querySelector('.form_failure').style.display = 'block';
+        }
+    });
+</script>
+
+<style lang="scss">
+    .form {
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 72px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_text {
+            color: #7A7A7A;
+            text-align: center;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px; 
+            max-width: 443px;
+            margin: 24px auto 50px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+                line-height: 24px;
+                max-width: 300px;
+                margin:14px auto 0 ;
+            }
+        }
+
+        &_success, &_failure {
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            line-height: 22px;
+            padding: 16px;
+            background: #11b200;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        &_failure {
+            background: #ee1122;
+        }
+
+        &_container {
+            max-width: 1018.896px;
+            margin: 0 auto;
+            width: 100%;
+
+                @media screen and (max-width: 942px) {
+                   margin: 24px auto 120px;
+                }
+
+            > * {
+                filter: drop-shadow(0px 20px 50px rgba(0, 0, 0, 0.08));
+            }
+
+            .top-left {
+                margin: 0 0 -114px 50px;
+
+                @media screen and (max-width: 942px) {
+                    display: none;
+                }
+            }
+
+            > form {
+                margin: 0 auto -140px auto;
+                background: #fff;
+                border-radius: 24px;
+                max-width: 765px;
+                width: 100%;
+                padding: 48px;
+                position: relative;
+                z-index: 2;
+                min-height: 530px;
+
+                        @media screen and (max-width: 710px) {
+                            padding: 32px 24px;
+                        }
+
+                .form_group {
+                    margin: 0 0 30px;
+
+                    &.grid {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        column-gap: 42px;
+
+                        @media screen and (max-width: 710px) {
+                            grid-template-columns: 1fr;
+                            row-gap: 30px;
+                        } 
+                    }
+                }
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                    color: #434343;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+
+                input, textarea {
+                    width: 100%;
+                    height: 44px;
+                    padding: 12px 12px 12px 21px;
+                    border-radius: 4px;
+                    border: 1px solid #D8D8D8;
+                    background: #FFF;
+                    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.04);
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-family: 'Montserrat', sans-serif;
+
+                    &::-webkit-input-placeholder {
+                        color: #D7D7D7;
+                    }
+
+                    &:focus {
+                        outline: none !important;
+                        box-shadow: 0px 4px 20px 0px  rgba(0,0,0,0.15);
+                        border-color: #232323;
+                    }
+
+                }
+
+                textarea {
+                    height: 132px;
+
+                    &::-webkit-input-placeholder {
+                    font-size: 16px;
+                    font-weight: 500;
+                    }
+                }
+
+                .form_btn {
+                    color: #FFF;
+                    font-size: 15px;
+                    font-weight: 700;
+                    border: 0;
+                    background: var(--lighter-purple);
+                    border-radius: 8px;
+                    padding: 16px 21px;
+                    display: block;
+                    width: fit-content;
+                    margin: 0 auto;
+                    cursor: pointer;
+                    transition: .25s ease-in-out;
+
+                    &:hover {
+                        box-shadow: 8px 8px 0px rgba(0,0,0,0.35);
+                    }
+                }
+            }
+
+            .bottom-right {
+                margin: 0 30px 0 auto;
+                width: fit-content;
+
+                @media screen and (max-width: 942px) {
+                    display: none;
+                }
+            }
+        }
+    }
+</style>

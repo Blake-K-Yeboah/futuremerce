@@ -1,0 +1,74 @@
+---
+import Badge from "../Badge.astro";
+import Container from "../Container.astro";
+
+---
+
+<section class="book-a-call" id="book-a-call">
+    <Container>
+        <Badge text="Book A Call" />
+        <h2 class="book-a-call_title">Book A <span>Call</span> With <span>Us</span></h2>
+        <p class="book-a-call_text">Got some more questions? Feel free to book a call with us to discuss your project’s needs.</p>
+
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/futuremerce-intro/30min" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly inline widget end -->
+
+    </Container>
+</section>
+
+<style lang="scss">
+    .book-a-call {
+        padding-top: 120px;
+        
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 42px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px;
+            margin: 0 auto 24px auto;
+
+            > span {
+                color: var(--lighter-purple);
+            }
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_text {
+            color: #434343;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            max-width: 436px;
+            margin: 0 auto 24px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+        
+        .calendly-inline-widget {
+            overflow-y: hidden !important;
+
+            &::-webkit-scrollbar {
+                display: none;
+                width: 0;
+            }
+        }
+    }
+</style>

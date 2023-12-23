@@ -1,0 +1,66 @@
+---
+import DulvaniLogo from '../../images/dulvani-logo.png';
+import { Image } from 'astro:assets';
+---
+
+<article class="testimonial">
+    <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.9981 13.36C13.3315 13.9467 14.3715 14.8267 15.1181 16C15.8648 17.1733 16.2381 18.56 16.2381 20.16C16.2381 22.4533 15.5181 24.32 14.0781 25.76C12.6381 27.1467 10.7981 27.84 8.55813 27.84C6.31813 27.84 4.45146 27.12 2.95813 25.68C1.51813 24.24 0.798125 22.4 0.798125 20.16C0.798125 19.0933 0.931458 18.0267 1.19813 16.96C1.46479 15.8933 2.05146 14.2933 2.95813 12.16L7.59813 0.639997H15.5181L11.9981 13.36ZM30.8781 13.36C32.2115 13.9467 33.2515 14.8267 33.9981 16C34.7448 17.1733 35.1181 18.56 35.1181 20.16C35.1181 22.4533 34.3981 24.32 32.9581 25.76C31.5181 27.1467 29.6781 27.84 27.4381 27.84C25.1981 27.84 23.3315 27.12 21.8381 25.68C20.3981 24.24 19.6781 22.4 19.6781 20.16C19.6781 19.0933 19.8115 18.0267 20.0781 16.96C20.3448 15.8933 20.9315 14.2933 21.8381 12.16L26.4781 0.639997H34.3981L30.8781 13.36Z" fill="#524AAA"/>
+    </svg>
+    <p class="testimonial_text">An absolute game-changer for our online business. From the very beginning, their expertise and attention to detail shone through.</p>
+    <Image src={DulvaniLogo} alt="Dulvani's Logo" />
+    <p class="testimonial_company">Dulvani</p>
+</article>
+
+<style lang="scss">
+    .testimonial {
+        border-radius: 12px;
+        background: rgba(139, 129, 255, 0.08);
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--lighter-purple);
+        margin: 105px auto 0 auto;
+        padding: 38px 42px;
+        width: calc(100vw - 48px);
+        max-width: 737px;;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &_text {
+            margin: 24px 0;
+            color: #524AAA;
+            text-align: center;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 28px; 
+            max-width: 520px;
+            
+            @media screen and (max-width: 450px) {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        &_company {
+            margin-top: 8px;
+            color: #524AAA;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px; 
+            
+            @media screen and (max-width: 450px) {
+                font-size: 14px;
+            }
+        }
+    }
+</style>

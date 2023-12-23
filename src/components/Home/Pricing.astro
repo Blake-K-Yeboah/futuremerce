@@ -1,0 +1,275 @@
+---
+import Badge from '../Badge.astro';
+import Container from '../Container.astro';
+import PricingCard from './PricingCard.astro';
+
+const pricing = [
+    // {
+    //     name: 'Lite',
+    //     monthly: {
+    //         price: '$2,299',
+    //         getStarted: 'https://buy.stripe.com/00gbMh0O7aCb132005',
+    //     },
+    //     quarterly: {
+    //         price: '$1,999',
+    //         getStarted: 'https://buy.stripe.com/aEU4jPeEX25FeTSbIO',
+    //     },
+    //     description: ['For non Shopify Plus stores.','Perfect for smaller businesses'],
+    //     requestsAtATime: 'One request at a time',
+    //     color: false,
+    //     badge: ''
+    // },
+    {
+        name: 'Regular',
+        monthly: {
+            price: '$4,999',
+            getStarted: 'https://buy.stripe.com/bIY9E97cv4dN2766oo',
+        },
+        quarterly: {
+            price: '$3,999',
+            getStarted: 'https://buy.stripe.com/cN28A5cwPeSr6nm9AB',
+        },
+        description: ['One request at a time.','Pause or cancel anytime'],
+        requestsAtATime: 'One request at a time',
+        color: false,
+        badge: 'MOST POPULAR'
+
+    },
+    {
+        name: 'Pro',
+        monthly: {
+            price: '$7,999',
+            getStarted: 'https://buy.stripe.com/dR67w1aoH39J9zy5km',
+        },
+        quarterly: {
+            price: '$6,999',
+            getStarted: 'https://buy.stripe.com/5kA03z0O77pZfXW9AD',
+        },
+        description: ['Double the requests.','Pause or cancel anytime'],
+        requestsAtATime: 'Two requests at a time',
+        color: true,
+        badge: ''
+    },
+    {
+        name: 'Enterprise',
+        monthly: {
+            price: '$14,999',
+            getStarted: 'https://buy.stripe.com/9AQ17D2Wf8u38vueV1',
+        },
+        quarterly: {
+            price: '$12,499',
+            getStarted: 'https://buy.stripe.com/28o17D7cvbGf276aEM',
+        },
+        description: ['Tailored solutions for your business', 'Seasoned team of Shopify Plus experts.'],
+        requestsAtATime: 'Tailored Solutions',
+        color: false,
+        badge: ''
+    },
+]
+---
+
+<section class="pricing" id="pricing">
+    <Container>
+        <Badge text="Pricing" />
+        <h2 class="pricing_title">Membership <span>Levels</span></h2>
+        <p class="pricing_text">Choose a plan that's right for you.</p>
+        <div class="pricing_switch">
+            <p class="pricing_switch-option active">Billed Monthly</p>
+            <div class="pricing_switch-toggle"><div></div></div>
+            <p class="pricing_switch-option">Billed Quarterly <span>(Save up to 20%)</span></p>
+        </div>
+        <div class="pricing_grid-container">
+            <div class="pricing_grid monthly active">
+                {pricing.map(priceOption => <PricingCard option={priceOption} type="monthly" />)}
+            </div>
+            <div class="pricing_grid quarterly">
+                {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
+            </div>
+        </div>
+    </Container>
+</section>
+
+<script is:inline>
+    window.updateHeight = () => {
+        if (document.querySelector('.pricing_grid-container')) {
+            document.querySelector('.pricing_grid-container').style.height = `${document.querySelector('.pricing_grid.quarterly').clientHeight}px`
+        }
+    }
+
+    window.updateHeight();
+
+    window.addEventListener('resize', () => {
+        setTimeout(window.updateHeight, 200);
+    })
+</script>
+
+<script>
+    const priceSwitch = document.querySelector('.pricing_switch-toggle');
+
+    priceSwitch.addEventListener('click', (e) => {
+        document.querySelector('.pricing_switch-option.active').classList.remove('active');
+        document.querySelector('.pricing_grid.active').classList.remove('active');
+
+        if (priceSwitch.classList.contains('toggled')) {
+            priceSwitch.classList.remove('toggled');
+            document.querySelector('.pricing_switch-option:first-of-type').classList.add('active');
+            document.querySelector('.pricing_grid.monthly').classList.add('active');
+        } else {
+            priceSwitch.classList.add('toggled');
+            document.querySelector('.pricing_switch-option:last-of-type').classList.add('active');
+            document.querySelector('.pricing_grid.quarterly').classList.add('active');
+        }
+    });
+</script>
+
+<style lang="scss">
+    .pricing {
+        margin-bottom: 50px;
+        padding-top: 140px;
+        
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 42px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px;
+            margin: 0 auto 24px auto;
+
+            > span {
+                color: var(--lighter-purple);
+            }
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_text {
+            margin-bottom: 50px;
+            color: #434343;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+            }
+        }
+
+        &_switch {
+            display: flex;
+            justify-content: center;
+
+            &-option {
+                color: #434343;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 22px; 
+                text-align: center;
+                width: fit-content;
+                transition: .3s ease-in-out;
+
+                
+                @media screen and (max-width: 942px) {
+                    font-size: 15px;
+                }
+
+                &.active {
+                    color: var(--lighter-purple);
+                }
+
+                > span {
+                    display: block;
+                    color: #757575;
+                    font-weight: 400;
+                    margin-top: 8px;
+                }
+            }
+
+            &-toggle {
+                border-radius: 99px;
+                background: #D9D9D9;
+                cursor: pointer;
+                width: 46px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 0 2px;
+                margin: 0 30px;
+                transition: .3s ease-in-out;
+
+                
+                @media screen and (max-width: 942px) {
+                    margin: 0 16px;
+                }
+
+                > div {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 99px;
+                    background: #FFF;
+                    transition: .3s ease-in-out;
+                }
+
+                &.toggled {
+                    background: var(--lighter-purple);
+
+                    > div {
+                        margin-left: 24px;
+                    }
+                }
+            }
+        }
+
+        &_grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+            margin-top: 42px;
+            transition: opacity .5s ease;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            @media screen and (max-width: 980px) {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            @media screen and (max-width: 450px) {
+                margin-top: 16px;
+            }
+
+            &:not(.active) {
+                opacity: 0;
+            }
+
+            &.active {
+                z-index: 5;
+            }
+
+            &-container {
+                width: 100%;
+                max-width: 1072px;
+                margin: 42px auto 0 auto;
+                position: relative;
+                height: 650px;
+            }
+        }
+
+    }
+</style>

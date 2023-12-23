@@ -1,0 +1,126 @@
+---
+import freeAudit from '../images/free-audit.png';
+import { Image } from 'astro:assets';
+
+---
+
+<div class="popup">
+    <div class="popup_backdrop"></div>
+    <div class="popup_inner">
+        <div class="popup_close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"> <path d="M18.3 5.70999C18.2075 5.61729 18.0976 5.54374 17.9766 5.49356C17.8556 5.44338 17.7259 5.41755 17.595 5.41755C17.464 5.41755 17.3343 5.44338 17.2134 5.49356C17.0924 5.54374 16.9825 5.61729 16.89 5.70999L12 10.59L7.10998 5.69999C7.0174 5.60741 6.90749 5.53397 6.78652 5.48387C6.66556 5.43376 6.53591 5.40797 6.40498 5.40797C6.27405 5.40797 6.1444 5.43376 6.02344 5.48387C5.90247 5.53397 5.79256 5.60741 5.69998 5.69999C5.6074 5.79258 5.53396 5.90249 5.48385 6.02345C5.43375 6.14442 5.40796 6.27406 5.40796 6.40499C5.40796 6.53593 5.43375 6.66557 5.48385 6.78654C5.53396 6.9075 5.6074 7.01741 5.69998 7.10999L10.59 12L5.69998 16.89C5.6074 16.9826 5.53396 17.0925 5.48385 17.2135C5.43375 17.3344 5.40796 17.4641 5.40796 17.595C5.40796 17.7259 5.43375 17.8556 5.48385 17.9765C5.53396 18.0975 5.6074 18.2074 5.69998 18.3C5.79256 18.3926 5.90247 18.466 6.02344 18.5161C6.1444 18.5662 6.27405 18.592 6.40498 18.592C6.53591 18.592 6.66556 18.5662 6.78652 18.5161C6.90749 18.466 7.0174 18.3926 7.10998 18.3L12 13.41L16.89 18.3C16.9826 18.3926 17.0925 18.466 17.2134 18.5161C17.3344 18.5662 17.464 18.592 17.595 18.592C17.7259 18.592 17.8556 18.5662 17.9765 18.5161C18.0975 18.466 18.2074 18.3926 18.3 18.3C18.3926 18.2074 18.466 18.0975 18.5161 17.9765C18.5662 17.8556 18.592 17.7259 18.592 17.595C18.592 17.4641 18.5662 17.3344 18.5161 17.2135C18.466 17.0925 18.3926 16.9826 18.3 16.89L13.41 12L18.3 7.10999C18.68 6.72999 18.68 6.08999 18.3 5.70999Z" fill="white"></path></svg></div>
+        
+        <Image src={freeAudit} alt="Man holding free audit portrait" />
+
+        <iframe width="540" height="305" src="https://acc221af.sibforms.com/serve/MUIFAIlcuVBDahhBtDwZOx3rIRLxqxFcdjxFWzW7OxuivN5Dn80ryqSP873JSk_bAfBRJgrasW5XQ4HhKeVTfPlh2vlogyASIF-ZQI4xSAZaNTCQ3yw5UuZaiAI8DuuXcpnrl2SCYHUNKDINHfBvyaN7ea6sKiIKQ74JBktNR-f0mhgDVFzsZDKsFEVNac1mECtsrChWKZofLO0U" frameborder="0" scrolling="auto" allowfullscreen style="display: block;margin-left: auto;margin-right: auto;max-width: 100%;"></iframe>
+    </div>
+</div>
+
+<script is:inline>
+    if (!localStorage.getItem('opt-popup-shown')) {
+        setTimeout(() => {
+            document.querySelector('.popup').style.display = 'block';
+            document.querySelector('body').classList.add('no-scroll');
+            document.querySelector('html').classList.add('no-scroll');
+
+            setTimeout(() => {
+                document.querySelector('.popup').style.opacity = 1;
+            }, 200);
+
+            localStorage.setItem('opt-popup-shown', true)
+        }, 6000);
+
+        document.querySelector('.popup_close').addEventListener('click', function() {
+            document.querySelector('.popup').style.display = 'none';
+            document.querySelector('body').classList.remove('no-scroll');
+            document.querySelector('html').classList.remove('no-scroll');
+        });
+    }
+</script>
+
+<style lang="scss">
+    .popup {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        display: none;
+        opacity: 0;
+        transition: opacity .65s ease-in-out;
+
+            @media screen and (max-height: 1020px) {
+                overflow-y: scroll;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+        &_backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+        
+        &_inner {
+            position: absolute;
+            top: calc(50% - 40px);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width:540px;
+            height: 800px;
+            background: #fff;
+            border-radius: 20px;
+            z-index: 3;
+
+            @media screen and (max-height: 1020px) {
+                top: 60px;
+                transform: translateX(-50%);
+                position: relative;
+            }
+
+            @media screen and (max-width: 600px) {
+                width: 90vw;
+                height: 950px;
+            }
+
+            iframe {
+                width: 100%;
+                height: 100%;
+            border-radius: 20px;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            > img {
+                width: 100%;
+                height: 200px;
+                border-radius: 20px 20px 0 0;
+                object-fit: cover;
+                object-position: center;
+                margin-bottom: -30px;
+                position: relative;
+                z-index: 2;
+            }
+        }
+
+        &_close {
+            position: absolute;
+            right: 0;
+            top: -40px;
+            transform: scale(1.25);
+            cursor: pointer;
+
+            &:hover {
+                opacity: .65;
+            }
+        }
+    }
+</style>
+

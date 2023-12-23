@@ -1,0 +1,185 @@
+---
+interface Props {
+    option: any;
+    type: 'monthly' | 'quarterly';
+}
+
+const { option, type } = Astro.props as Props;
+
+const planPoints = [option.requestsAtATime, 'Unlimited users','Fast delivery','No lock-in contracts','Pause or cancel anytime','Easy credit-card payments'];
+---
+
+<div class={`pricing_card ${option.color ? 'primary' : ''}`}>
+    {option.badge != '' ? <div class="pricing_card-badge">{option.badge}</div> : ''}
+    <h5 class="pricing_card-name">{option.name}</h5>
+    <div class="pricing_card-price">{option[type].price} <span>/ month</span></div>
+    {type == 'quarterly' && <div class="pricing_card-price-text">Billed every 3 months</div>}
+    <p class="pricing_card-text">{option.description[0]}<br>{option.description[1]}</p>
+    <div class="pricing_card-divider"></div>
+    {planPoints.map(point => <div class="pricing_card-point">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="12" fill="#8B81FF"/>
+        <path d="M10.1521 18.25L4.68959 12.7875L6.05522 11.4219L10.1521 15.5188L18.9448 6.72607L20.3104 8.0917L10.1521 18.25Z" fill="white"/>
+        </svg>
+        {point} 
+    </div>)}
+    <a class="pricing_card-btn" href={option[type].getStarted}>Get Started</a>
+    <a class="pricing_card-book-a-call" href="/contact#book-a-call">Book a Call</a>
+</div>
+
+<script>
+    document.querySelectorAll('.pricing_card-btn, .pricing_card-book-a-call').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'button_click',
+                button_text: e.target.textContent,
+                button_url: e.target.href,
+                button_location: 'Pricing Card - ' + e.target.parentNode.querySelector('.pricing_card-name').textContent + ' ('+document.querySelector('.pricing_switch-option.active').textContent.split(' ')[1]+')',
+            });
+        });
+    });
+</script>
+
+<style lang="scss">
+    .pricing_card {
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.05);
+        position: relative;
+        padding: 42px 22px 32px;
+
+        &-badge {
+            position: absolute;
+            top: -14px;
+            right: 18px;
+            color: #FFF;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 154px;
+            height: 33px;
+            border-radius: 8px;
+            background: var(--lighter-purple);
+            
+            @media screen and (max-width: 980px) {
+                right: 50%;
+                transform: translate(50%);
+            }
+        }
+
+        &-name {
+            color: #434343;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+
+        &-price {
+            display: flex;
+            align-items: flex-end;
+            color: #434343;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 24px;
+            margin: 28px 0 0 0;
+
+            @media screen and (max-width: 450px) {
+                font-size: 34px;
+            }
+
+            span {
+                margin-left: 5px;
+                color: #727272;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px; 
+            }
+
+            &-text {
+            color: #6D6D6D;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 24px; 
+            margin-top: 34px;
+            margin: 12px 0 -12px 0;
+            }
+        }
+
+        &-text {
+            color: #6D6D6D;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px; 
+            margin-top: 34px;
+        }
+
+        &-divider {
+            width: 100%;
+            height: 1px;
+            background:#DDD;
+            margin: 22px 0 29px 0;
+        }
+
+        &-point {
+            display: flex;
+            align-items: center;
+            color: #434343;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 24px; 
+            margin-bottom: 18px;
+
+            > svg {
+                margin-right: 10px;
+            }
+        }
+
+        &-btn {
+            display: block;
+            width: 100%;
+            border-radius: 8px;
+            background: var(--lighter-purple);
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            margin-top: 42px;
+            text-decoration: none;
+            transition: .25s ease-in-out;
+
+            &:hover {
+                box-shadow: 6px 6px 0px rgba(0,0,0,0.35);
+            }
+        }
+
+        &-book-a-call {
+            margin: 22px auto 0 auto;
+            color: #434343;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            display: block;
+        }
+
+        &.primary {
+            background: var(--lighter-purple);
+
+            * {
+                color: #fff !important;
+            }
+
+            .pricing_card-btn {
+                color: var(--lighter-purple) !important;
+                background: #fff;
+            }
+        }
+    }
+</style>

@@ -1,0 +1,289 @@
+---
+import Container from "../Container.astro";
+import Badge from '../Badge.astro';
+import PostCard from '../PostCard.astro';
+
+const filters = [
+    {
+        label: 'All Articles',
+        category: null
+    },
+    {
+        label: 'UX/UI',
+        category: 'UX/UI'
+    },
+    {
+        label: 'Apps',
+        category: 'Apps'
+    },
+    {
+        label: 'CRO',
+        category: 'CRO'
+    },
+    {
+        label: 'Development',
+        category: 'Development'
+    },
+];
+
+const posts =  await Astro.glob('../../posts/*.md');
+const sortedPosts = await posts.toSorted((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
+
+const count = 6;
+---
+
+<section class="articles">
+    <Container>
+        <Badge text="Useful Resources" />
+        <h2 class="articles_title"><span>Practical</span> resources to help your Shopify store</h2>
+        <div class="articles_filters">
+            {filters.map((filter, index) => <a class={`articles_filters-item ${index == 0 ? 'active' : ''}`} data-category={filter.category}>{filter.label}</a>)}
+        </div>
+        <div class="articles_search">
+            <input placeholder="Find something..." />
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.6666 18.6667H19.6133L19.24 18.3067C20.0732 17.3386 20.6822 16.1984 21.0234 14.9675C21.3645 13.7366 21.4294 12.4456 21.2133 11.1867C20.5866 7.48003 17.4933 4.52003 13.76 4.06669C12.4475 3.90065 11.1144 4.03706 9.86267 4.46548C8.61098 4.8939 7.47389 5.60299 6.53841 6.53847C5.60292 7.47395 4.89384 8.61104 4.46542 9.86273C4.037 11.1144 3.90059 12.4475 4.06663 13.76C4.51997 17.4934 7.47997 20.5867 11.1866 21.2134C12.4455 21.4294 13.7366 21.3646 14.9675 21.0234C16.1983 20.6823 17.3386 20.0733 18.3066 19.24L18.6666 19.6134V20.6667L24.3333 26.3334C24.88 26.88 25.7733 26.88 26.32 26.3334C26.8666 25.7867 26.8666 24.8934 26.32 24.3467L20.6666 18.6667ZM12.6666 18.6667C9.34663 18.6667 6.66663 15.9867 6.66663 12.6667C6.66663 9.34669 9.34663 6.66669 12.6666 6.66669C15.9866 6.66669 18.6666 9.34669 18.6666 12.6667C18.6666 15.9867 15.9866 18.6667 12.6666 18.6667Z" fill="#D7D7D7"/></svg>
+        </div>
+        <div class="articles_grid">
+            {sortedPosts.map((post, index) => <PostCard post={post} hidden={index >= count} />)}
+        </div>
+        <p class="articles_no-results">We're sorry, your search didn't return any results.</p>
+        <a class="articles_load-more">LOAD MORE <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_174_750)"><path d="M5.49993 8.086L8.53543 5.0505L9.24243 5.7575L4.99993 10L4.64643 9.6465L0.757431 5.7575L1.46443 5.0505L4.49993 8.086L4.49993 0H5.49993L5.49993 8.086Z" fill="#8B81FF"/></g><defs><clipPath id="clip0_174_750"><rect width="10" height="10" fill="white" transform="matrix(-1 0 0 -1 10 10)"/></clipPath></defs></svg></a>
+    </Container>
+</section>
+
+<script is:inline>
+    document.querySelector('.articles_load-more').addEventListener('click', function(e) {
+        document.querySelectorAll('.post.hidden').forEach(post => {
+            post.classList.remove('hidden');
+        });
+        this.style.display = 'none';
+    });
+
+    window.handleFilterClick = e => {
+        const category = e.target.getAttribute('data-category');
+
+        if (!e.target.classList.contains('active')) {
+            document.querySelector('.articles_filters-item.active').classList.remove('active');
+            e.target.classList.add('active');
+
+             document.querySelectorAll('.post').forEach(post => {
+                    if (post.getAttribute('data-category') == category || !category) {
+                        post.classList.remove('hidden');
+                    } else {
+                        post.classList.add('hidden');
+                    }
+            });
+
+             document.querySelector('.articles_no-results').style.display = document.querySelectorAll('.post:not(.hidden)').length == 0 ? 'block' : 'none';
+
+             document.querySelector('.articles_load-more').style.display = 'none';
+        }
+    }
+
+    window.handleSearch = e => {
+        const searchTerm = e.target.value.toLowerCase();
+
+        const checkTerm = (el) => {
+            return el.textContent.toLowerCase().includes(searchTerm)
+        }
+
+         document.querySelectorAll('.post').forEach(post => {
+            if (checkTerm(post.querySelector('.post_title')) || checkTerm(post.querySelector('.post_excerpt'))) {
+                post.classList.remove('hidden');
+            } else {
+                post.classList.add('hidden');
+            }
+         });
+        document.querySelector('.articles_no-results').style.display = document.querySelectorAll('.post:not(.hidden)').length == 0 ? 'block' : 'none';
+        document.querySelector('.articles_load-more').style.display = 'none';
+
+        dataLayer.push({
+        event: 'search_interaction',
+        });
+    }
+
+    document.querySelector('.articles_search input').addEventListener('change', e =>  window.handleSearch(e));
+
+    document.querySelector('.articles_search input').addEventListener('keydown', e => {
+        if (e.keyCode == 13) {
+            var event = new Event('change');
+            document.querySelector('.articles_search input').dispatchEvent(event);
+        }
+    });
+
+    document.querySelectorAll('.articles_filters-item').forEach(filter => filter.addEventListener('click', e => window.handleFilterClick(e)));
+
+        document.querySelectorAll('.post').forEach(post => {
+            post.addEventListener('click', function(e) {
+                const target = e.target.classList.contains('post') ? e.target : e.target.parentNode;
+
+                dataLayer.push({
+                    event: 'link_click',
+                    link_text: target.querySelector('.post_title').textContent,
+                    link_url: target.href,
+                });
+            });
+        });
+</script>
+
+<style lang="scss">
+    .articles {
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 42px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px;
+            margin: 0 auto 52px;
+            max-width: 511px;
+
+            > span {
+                color: var(--lighter-purple);
+            }
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_filters{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: 450px) {
+                gap: 16px 8px ;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            &-item {
+                color: #525252;
+                font-size: 15px;
+                font-weight: 500;
+                padding: 6px 20px;
+                border-radius: 99px;
+                border: 1px solid #525252;
+                background: #FFF;
+                transition: .25s ease-in-out;
+                cursor: pointer;
+
+                @media screen and (max-width: 450px) {
+                    font-size: 14px;
+                    padding: 6px 14px;
+                }
+
+                &:hover {
+                    box-shadow:4px 4px 0px rgba(0,0,0,0.35);
+                }
+
+                &.active {
+                    background: var(--lighter-purple);
+                    border-color: var(--lighter-purple);
+                    color: #fff;
+
+                    &:hover {
+                        cursor: default;
+                        box-shadow:none;
+                    }
+                }
+            }
+        }
+
+        &_search {
+            position: relative;
+            margin: 44px auto 72px;
+            width: fit-content;
+
+            > input {
+                border-radius: 8px;
+                border: 1px solid #D7D7D7;
+                background: #FFF;
+                box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.04);
+                width: 620px;
+                height: 56px;
+                max-width: 100%;
+                padding: 17px 0 17px 64px;
+                color: #434343;
+                font-size: 18px;
+                font-weight: 500;
+                max-width: calc(100vw - 48px);
+
+                &::-webkit-input-placeholder {
+                    color: #D7D7D7;
+                }
+
+                &:focus {
+                    outline: none;
+                    border-color: #434343;
+
+                    & + svg path {
+                        fill: #434343
+                    }
+                }
+            }
+
+            > svg {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 19px;
+                z-index: 2;
+            }
+        }
+
+        &_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 38px;
+            row-gap: 44px;
+            max-width: 1000px;
+            margin: 0 auto;
+
+            @media screen and (max-width: 767px) {
+                grid-template-columns: 1fr;
+                row-gap: 24px;
+            }
+        }
+
+        &_no-results {
+            color: #434343;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            display: none;
+        }
+
+        &_load-more {
+            display: flex;
+            align-items: center;
+            color: var(--lighter-purple);
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: .25s ease-in-out;
+            cursor: pointer;
+            width: fit-content;
+            margin: 50px auto 0;
+
+            &:hover {
+                opacity: .7;
+            }
+            
+            > svg {
+                margin-left: 7px;
+            }
+        }
+    }
+</style>

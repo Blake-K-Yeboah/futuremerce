@@ -1,0 +1,211 @@
+---
+import RelatedArticles from '../../components/Blog/RelatedArticles.astro';
+import Share from '../../components/Blog/Share.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CallToAction from '../../components/CallToAction.astro';
+import Container from '../../components/Container.astro';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../../posts/*.md');
+
+  return posts.map(post => ({
+    params: {
+      slug: post.frontmatter.slug
+    },
+    props: {
+      post
+    }
+  }));
+}
+
+const { Content, frontmatter } = Astro.props.post;
+
+const links = [
+    {
+        label: 'Home',
+        href: '/'
+    },
+    {
+        label: 'Blog',
+        href: '/blog'
+    }, 
+    {
+        label: frontmatter.title
+    }
+];
+
+const d = new Date(frontmatter.date);
+let date = d.toLocaleDateString('en-us',{day: 'numeric'});
+let ending = date.endsWith('3') ? 'rd' : date.endsWith('2') ? 'nd' : 'th';
+let month = d.toLocaleDateString('en-us',{month: 'long'})
+let year = d.toLocaleDateString('en-us',{year: 'numeric'})
+---
+
+<Layout title={`Futuremerce - ${frontmatter.title}`} metaInfo={{ description: frontmatter.exceprt }}>
+    <Breadcrumbs links={links} />
+    <Container type="article">
+      <h1 class="title">{frontmatter.title}</h1>
+      <span class="category">{frontmatter.category}</span>
+      <img src={`/post-thumbnails/${frontmatter.slug}-min.jpg`} alt={frontmatter.title} class="image"/>
+      <div class="header-row">
+        <p class="date">{`${date}${ending} ${month} ${year}`}</p>
+        <Share frontmatter={frontmatter} /> 
+      </div>
+
+      <div class="post-body">
+        <Content />
+      </div>
+      <div class="post-footer">
+        <p class="share-text">Share this article</p>
+        <Share frontmatter={frontmatter} /> 
+      </div>
+
+      <RelatedArticles currentSlug={frontmatter.slug} currentCategory={frontmatter.category}  />
+    </Container>
+    <CallToAction />
+</Layout>
+
+<style lang="scss">
+  .title {
+    color: #434343;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 54px; 
+    text-transform: capitalize;
+    max-width: 700px;
+    margin: 0 auto;
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+  }
+
+  .category {
+    position: relative;
+    z-index: 2;
+    border-radius: 99px;
+    background: var(--lighter-purple);
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 0 15px 2px 15px;
+    width: fit-content;
+    margin: 54px 0 -40px 24px;
+  }
+
+  .image {
+    width: 100%;
+    height: 316px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+
+    @media screen and (max-width: 500px) {
+      height: 200px;
+    }
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 21px 0;
+    border-bottom: 1px solid #ddd;
+
+    @media screen and (max-width: 500px) {
+     flex-direction: column; 
+     row-gap: 16px;
+    }
+
+    .date {
+      color: #7A7A7A;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 28px; 
+    }
+  }
+
+  .post-footer {
+    max-width: 740px;
+    margin: 0 auto;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    padding: 21px 0;
+
+    .share-text {
+      margin-right: 24px;
+      color: #7A7A7A;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 28px; 
+    }
+  }
+</style>
+
+<style is:global lang="scss">
+  .post-body {
+    max-width: 740px;
+    margin: 55px auto 75px;
+
+    @media screen and (max-width: 500px) {
+      margin-top: 48px;
+    }
+
+    ul {
+      margin-bottom: 25px;
+      margin-left: 20px;
+    }
+
+    p, li {
+      color: #7A7A7A;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 28px; 
+      letter-spacing: .05px;
+
+      @media screen and (max-width: 500px) {
+        font-size: 14px;
+        line-height: 22px;
+      }
+    }
+
+    a {
+      color: var(--lighter-purple);
+    }
+
+    p {
+      margin-bottom: 25px;
+
+      @media screen and (max-width: 500px) {
+        margin-bottom: 25px;
+      }
+    }
+
+    h2, h3 {
+      margin: 55px 0 24px 0;
+      color: #000;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 28px;
+
+      @media screen and (max-width: 500px) {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,186 @@
+---
+import { Image } from "astro:assets";
+import Container from "./Container.astro";
+import logo from "../images/transparent-logo.svg";
+
+const menus = [
+    {
+        head: 'Company',
+        links: [
+            {
+            label: 'Pricing',
+            href: '/#pricing'
+            },
+            {
+            label: 'Contact',
+            href: '/contact'
+            },
+            {
+            label: 'Get Started',
+            href: '/#pricing'
+            },
+            {
+            label: 'FAQs',
+            href: '/#faqs'
+            },
+            {
+            label: 'Blog',
+            href: '/blog'
+            },
+            {
+            label: 'Client Login',
+            href: 'https://billing.stripe.com/p/login/3cseXE1z46QYcLe5kk'
+            },
+        ]
+    },
+    {
+        head: 'Legal',
+        links: [
+            {
+            label: 'Terms & Conditions',
+            href: '/terms-and-conditions'
+            },
+            {
+            label: 'Privacy Policy',
+            href: '/privacy-policy'
+            }
+        ]
+    },
+]
+---
+
+<footer class="footer">
+    <div class="footer_upper">
+        <Container type="footer-inner">
+            <div class="footer_logo">
+                <Image src={logo} alt="Futuremerce logo" />
+                <p>All your shopify development needs for one monthly fee.</p>
+            </div>
+            <div class="footer_menus">
+                {
+                    menus.map(menu => <div class="footer_menu">
+                        <h6 class="footer_menu-head">{menu.head}</h6>
+                        {menu.links.map(link => <a href={link.href} class="footer_menu-link">{link.label}</a>)}
+                    </div>)
+                }
+            </div>
+        </Container>
+    </div>
+    <div class="footer_lower">
+        <Container>
+            <p class="footer_text">&copy; {new Date().getFullYear()} All rights reserved. <br> Built with 💗 by Futuremerce</p>
+        </Container>
+    </div>
+</footer>
+
+<script is:inline>
+    document.querySelectorAll('.footer_menu-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'link_click',
+                link_text: e.target.textContent,
+                link_url: e.target.href,
+            });
+        });
+    });
+</script>
+
+<style lang="scss">
+    .footer {
+        margin-top: 150px;
+
+            @media screen and (max-width: 450px) {
+                margin-top: 75px;
+            }
+
+        &_logo {
+
+            @media screen and (max-width: 767px) {   
+                img {
+                    margin: 0 auto;
+                    display: block;
+                    width: 227px;
+                }
+            }
+
+            > p {
+                margin-top: 13px;
+                color: #000;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px; 
+                max-width: 340px;
+
+                @media screen and (max-width: 767px) {
+                    text-align: center; 
+                }
+            }
+        }
+
+        &_menus {
+            display: flex;
+            align-items: flex-start;
+            column-gap: 90px;
+
+            @media screen and (max-width: 767px) {
+                flex-direction: column;
+                row-gap: 46px;
+                align-items: center;
+            }
+        }
+
+        &_menu {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+
+            @media screen and (max-width: 767px) {
+                align-items: center;
+                text-align: center;
+            }
+
+            &-head {
+                color: #000;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 24px;
+                margin-bottom: 4px;
+            }
+
+            &-link {
+                color: #000;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+                text-decoration: none;
+            }
+        }
+
+        &_lower {
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.03);
+            padding: 15px 0;
+        }
+
+        &_text {
+            color: #000;
+            text-align: center;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px; 
+
+            br {
+                display: none;
+
+                @media screen and (max-width: 767px) {
+                    display: block;
+                }
+            }
+        }
+    }
+</style>

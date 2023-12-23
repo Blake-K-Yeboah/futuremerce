@@ -1,0 +1,159 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import Popup from '../components/Popup.astro';
+
+interface Props {
+	title: string;
+	metaInfo?: any;
+}
+
+const { title, metaInfo } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="language" content="English">
+		<meta name="keywords" content="shopify, development, agency">
+		<title>{title}</title>
+		<meta name="description" content={metaInfo ? metaInfo.description : "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service."}>
+
+		<!-- Google Tag Manager -->
+		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-MQ8LNPQ2');</script>
+		<!-- End Google Tag Manager -->
+
+				
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://futuremerce.com/" />
+		<meta property="og:title" content="Futuremerce - Shopify Development as a Subscription" />
+		<meta property="og:description" content="Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." />
+		<meta property="og:image" content="/overview.png" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://futuremerce.com/" />
+		<meta property="twitter:title" content="Futuremerce - Shopify Development as a Subscription" />
+		<meta property="twitter:description" content="Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." />
+		<meta property="twitter:image" content="/overview.png" />
+
+	</head>
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8LNPQ2"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+
+		<Navbar />
+		<slot transition:animate="fade"/>
+		<Footer />
+
+		<Popup />
+	</body>
+</html>
+
+<style lang="scss" is:global>
+	// Glide.js
+	@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+
+	// Fonts
+	@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+	// Vars
+	:root {
+		--lighter-purple: #8B81FF;
+	}
+
+	// Scrollbar
+	::-webkit-scrollbar {
+		width: 6px;
+		background: #ccc;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: var(--lighter-purple);
+	}
+
+	// Base Styling
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html,body {
+		scroll-behavior: smooth;
+		overflow-x: hidden;
+
+		&.no-scroll {
+			overflow: hidden !important;
+		}
+	}
+
+	body {
+		font-family: 'Montserrat', sans-serif;
+		padding-top: 115px;
+	}
+
+	// Page Title
+	.page-title {
+		color: #434343;
+		text-align: center;
+		font-size: 48px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 72px;
+		margin-bottom: 66px;
+
+		> span {
+			color: var(--lighter-purple)
+		}
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+				margin-bottom: 32px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+	}
+
+	// Page Body
+	.page-body {
+		color: #7A7A7A;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 28px;
+
+		> * {
+			margin-bottom: 24px;
+		}
+
+		ul {
+			margin-left: 16px;
+		}
+
+		a {
+			color: var(--lighter-purple);
+		}
+
+        @media screen and (max-width: 942px) {
+        	font-size: 15px;
+			line-height: 24px;
+        }
+	}
+</style>

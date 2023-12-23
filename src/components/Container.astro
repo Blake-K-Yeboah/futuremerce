@@ -1,0 +1,48 @@
+---
+const { type } = Astro.props;
+---
+
+<div class={`container ${type || ''}`}>
+    <slot />
+</div>
+
+<style lang="scss">
+    .container {
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+        max-width: 1248px;
+
+        &.nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        &.why-choose {
+            position: relative;
+            z-index: 2;
+        }
+
+        &.footer-inner {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+
+            @media screen and (max-width: 767px) {
+                flex-direction: column;
+                row-gap: 46px;
+                align-items: center;
+            }
+        }
+
+        &.legal {
+            max-width: 945px;
+        }
+
+        &.article {
+            max-width: 1000px;
+        }
+    }
+</style>

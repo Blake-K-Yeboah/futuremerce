@@ -1,0 +1,142 @@
+---
+import Container from "./Container.astro";
+
+---
+
+<section class="call-to-action">
+    <Container type="cta">
+        <div class="call-to-action_box">
+            <h2 class="call-to-action_title">Join the Futuremerce Family</h2>
+            <p class="call-to-action_text">Get started now and change the way you source development, forever.</p>
+            <div class="call-to-action_btns">
+                <a href="/#pricing" class="primary">Get Started Today</a>
+                <a href="/contact#book-a-call" class="secondary">Book A Call</a>
+            </div>
+        </div>
+    </Container>
+</section>
+
+<script is:inline>
+    document.querySelectorAll('.call-to-action_btns a').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'button_click',
+                button_text: e.target.textContent,
+                button_url: e.target.href,
+                button_location: 'Join Section',
+            });
+        });
+    });
+</script>
+
+
+<style lang="scss">
+    .call-to-action {
+        margin: 120px 0;
+
+            @media screen and (max-width: 450px) {
+                margin: 75px 0;
+            }
+
+        &_box {
+            background: var(--lighter-purple);
+            width: 100%;
+            max-width: 1072px;
+            margin: 0 auto;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 24px;
+        }
+
+        &_title {
+            color: #FFF;
+            text-align: center;
+            font-size: 42px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_text {
+            margin: 22px auto 32px;
+            max-width: 366px;
+            color: #FFF;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px; 
+
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+            }
+        }
+
+        &_btns {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            @media screen and (max-width: 450px) {
+                flex-direction: column;
+                    width: 100%;
+            }
+
+            > a {
+                padding: 16px 24px;
+                display: block;
+                width: fit-content;
+                font-size: 15px;
+                font-weight: 700;
+                border-radius: 8px;
+                transition: .25s ease-in-out;
+                border: 1px solid #fff;
+                text-decoration: none;
+
+                @media screen and (max-width: 942px) {
+                    font-size: 14px;
+                    padding: 12px 20px;
+                }
+
+                @media screen and (max-width: 450px) {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            .primary {
+                color: var(--lighter-purple);
+                background: #fff;
+
+                &:hover {
+                        box-shadow: 8px 8px 0px rgba(0,0,0,0.35);
+                }
+            }
+
+            .secondary {
+                margin-left: 24px;
+                color: #fff;
+                background: rgba(255, 255, 255, 0.19);
+
+                &:hover {
+                        box-shadow: 8px 8px 0px rgba(0,0,0,0.35);
+                }
+                @media screen and (max-width: 450px) {
+                    margin: 12px 0 0 0;
+                }
+            }
+        }
+    }
+</style>

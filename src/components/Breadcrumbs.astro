@@ -1,0 +1,109 @@
+---
+import Container from './Container.astro';
+
+interface Link {
+    label: string;
+    href?: string;
+}
+
+interface Props {
+    links: Link[];
+}
+
+const {links} = Astro.props as Props;
+---
+
+<div class="breadcrumbs">
+    <Container>
+        <div class="breadcrumbs_links">
+            {links.map(link => {
+                if (link['href']) {
+                    return <a href={link.href} class="breadcrumbs_link bold">{link.label}</a>;
+                } else {
+                    return <span class="breadcrumbs_link">{link.label}</span>
+                }
+            })}
+        </div>
+        <div class="breadcrumbs_back">Back</div>
+    </Container>
+</div>
+
+<script is:inline>
+    document.querySelector('.breadcrumbs_back').addEventListener('click', function() {
+        window.location.pathname = '/' 
+    });
+</script>
+
+<style lang="scss">
+    .breadcrumbs {
+        margin: 40px 0 70px 0;
+
+            @media screen and (max-width: 942px) {
+                margin: 24px 0 48px;
+            }
+
+        &_links {
+            display: flex;
+            align-items: center;
+        column-gap: 30px;
+        }
+
+        &_back {
+            display: none;
+        }
+
+        @media screen and (max-width: 767px) {
+            &_links {
+                display: none;
+            }
+
+            &_back {
+                display: block;
+                padding-left: 24px;
+                position: relative;
+                
+
+                &:after {
+                    content: '';
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    transform: translateY(-50%) scaleX(-1);
+                    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.75 10L7.5 16.25L6.625 15.375L12 10L6.625 4.625L7.5 3.75L13.75 10Z" fill="%23232323"/></svg>') center/cover no-repeat;
+                }
+            }
+        }
+
+        &_link {
+            color: #7A7A7A;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px;
+            text-decoration: none;
+
+            &.bold {
+                font-weight: 700;
+                position: relative;
+                transition: .25s ease-in-out;
+
+                &:hover {
+                    color: var(--lighter-purple);
+                }
+
+                &:after {
+                    content: '';
+                    width: 20px;
+                    height: 20px;
+                    position: absolute;
+                    top: 50%;
+                    right: -25px;
+                    transform: translateY(-50%);
+                    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.75 10L7.5 16.25L6.625 15.375L12 10L6.625 4.625L7.5 3.75L13.75 10Z" fill="%23B3B3B3"/></svg>') center/cover no-repeat;
+                }
+            }
+        }
+    }
+</style>

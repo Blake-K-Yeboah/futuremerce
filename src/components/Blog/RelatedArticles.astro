@@ -1,0 +1,71 @@
+---
+import PostCard from "../PostCard.astro";
+
+const { currentSlug, currentCategory } = Astro.props;
+const posts =  await Astro.glob('../../posts/*.md');
+const related = await posts.filter(post => post.frontmatter.slug != currentSlug).sort((a,b) => {
+    if (a.frontmatter.category == currentCategory) {
+        return -1;
+    }
+    return 1;
+});;
+
+---
+
+<section class="related-articles">
+    <h3 class="related-articles_title">You Might Also Like</h3>
+    <div class="related-articles_grid">{related.slice(0,3).map(post => <PostCard post={post} />)}</div>
+</section>
+
+<script is:inline>
+        document.querySelectorAll('.post').forEach(post => {
+            post.addEventListener('click', function(e) {
+                const target = e.target.classList.contains('post') ? e.target : e.target.parentNode;
+
+                dataLayer.push({
+                    event: 'link_click',
+                    link_text: target.querySelector('.post_title').textContent,
+                    link_url: target.href,
+                });
+            });
+        });
+</script>
+
+<style lang="scss">
+    .related-articles {
+        padding: 120px 0 0 0;
+
+            @media screen and (max-width: 767px) {
+                padding-top: 60px;
+            }
+
+        &_title {
+            margin-bottom: 44px;
+            color: #434343;
+            text-align: center;
+            font-size: 35px;
+            font-weight: 700;
+            line-height: 42px; 
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 38px;
+
+            @media screen and (max-width: 767px) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+</style>

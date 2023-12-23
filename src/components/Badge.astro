@@ -1,0 +1,33 @@
+---
+interface Props {
+    text: string;
+    light?: boolean;
+}
+
+const { text, light } = Astro.props as Props;
+---
+
+<div class={`badge ${light ? 'light' : ''}`}>
+    {text}
+</div>
+
+<style lang="scss">
+    .badge {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 24px auto;
+        padding: 6px 16px;
+        border-radius: 99px;
+        background: #E8E5FF;
+        color: var(--lighter-purple);
+        font-size: 15px;
+        font-weight: 500;
+        min-width: 140px;
+        text-align: center;
+
+        &.light {
+            background: #fff;
+            color: #232323;
+        }
+    }
+</style>

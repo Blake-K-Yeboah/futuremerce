@@ -1,0 +1,94 @@
+---
+import Container from "../Container.astro";
+import Badge from "../Badge.astro";
+import PostCard from "../PostCard.astro";
+
+const posts =  await Astro.glob('../../posts/*.md');
+
+const sortedPosts = await posts.toSorted((a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date));
+---
+
+<section class="latest-news">
+    <Container>
+        <Badge text="Latest News" />
+        <h2 class="latest-news_title">From Our <span>Blog</span></h2>
+        <div class="latest-news_posts">
+            {sortedPosts.slice(0, 3).map(post => <PostCard post={post} />)}
+        </div>
+        <a class="latest-news_btn" href="/blog">View All Articles</a>
+    </Container>
+</section>
+
+
+<script is:inline>
+    document.querySelector('.latest-news_btn').addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'button_click',
+                button_text: e.target.textContent,
+                button_url: e.target.href,
+                button_location: 'Latest News',
+            });
+        });
+</script>
+
+
+<style lang="scss">
+    .latest-news {
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 42px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px;
+            margin: 0 auto 24px auto;
+
+            > span {
+                color: var(--lighter-purple);
+            }
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin: 54px auto 44px;
+            column-gap: 38px;
+            max-width: 1072px;
+
+            @media screen and (max-width: 767px) {
+                grid-template-columns: 1fr;
+                row-gap: 24px;
+            }
+        }
+
+        &_btn {
+            margin: 0 auto;
+            display: block;
+            width: fit-content;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            padding: 16px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: .25s ease-in-out;
+            color: #fff;
+            background: var(--lighter-purple);
+
+            &:hover {
+                        box-shadow: 8px 8px 0px rgba(0,0,0,0.35);
+            }
+        }
+    }
+</style>

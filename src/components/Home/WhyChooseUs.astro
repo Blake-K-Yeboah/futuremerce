@@ -1,0 +1,167 @@
+---
+import Container from "../Container.astro";
+import Badge from "../Badge.astro";
+import Card from "./Card.astro";
+
+const boxes = [
+    {
+        icon: '/Icons/ion_diamond-outline.svg',
+        title: 'Top-notch Quality',
+        text: 'Outstanding development quality adhering to industry standards.'
+    },
+    {
+        icon: '/Icons/octicon_graph-24.svg',
+        title: 'Flexible and Scalable',
+        text: 'Scale up or down as needed, and <br> pause or cancel at anytime.'
+    },
+    {
+        icon: '/Icons/ph_money-thin.svg',
+        title: 'Fixed Monthly Rate',
+        text: 'No surprise fees, pay the same <br> fixed price each month.'
+    },
+    {
+        icon: '/Icons/fluent_board-20-regular.svg',
+        title: 'Development Board',
+        text: 'View active, queued and completed tasks with ease through your board.'
+    },
+    {
+        icon: '/Icons/clarity_users-line.svg',
+        title: 'Unlimited Team Members',
+        text: 'Invite your entire team, so anyone can submit requests and track their progress.'
+    },
+]
+---
+
+<section class="why-choose-us" id="benefits">
+    <Container type="why-choose">
+        <Badge text="Benefits" light={true} />
+        <h2 class="why-choose-us_title">Why Choose Us?</h2>
+        <p class="why-choose-us_text">Perks so good you'll never need to go anywhere else for your development. Seriously.</p>  
+        <div class="why-choose-us_cards">
+            {boxes.map(box => <Card item={box} />)}
+        </div>
+        <a href="#pricing" class="why-choose-us_btn">Get Started Today</a>
+    </Container>
+</section>
+
+<script is:inline>
+    document.querySelector('.why-choose-us_btn').addEventListener('click', function(e) {
+            dataLayer.push({
+                event: 'button_click',
+                button_text: e.target.textContent,
+                button_url: e.target.href,
+                button_location: 'Why Choose Us',
+            });
+        });
+</script>
+
+<style lang="scss">
+    .why-choose-us {
+        background: var(--lighter-purple);
+        padding: 0 0 25px 0;
+        margin: 200px 0 150px 0;
+        position: relative;
+
+        &:before {
+            content: '';
+            width: 100vw;
+            height: 205px;
+            position: absolute;
+            left: 0;
+            top: -100px;
+            background: url('data:image/svg+xml,<svg width="1440" height="205" viewBox="0 0 1440 205" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="1434.35" cy="102.5" rx="1464.59" ry="102.5" fill="%238B81FF"/></svg>') top/cover no-repeat;
+
+            @media screen and (min-width: 1700px) {
+                top: -150px;
+            }
+        }
+
+        
+        &:after {
+            content: '';
+            width: 100vw;
+            height: 205px;
+            position: absolute;
+            right: 0;
+            bottom: -100px;
+            background: url('data:image/svg+xml,<svg width="1440" height="205" viewBox="0 0 1440 205" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="1434.35" cy="102.5" rx="1464.59" ry="102.5" fill="%238B81FF"/></svg>') bottom/cover no-repeat;
+            transform: scaleX(-1);
+
+            @media screen and (min-width: 1700px) {
+                bottom: -150px;
+            }
+        }
+
+        &_title {
+            color: #FFF;
+            text-align: center;
+            font-size: 42px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 50px;
+            margin: 35px auto 20px auto;
+
+            @media screen and (max-width: 942px) {
+                font-size: 32px;
+                line-height: 40px;
+            }
+
+            
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_text {
+            color: #FFF;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px; 
+            max-width: 436px;
+            margin: 0 auto;
+
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+
+        &_cards {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 70px 0 44px;
+
+            @media screen and (max-width: 710px) {
+                gap: 20px;
+                max-width: 450px;
+                margin: 60px auto 44px; 
+            }
+        }
+
+        &_btn {
+                font-size: 15px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                padding: 16px 20px;
+                border-radius: 8px;
+                text-decoration: none;
+                transition: .25s ease-in-out;
+                background: #fff;
+                color: var(--lighter-purple);
+                margin: 0 auto;
+                display: block;
+                width: fit-content;;
+
+                &:hover {
+                   box-shadow: 8px 8px 0px rgba(0,0,0,0.35);
+                }
+
+        }
+    }
+</style>

@@ -1,0 +1,24 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Blog/Hero.astro';
+import Articles from '../components/Blog/Articles.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const links = [
+    {
+        label: 'Home',
+        href: '/'
+    },
+    {
+        label: 'Blog'
+    }
+]
+---
+
+<Layout title="Futuremerce - Tips & Strategies help your store grow" metaInfo={{ description: "Discover valuable tips and strategies for optimizing your store to thrive in today’s competitive landscape." }}>
+    <Breadcrumbs links={links} />
+    <Hero />
+    <Articles />
+    <CallToAction />
+</Layout>
