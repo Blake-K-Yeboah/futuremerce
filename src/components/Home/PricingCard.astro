@@ -30,10 +30,14 @@ const planPoints = [option.requestsAtATime, 'Unlimited users','Fast delivery','N
 <script>
     document.querySelectorAll('.pricing_card-btn, .pricing_card-book-a-call').forEach(btn => {
         btn.addEventListener('click', function(e) {
+    // @ts-ignore
             dataLayer.push({
                 event: 'button_click',
+    // @ts-ignore
                 button_text: e.target.textContent,
+    // @ts-ignore
                 button_url: e.target.href,
+    // @ts-ignore
                 button_location: 'Pricing Card - ' + e.target.parentNode.querySelector('.pricing_card-name').textContent + ' ('+document.querySelector('.pricing_switch-option.active').textContent.split(' ')[1]+')',
             });
         });
