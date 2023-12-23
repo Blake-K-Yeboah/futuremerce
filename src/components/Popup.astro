@@ -20,6 +20,11 @@ import { Image } from 'astro:assets';
     const openPopup = () => {
         if (!localStorage.getItem('opt-popup-shown')) {
             document.querySelector('.popup').style.display = 'block';
+
+            setTimeout(() => {
+                document.querySelector('.popup').style.opacity = 1;
+            });
+
             document.querySelector('body').classList.add('no-scroll');
             document.querySelector('html').classList.add('no-scroll');
 
