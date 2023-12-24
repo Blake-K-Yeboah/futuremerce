@@ -43,11 +43,13 @@ import { Image } from 'astro:assets';
 
     
     // Show the popup and overlay when the user tries to leave the page
-    document.addEventListener('mouseleave', function(e) {
-        if (e.clientY < 0) {
-            openPopup();
-        }
-    });
+    setTimeout(() => {
+        document.addEventListener('mouseleave', function(e) {
+            if (e.clientY < 0) {
+                openPopup();
+            }
+        });
+    }, 5000);
 
     if (window.innerWidth < 768) {
         setTimeout(openPopup, 15 * 1000);
