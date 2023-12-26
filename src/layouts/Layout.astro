@@ -80,6 +80,11 @@ const { title, metaInfo } = Astro.props;
 		--lighter-purple: #8B81FF;
 	}
 
+	// Chatbox
+	.crisp-client [aria-label="Open chat"] > span:last-of-type {
+		background: var(--lighter-purple) !important;
+	}
+
 	// Scrollbar
 	::-webkit-scrollbar {
 		width: 6px;
