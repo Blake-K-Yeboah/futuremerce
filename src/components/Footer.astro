@@ -68,12 +68,13 @@ const menus = [
     </div>
     <div class="footer_lower">
         <Container>
-            <p class="footer_text">&copy; {new Date().getFullYear()} All rights reserved. <br> Built with 💗 by Futuremerce</p>
+            <p class="footer_text">&copy; <span id="year"></span> All rights reserved. <br> Built with 💗 by Futuremerce</p>
         </Container>
     </div>
 </footer>
 
 <script is:inline>
+    document.getElementById('year').textContent = new Date().getFullYear();
     document.querySelectorAll('.footer_menu-link').forEach(link => {
         link.addEventListener('click', function(e) {
             dataLayer.push({
