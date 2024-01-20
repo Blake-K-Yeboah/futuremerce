@@ -27,7 +27,7 @@ const filteredPosts = await posts.filter(post => featured.includes(post.frontmat
                     <div class="post-slide_img">
                         <div class="post-slide_square"><svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.52316 45.6699C-1.08507 34.9366 5.50163 24.1211 16.235 21.5129L98.4964 1.52313C109.23 -1.0851 120.045 5.50159 122.653 16.2349L142.643 98.4963C145.251 109.23 138.665 120.045 127.931 122.653L45.67 142.643C34.9366 145.251 24.1211 138.665 21.5129 127.931L1.52316 45.6699Z" fill="#8B81FF" fill-opacity="0.4"/></svg></div>
                         <div class="post-slide_img-container">
-                            <img src={`/post-thumbnails/${post.frontmatter.slug}-min.jpg`} alt={post.frontmatter.title} />
+                            <img src={`/post-thumbnails/${post.frontmatter.slug}.webp`} alt={post.frontmatter.title} />
                         </div>
                         <div class="post-slide_img-category">{post.frontmatter.category}</div>
                         <div class="post-slide_triangle"><svg width="135" height="134" viewBox="0 0 135 134" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M85.8552 4.33053C97.8139 -4.05053 114.431 2.79458 117.017 17.1669L133.698 109.872C136.496 125.423 121.006 137.925 106.397 131.907L12.5794 93.2614C-2.02984 87.2435 -4.22045 67.4587 8.71849 58.3906L85.8552 4.33053Z" fill="#8B81FF"/></svg></div>

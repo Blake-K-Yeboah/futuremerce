@@ -47,7 +47,7 @@ let year = d.toLocaleDateString('en-us',{year: 'numeric'})
     <Container type="article">
       <h1 class="title">{frontmatter.title}</h1>
       <span class="category">{frontmatter.category}</span>
-      <img src={`/post-thumbnails/${frontmatter.slug}-min.jpg`} alt={frontmatter.title} class="image"/>
+      <img src={`/post-thumbnails/${frontmatter.slug}.webp`} alt={frontmatter.title} class="image"/>
       <div class="header-row">
         <p class="date">{`${date}${ending} ${month} ${year}`}</p>
         <Share frontmatter={frontmatter} /> 
