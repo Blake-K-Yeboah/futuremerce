@@ -1,4 +1,0 @@
-User-agent: * 
-Disallow:
-
-Sitemap: https://www.futuremerce.com/sitemap.xml
