@@ -104,7 +104,7 @@ const pricing = [
 </script>
 
 <script>
-    const priceSwitch = document.querySelector('.pricing_switch-toggle');
+    const priceSwitch: HTMLElement = document.querySelector('.pricing_switch-toggle');
 
     priceSwitch.addEventListener('click', (e) => {
         document.querySelector('.pricing_switch-option.active').classList.remove('active');
@@ -120,6 +120,14 @@ const pricing = [
             document.querySelector('.pricing_grid.quarterly').classList.add('active');
         }
     });
+
+    document.querySelectorAll('.pricing_switch-option').forEach(swatchOption => {
+        swatchOption.addEventListener('click', function(e) {
+            if (!this.classList.contains('active')) {
+                priceSwitch.click();
+            }
+        });
+    })
 </script>
 
 <style lang="scss">
@@ -178,6 +186,7 @@ const pricing = [
                 text-align: center;
                 width: fit-content;
                 transition: .3s ease-in-out;
+                cursor: pointer;
 
                 
                 @media screen and (max-width: 942px) {
