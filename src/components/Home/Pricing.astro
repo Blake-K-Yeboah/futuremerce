@@ -121,8 +121,8 @@ const pricing = [
         }
     });
 
-    document.querySelectorAll('.pricing_switch-option').forEach(swatchOption => {
-        swatchOption.addEventListener('click', function(e) {
+    document.querySelectorAll('.pricing_switch-option').forEach(switchEl => {
+        switchEl.addEventListener('click', function(e) {
             if (!this.classList.contains('active')) {
                 priceSwitch.click();
             }
