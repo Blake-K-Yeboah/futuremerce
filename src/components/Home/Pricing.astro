@@ -4,21 +4,21 @@ import Container from '../Container.astro';
 import PricingCard from './PricingCard.astro';
 
 const pricing = [
-    // {
-    //     name: 'Lite',
-    //     monthly: {
-    //         price: '$2,299',
-    //         getStarted: 'https://buy.stripe.com/00gbMh0O7aCb132005',
-    //     },
-    //     quarterly: {
-    //         price: '$1,999',
-    //         getStarted: 'https://buy.stripe.com/aEU4jPeEX25FeTSbIO',
-    //     },
-    //     description: ['For non Shopify Plus stores.','Perfect for smaller businesses'],
-    //     requestsAtATime: 'One request at a time',
-    //     color: false,
-    //     badge: ''
-    // },
+    {
+        name: 'Lite',
+        monthly: {
+            price: '$2,299',
+            getStarted: 'https://buy.stripe.com/00gbMh0O7aCb132005',
+        },
+        quarterly: {
+            price: '$1,999',
+            getStarted: 'https://buy.stripe.com/aEU4jPeEX25FeTSbIO',
+        },
+        description: ['For non Shopify Plus stores.','Perfect for smaller businesses'],
+        requestsAtATime: 'One request at a time',
+        color: false,
+        badge: ''
+    },
     {
         name: 'Regular',
         monthly: {
@@ -48,21 +48,6 @@ const pricing = [
         description: ['Double the requests.','Pause or cancel anytime'],
         requestsAtATime: 'Two requests at a time',
         color: true,
-        badge: ''
-    },
-    {
-        name: 'Enterprise',
-        monthly: {
-            price: '$14,999',
-            getStarted: 'https://buy.stripe.com/9AQ17D2Wf8u38vueV1',
-        },
-        quarterly: {
-            price: '$12,499',
-            getStarted: 'https://buy.stripe.com/28o17D7cvbGf276aEM',
-        },
-        description: ['Tailored solutions for your business', 'Seasoned team of Shopify Plus experts.'],
-        requestsAtATime: 'Tailored Shopify Plus Solutions',
-        color: false,
         badge: ''
     },
 ]
