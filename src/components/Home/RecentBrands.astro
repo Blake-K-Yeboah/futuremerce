@@ -1,0 +1,62 @@
+---
+import dulvani from '../../images/dulvani-logo.png';
+import kiwckbolt from '../../images/kwickbolt-logo.jpg';
+import lushshark from '../../images/lush-shark-logo.png';
+import { Image } from 'astro:assets';
+---
+
+<div class="recent-brands">
+    <h2 class="recent-brands_title">Recent <span>Brands</span> We've Worked With</h2>
+    <div class="recent-brands_logos">
+        <Image class="recent-brands_logos-img" src={dulvani} alt="" loading="lazy" />
+        <Image class="recent-brands_logos-img" src={kiwckbolt} alt="" loading="lazy" />
+        <Image class="recent-brands_logos-img" src={lushshark} alt="" loading="lazy" />
+    </div>
+</div>
+
+<style lang="scss">
+    .recent-brands {
+        padding: 80px 24px 0;
+
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+            margin: 0 auto 32px;
+
+            > span {
+                color: var(--lighter-purple);
+            }
+
+            @media screen and (max-width: 450px) {
+                font-size: 26px;
+                line-height: 32px;
+            }
+        }
+
+        &_logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: 24px;
+            margin: 0 auto;
+
+            &-img {
+                height: 74px;
+                width: 74px;
+                border-radius: 50%;
+
+                &:last-of-type {
+                    height: 44px;
+                    width: fit-content;
+                    border-radius: 0;
+                }
+            }
+        }
+    }
+</style>
