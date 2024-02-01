@@ -17,7 +17,7 @@ const pricing = [
         description: ['For non Shopify Plus stores.','Perfect for smaller businesses'],
         requestsAtATime: 'One request at a time',
         color: false,
-        badge: ''
+        badge: '2 SPOTS LEFT'
     },
     {
         name: 'Regular',
@@ -32,7 +32,7 @@ const pricing = [
         description: ['One request at a time.','Pause or cancel anytime'],
         requestsAtATime: 'One request at a time',
         color: false,
-        badge: 'MOST POPULAR'
+        badge: '1 SPOT LEFT'
 
     },
     {
@@ -71,6 +71,7 @@ const pricing = [
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
         </div>
+        <p class="pricing_small-text">All prices are in USD.<br> All plans come with a complimentary store audit and introductory call to discuss your project.</p>
     </Container>
 </section>
 
@@ -263,6 +264,17 @@ const pricing = [
                 position: relative;
                 height: 650px;
             }
+        }
+
+        &_small-text {
+            margin-top: 50px;
+            color: #434343;
+            text-align: center;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 40px;
+            opacity: .75;
         }
 
     }
