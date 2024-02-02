@@ -1,0 +1,41 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
+
+const links = [
+    {
+        label: 'Home',
+        href: '/'
+    },
+    {
+        label: 'Thank You'
+    }
+]
+---
+
+<Layout title="Futuremerce - Thank you for subscribing!" metaInfo={{ noIndex: true}}>
+    <Breadcrumbs links={links} />
+    <Container type="legal">
+    <h1 class="page-title">We're <span>thrilled</span> to you <span>onboard</span>!</h1>
+    <div class="page-body">
+        <p>We're now working on setting up your trello board so you can start submitting requests ASAP.</p>
+        <p>Please keep an eye out for our introductory emails including access to your trello board.</p>
+        <p>We'll be in touch within 24 hours to ensure you're all setup and ready to go!</p>
+        <p>In the meantime, if you have any questions or concerns please reach out: <a href="mailto:blake@futuremerce.co">blake@futuremerce.co</a></p>
+    </div>
+    </Container>
+</Layout>
+
+<script is:inline>    
+    if(!sessionStorage.getItem('plan-purchased')) {
+        const queryParams = new URLSearchParams(window.location.search);
+
+        sessionStorage.setItem('plan-purchased', true);
+
+        dataLayer.push({
+            event: 'order_confirmation',
+            plan_name: queryParams.get('plan')
+        });
+    }
+</script>
