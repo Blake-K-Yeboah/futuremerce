@@ -86,7 +86,15 @@ const pricing = [
 
     window.addEventListener('resize', () => {
         setTimeout(window.updateHeight, 200);
-    })
+    });
+    
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 500);
+
+    setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+    }, 1000);
 </script>
 
 <script>
