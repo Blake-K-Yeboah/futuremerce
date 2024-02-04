@@ -17,7 +17,7 @@ const pricing = [
         description: ['For non Shopify Plus stores.','Perfect for smaller businesses'],
         requestsAtATime: 'One request at a time',
         color: false,
-        badge: '2 SEATS LEFT'
+        badge: ''
     },
     {
         name: 'Regular',
@@ -32,7 +32,7 @@ const pricing = [
         description: ['One request at a time.','Pause or cancel anytime'],
         requestsAtATime: 'One request at a time',
         color: false,
-        badge: '3 SEATS LEFT'
+        badge: ''
 
     },
     {
@@ -62,6 +62,9 @@ const pricing = [
             <p class="pricing_switch-option active">Billed Monthly</p>
             <div class="pricing_switch-toggle"><div></div></div>
             <p class="pricing_switch-option">Billed Quarterly <span>(Save up to 20%)</span></p>
+        </div>
+        <div class="pricing_limited-spots">
+            2/5 Seats left. Get onboarded today!
         </div>
         <div class="pricing_grid-container">
             <div class="pricing_grid monthly active">
@@ -235,11 +238,23 @@ const pricing = [
             }
         }
 
+        &_limited-spots {
+            width:fit-content;
+            margin: 42px auto 0;
+            width: fit-content;
+            padding: 10px 24px;
+            border-radius: 6px;
+            border: 1px solid var(--lighter-purple);
+            color: var(--lighter-purple);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
         &_grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 40px;
-            margin-top: 42px;
+            margin-top: 12px;
             transition: opacity .5s ease;
             width: 100%;
             position: absolute;
