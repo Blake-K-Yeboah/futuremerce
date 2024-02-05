@@ -8,47 +8,53 @@ const pricing = [
         name: 'Lite',
         monthly: {
             price: '$2,299',
+            salePrice: '$1,149',
             getStarted: 'https://buy.stripe.com/00gbMh0O7aCb132005',
         },
         quarterly: {
             price: '$1,999',
+            salePrice: '$999',
             getStarted: 'https://buy.stripe.com/aEU4jPeEX25FeTSbIO',
         },
         description: ['For non Shopify Plus stores.','Perfect for smaller businesses'],
         requestsAtATime: 'One request at a time',
         color: false,
-        badge: ''
+        badge: 'USE CODE FREE50: 50% OFF'
     },
     {
         name: 'Regular',
         monthly: {
             price: '$4,999',
+            salePrice: '$2,499',
             getStarted: 'https://buy.stripe.com/bIY9E97cv4dN2766oo',
         },
         quarterly: {
             price: '$3,999',
+            salePrice: '$1,999',
             getStarted: 'https://buy.stripe.com/cN28A5cwPeSr6nm9AB',
         },
         description: ['One request at a time.','Pause or cancel anytime'],
         requestsAtATime: 'One request at a time',
         color: false,
-        badge: ''
+        badge: 'USE CODE FREE50: 50% OFF'
 
     },
     {
         name: 'Pro',
         monthly: {
             price: '$7,999',
+            salePrice: '$3,999',
             getStarted: 'https://buy.stripe.com/dR67w1aoH39J9zy5km',
         },
         quarterly: {
             price: '$6,999',
+            salePrice: '$3,499',
             getStarted: 'https://buy.stripe.com/5kA03z0O77pZfXW9AD',
         },
         description: ['Double the requests.','Pause or cancel anytime'],
         requestsAtATime: 'Two requests at a time',
         color: true,
-        badge: ''
+        badge: 'USE CODE FREE50: 50% OFF'
     },
 ]
 ---
@@ -64,7 +70,7 @@ const pricing = [
             <p class="pricing_switch-option">Billed Quarterly <span>(Save up to 20%)</span></p>
         </div>
         <div class="pricing_limited-spots">
-            2/5 Seats left. Get onboarded today!
+            2/5 spots left. Get onboarded today!
         </div>
         <div class="pricing_grid-container">
             <div class="pricing_grid monthly active">
@@ -74,7 +80,7 @@ const pricing = [
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
         </div>
-        <p class="pricing_small-text">All prices are in USD.<br> All plans come with a complimentary store audit and introductory call to discuss your project.</p>
+        <p class="pricing_small-text">All prices are in USD.<br> *50% off applies for your first month/quarter (depending on your selection) then regular price applies.</p>
     </Container>
 </section>
 
@@ -248,6 +254,9 @@ const pricing = [
             color: var(--lighter-purple);
             font-size: 16px;
             font-weight: 700;
+
+            /* HIDE FOR NOW */
+            display: none;
         }
 
         &_grid {

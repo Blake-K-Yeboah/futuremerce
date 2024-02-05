@@ -16,7 +16,8 @@ if (option.name == 'Enterprise') {
 <div class={`pricing_card ${option.color ? 'primary' : ''}`}>
     {option.badge != '' ? <div class="pricing_card-badge">{option.badge}</div> : ''}
     <h5 class="pricing_card-name">{option.name}</h5>
-    <div class="pricing_card-price">{option[type].price} <span>/ month</span></div>
+    {option[type].salePrice ? <div class="pricing_card-was-price">Was <span>{option[type].price}</span></div> : ''}
+    <div class="pricing_card-price">{option[type].salePrice ? option[type].salePrice : option[type].price} <span>/ month</span></div>
     {type == 'quarterly' && <div class="pricing_card-price-text">Billed every 3 months</div>}
     <p class="pricing_card-text">{option.description[0]}<br>{option.description[1]}</p>
     <div class="pricing_card-divider"></div>
@@ -70,10 +71,12 @@ if (option.name == 'Enterprise') {
             height: 33px;
             border-radius: 8px;
             background: var(--lighter-purple);
+            box-shadow: -2px 0 20px rgba(0,0,0,0.1);
             
             @media screen and (max-width: 980px) {
                 right: 50%;
                 transform: translate(50%);
+                min-width: 280px;
             }
         }
 
@@ -84,6 +87,17 @@ if (option.name == 'Enterprise') {
             line-height: 24px;
         }
 
+        &-was-price {
+            color: #FF0000;
+            font-size: 22px;
+            font-weight: 500;
+            margin: 28px 0 0 0;
+
+            span {
+                text-decoration: line-through;
+            }
+        }
+
         &-price {
             display: flex;
             align-items: flex-end;
@@ -91,7 +105,7 @@ if (option.name == 'Enterprise') {
             font-size: 42px;
             font-weight: 700;
             line-height: 24px;
-            margin: 28px 0 0 0;
+            margin: 22px 0 0 0;
 
             @media screen and (max-width: 450px) {
                 font-size: 34px;
@@ -182,6 +196,17 @@ if (option.name == 'Enterprise') {
 
             * {
                 color: #fff !important;
+            }
+
+            .pricing_card-was-price {
+                &, & > span {
+                    color: #FF0000 !important;
+                }
+            }
+
+            .pricing_card-badge {
+                color: var(--lighter-purple) !important;
+                background: #FFF;
             }
 
             .pricing_card-btn {
