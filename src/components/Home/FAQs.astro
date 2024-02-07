@@ -121,6 +121,7 @@ const questions = [
             display: flex;
             flex-wrap: wrap;
             gap: 24px;
+            justify-content: center;
         }
 
         &_question-wrapper {
@@ -130,6 +131,11 @@ const questions = [
             flex: 0 0 calc((100% - 24px) / 2);
             height: fit-content;
 
+            @media screen and (max-width: 980px) {
+                flex: 0 0 100%;
+                max-width: 640px;
+            }
+
             .faqs_question {
                 display: flex;
                 align-items: center;
@@ -137,7 +143,7 @@ const questions = [
                 font-size: 18px;
                 font-style: normal;
                 font-weight: 500;
-                line-height: 50px;
+                line-height: 26px;
                 cursor: pointer;
                 padding: 20px 24px;
 
