@@ -8,24 +8,24 @@ const questions = [
         answer: `After subscribing, you will receive the access to your private Trello board within 24 hours. You can directly start adding tasks to the board once you get access.<br><br> We'll start working on your requests as soon as we receive access to your Shopify store.`,
     },
     {
-        q: 'Why wouldn\'t I just hire a full-time developer?',
-        answer: `Great question! Hiring a really good Shopify expert can cost more than $100,000 every year, and you might not have enough work for them to do all the time. So, you end up paying for time they're not working. But don't worry, we have a better way to help you!<br><br>Enter Futuremerce, where you pay a simple monthly fee to receive the development work you need completed. Additionally, with the pause feature, you only pay for the service when you actually need it so you can use it one month, then stop for a bit when you don't need any work completed. Then start again once you need some more development done.`,
-    },
-    {
-        q: 'How does the pause feature work?',
-        answer: `In case you don't need our services during a period, you may always pause your subscription within your billing dashboard.<br><br>A billing period is based on 31 days, so once you pause your subscription, the remaining days will be reused once you resume it, no matter how much time has gone by.`,
+        q: 'What if I only have a single request?',
+        answer: `That's no problem. You can pause your subscription when finished and return when you have additional development needs. That's the beauty of a Futuremerce development subscription.`,
     },
     {
         q: 'Is there a limit to how many requests I can have?',
         answer: `Once subscribed, you're able to add as many development requests to your queue as you'd like, and they will be delivered one by one.`,
     },
     {
-        q: 'What if I only have a single request?',
-        answer: `That's no problem. You can pause your subscription when finished and return when you have additional development needs. That's the beauty of a Futuremerce development subscription.`,
-    },
-    {
         q: 'What sort of development requests can I make?',
         answer: `We handle all sorts of requests including but not limited to:<br>- Building new features for your shopify store (such as adding product review functionality, etc)<br>- Optimizing the speed of your store<br>- Bug fixes, installing apps, etc.<br><br>We do have a few exceptions though, we do NOT offer the following:<br>- Inventory Management<br>- Advertising (for example, setting up ads for your store)<br>- Customer Support<br><br>If you are not sure, don't hesitate to reach out to us.`,
+    },
+    {
+        q: 'Why wouldn\'t I just hire a full-time developer?',
+        answer: `Great question! Hiring a really good Shopify expert can cost more than $100,000 every year, and you might not have enough work for them to do all the time. So, you end up paying for time they're not working. But don't worry, we have a better way to help you!<br><br>Enter Futuremerce, where you pay a simple monthly fee to receive the development work you need completed. Additionally, with the pause feature, you only pay for the service when you actually need it so you can use it one month, then stop for a bit when you don't need any work completed. Then start again once you need some more development done.`,
+    },
+    {
+        q: 'How does the pause feature work?',
+        answer: `In case you don't need our services during a period, you may always pause your subscription within your billing dashboard.<br><br>A billing period is based on 31 days, so once you pause your subscription, the remaining days will be reused once you resume it, no matter how much time has gone by.`,
     },
     {
         q: 'What if I don\'t like the work completed?',
@@ -42,6 +42,7 @@ const questions = [
     <Container>
         <Badge text="FAQs" />
         <h2 class="faqs_title">Frequently Asked <span>Questions</span></h2>
+        <div class="faqs_question-grid">
         {questions.map(q => <div class="faqs_question-wrapper">
             <div class="faqs_question">
                 <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="36" cy="36" r="16" fill="white"/></g><path d="M28 36.6154V35.3846H35.3846V28H36.6154V35.3846H44V36.6154H36.6154V44H35.3846V36.6154H28Z" fill="black"/><defs><filter id="filter0_d_0_1" x="0" y="0" width="72" height="72" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="10"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/></filter></defs></svg>
@@ -50,6 +51,7 @@ const questions = [
             </div>
             <div class="faqs_answer">{q.answer}</div>
         </div>)}
+        </div>
         <p class="faqs_text">Got another question? Send us an email - <a href="mailto:hello@futuremerce.co">hello@futuremerce.co</a>.</p>
     </Container>
 </section>
@@ -115,13 +117,24 @@ const questions = [
             }
         }
 
+        &_question-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+
         &_question-wrapper {
             border-radius: 12px;
             background: #FFF;
             box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.05);
-            width: 100%;
-            max-width: 742px;
-            margin: 0 auto 24px auto;
+            flex: 0 0 calc((100% - 24px) / 2);
+            height: fit-content;
+
+            @media screen and (max-width: 980px) {
+                flex: 0 0 100%;
+                max-width: 640px;
+            }
 
             .faqs_question {
                 display: flex;
@@ -130,9 +143,9 @@ const questions = [
                 font-size: 18px;
                 font-style: normal;
                 font-weight: 500;
-                line-height: 50px;
+                line-height: 26px;
                 cursor: pointer;
-                padding: 20px 32px;
+                padding: 20px 24px;
 
                 > svg {
                     margin-right: 12px;
