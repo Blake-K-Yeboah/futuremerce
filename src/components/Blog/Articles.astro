@@ -37,7 +37,7 @@ const count = 6;
         <Badge text="Useful Resources" />
         <h2 class="articles_title"><span>Practical</span> resources to help your Shopify store</h2>
         <div class="articles_filters">
-            {filters.map((filter, index) => <a class={`articles_filters-item ${index == 0 ? 'active' : ''}`} data-category={filter.category}>{filter.label}</a>)}
+            {filters.map((filter, index) => <div class={`articles_filters-item ${index == 0 ? 'active' : ''}`} data-category={filter.category}>{filter.label}</div>)}
         </div>
         <div class="articles_search">
             <input placeholder="Find something..." />
