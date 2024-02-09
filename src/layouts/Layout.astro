@@ -22,7 +22,7 @@ const { title, metaInfo } = Astro.props;
 		<meta name="keywords" content="shopify, development, agency">
 		<title>{title}</title>
 		<meta name="description" content={metaInfo ? metaInfo.description : "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service."}>
-		<link href="https://www.futuremerce.com/" rel="canonical">
+		<link href={metaInfo.canonical} rel="canonical">
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
 
 		<!-- Google Tag Manager -->
@@ -32,9 +32,6 @@ const { title, metaInfo } = Astro.props;
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-MQ8LNPQ2');</script>
 		<!-- End Google Tag Manager -->
-
-		<!-- Preload Images + Fonts -->
-		<link rel="preload" href="/_astro/hero-image.7ed7af74_246wHd.webp" as="image" fetchpriority="high">
 				
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
