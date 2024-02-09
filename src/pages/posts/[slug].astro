@@ -42,7 +42,7 @@ let month = d.toLocaleDateString('en-us',{month: 'long'})
 let year = d.toLocaleDateString('en-us',{year: 'numeric'})
 ---
 
-<Layout title={`Futuremerce - ${frontmatter.title}`} metaInfo={{ description: frontmatter.exceprt, canonical: "https://www.futuremerce.com/"+frontmatter.slug, }}>
+<Layout title={`Futuremerce - ${frontmatter.title}`} metaInfo={{ description: frontmatter.exceprt, canonical: "https://www.futuremerce.com/posts/"+frontmatter.slug, }}>
     <Breadcrumbs links={links} />
     <Container type="article">
       <h1 class="title">{frontmatter.title}</h1>
