@@ -15,7 +15,7 @@ if (option.name == 'Enterprise') {
 
 <div class={`pricing_card ${option.color ? 'primary' : ''}`}>
     {option.badge != '' ? <div class="pricing_card-badge">{option.badge}</div> : ''}
-    <h5 class="pricing_card-name">{option.name}</h5>
+    <h4 class="pricing_card-name">{option.name}</h4>
     {option[type].salePrice ? <div class="pricing_card-was-price">Was <span>{option[type].price}</span></div> : ''}
     <div class="pricing_card-price">{option[type].salePrice ? option[type].salePrice : option[type].price} <span>/ month</span></div>
     {type == 'quarterly' && <div class="pricing_card-price-text">Billed every 3 months</div>}
