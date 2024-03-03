@@ -14,14 +14,13 @@ const { title, metaInfo } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={metaInfo ? metaInfo.description : "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service."}>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="language" content="English">
 		<meta name="keywords" content="shopify, development, agency">
 		<title>{title}</title>
-		<meta name="description" content={metaInfo ? metaInfo.description : "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service."}>
 		<link href={metaInfo.canonical} rel="canonical">
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
 
