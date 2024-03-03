@@ -16,7 +16,7 @@ import { Image } from 'astro:assets';
 
 <style lang="scss">
     .recent-brands {
-        padding: 40px 24px 120px;
+        padding: 60px 24px 120px;
         margin-bottom: 40px;
 
         &_title {
@@ -53,6 +53,7 @@ import { Image } from 'astro:assets';
                 height: 80px;
                 width: 80px;
                 border-radius: 50%;
+                filter: grayscale(1) brightness(.8);
 
                 &:last-of-type {
                     height: 50px;
