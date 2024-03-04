@@ -341,11 +341,12 @@ const links: Link[] = [
 
 
 <script>
-    
-import Glide, { Swipe, Autoplay } from '@glidejs/glide/dist/glide.modular.esm';
-// @ts-ignore
-var glide = new Glide('.cvps.glide', { type: 'carousel', focusAt: 'center', perView: 1, dragThreshold: 1, autoplay: 2000 }).mount({ Swipe, Autoplay });
-glide.play();
+    // @ts-ignore
+    import Glide, {Swipe, Autoplay} from 'https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.modular.esm.js';
+
+    // @ts-ignore
+    var glide = new Glide('.cvps.glide', { type: 'carousel', focusAt: 'center', perView: 1, dragThreshold: 1, autoplay: 2000 }).mount({ Swipe, Autoplay });
+    glide.play();
 </script>
 
 <script is:inline>

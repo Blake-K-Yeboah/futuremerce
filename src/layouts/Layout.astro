@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { title, metaInfo } = Astro.props;
+
+let itemType = "http://schema.org/WebPage";
+
+if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 ---
 
 <!doctype html>
@@ -23,6 +27,7 @@ const { title, metaInfo } = Astro.props;
 		<title>{title}</title>
 		<link href={metaInfo.canonical} rel="canonical">
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
+		{metaInfo && metaInfo.schemaMetaInfo ? <Fragment set:html={metaInfo.schemaMetaInfo} />  : ''}
 
 		<!-- Google Tag Manager -->
 		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -46,15 +51,17 @@ const { title, metaInfo } = Astro.props;
 		<meta property="twitter:description" content="Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." />
 		<meta property="twitter:image" content="/overview.png" />
 
-		<!-- GOogle Recaptcha  -->
+		<!-- Google Recaptcha  -->
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 		<!-- Preconnect Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+		<!-- Glide CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
 	</head>
-	<body>
+	<body itemscope itemtype={itemType}>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8LNPQ2"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -67,9 +74,6 @@ const { title, metaInfo } = Astro.props;
 </html>
 
 <style lang="scss" is:global>
-	// Glide.js
-	@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
-
 	// Fonts
 	@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
