@@ -48,7 +48,9 @@ const filteredPosts = await posts.filter(post => featured.includes(post.frontmat
 </div>
 
 <script>
-    import Glide, { Controls, Swipe  } from '@glidejs/glide/dist/glide.modular.esm';
+    // @ts-ignore
+    import Glide, { Controls, Swipe  } from 'https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.modular.esm.js';
+    
     // @ts-ignore
     var glide = new Glide('.carousel.glide', { type: 'carousel', focusAt: 'center', perView: 1, dragThreshold: 1}).mount({ Controls, Swipe });
 
