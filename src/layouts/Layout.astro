@@ -8,6 +8,10 @@ interface Props {
 }
 
 const { title, metaInfo } = Astro.props;
+
+let itemType = "http://schema.org/WebPage";
+
+if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 ---
 
 <!doctype html>
@@ -23,6 +27,8 @@ const { title, metaInfo } = Astro.props;
 		<title>{title}</title>
 		<link href={metaInfo.canonical} rel="canonical">
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
+		{metaInfo && metaInfo.schemaMetaInfo ? 
+		<Fragment set:html={metaInfo.schemaMetaInfo} />  : ''}
 
 		<!-- Google Tag Manager -->
 		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -54,7 +60,7 @@ const { title, metaInfo } = Astro.props;
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 	</head>
-	<body>
+	<body itemscope itemtype={itemType}>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQ8LNPQ2"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

@@ -10,9 +10,15 @@ import FAQs from '../components/Home/FAQs.astro';
 import CallToAction from '../components/CallToAction.astro';
 import LatestNews from '../components/Home/LatestNews.astro';
 import RecentBrands from '../components/Home/RecentBrands.astro';
+
+const schemaMetaInfo = `
+<meta itemprop="name" content="Futuremerce - Shopify development as a subscription">
+<meta itemprop="description" content="Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service.">
+<meta itemprop="image" content="/overview.png">
+`;
 ---
 
-<Layout title="Futuremerce - Shopify Development as a Subscription" metaInfo={{ canonical: "https://www.futuremerce.com/", description: "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." }} >
+<Layout title="Futuremerce - Shopify Development as a Subscription" metaInfo={{ schemaMetaInfo, canonical: "https://www.futuremerce.com/", description: "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." }} >
 	<Header />
 	<RecentBrands />
 	<Process />
