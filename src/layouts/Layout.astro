@@ -27,8 +27,7 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		<title>{title}</title>
 		<link href={metaInfo.canonical} rel="canonical">
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
-		{metaInfo && metaInfo.schemaMetaInfo ? 
-		<Fragment set:html={metaInfo.schemaMetaInfo} />  : ''}
+		{metaInfo && metaInfo.schemaMetaInfo ? <Fragment set:html={metaInfo.schemaMetaInfo} />  : ''}
 
 		<!-- Google Tag Manager -->
 		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
