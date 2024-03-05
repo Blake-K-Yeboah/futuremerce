@@ -26,6 +26,7 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		<meta name="keywords" content="shopify, development, agency">
 		<title>{title}</title>
 		<link href={metaInfo.canonical} rel="canonical">
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
 		{metaInfo && metaInfo.schemaMetaInfo ? <Fragment set:html={metaInfo.schemaMetaInfo} />  : ''}
 
