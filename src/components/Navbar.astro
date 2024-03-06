@@ -30,7 +30,7 @@ const links: Link[] = [
         label: 'Blog',
         href: '/blog'
     },
-]
+];
 ---
 
 <aside class="cvps">
@@ -127,6 +127,10 @@ const links: Link[] = [
             });
         });
     });
+
+    if (window.location.href.includes('audits')) {
+        document.querySelectorAll('.navbar_link').forEach((linkEl) => linkEl.setAttribute('href', linkEl.getAttribute('href').replace('/#', '#')));
+    }
 </script>
 
 <style lang="scss">

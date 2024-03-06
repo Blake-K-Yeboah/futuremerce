@@ -1,0 +1,217 @@
+---
+interface Props {
+    option: any;
+}
+
+const { option } = Astro.props as Props;
+---
+
+<div class={`pricing_card ${option.color ? 'primary' : ''}`}>
+    {option.badge != '' ? <div class="pricing_card-badge">{option.badge}</div> : ''}
+    <h4 class="pricing_card-name">{option.name}</h4>
+    <div class="pricing_card-price">{option.price}</div>
+    <p class="pricing_card-text">{option.description}</p>
+    <div class="pricing_card-divider"></div>
+    {option.points.map(point => <div class="pricing_card-point">
+        {option.color ? <svg width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="13.36" cy="12.6091" rx="13.0338" ry="12.3498" fill="white"/>
+        <path d="M11.353 19.0413L5.41992 13.4196L6.9032 12.0141L11.353 16.2304L20.9032 7.1814L22.3865 8.58684L11.353 19.0413Z" fill="#8B81FF"/>
+        </svg>
+        : 
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="12" fill="#8B81FF"/>
+        <path d="M10.1521 18.25L4.68959 12.7875L6.05522 11.4219L10.1521 15.5188L18.9448 6.72607L20.3104 8.0917L10.1521 18.25Z" fill="white"/>
+        </svg>}
+        {point} 
+    </div>)}
+    {!option.color ? <div class="pricing_card-spacer"></div> : ''}
+    <a class="pricing_card-btn" href={option.getStarted}>Get Started</a>
+</div>
+
+<script>
+    document.querySelectorAll('.pricing_card-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+    // @ts-ignore
+            dataLayer.push({
+                event: 'button_click',
+    // @ts-ignore
+                button_text: e.target.textContent,
+    // @ts-ignore
+                button_url: e.target.href,
+    // @ts-ignore
+                button_location: 'Pricing Card - ' + e.target.parentNode.querySelector('.pricing_card-name').textContent,
+            });
+        });
+    });
+</script>
+
+<style lang="scss">
+    .pricing_card {
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.05);
+        position: relative;
+        padding: 42px 22px 32px;
+        height: fit-content;
+        width: 330px;
+
+        &-badge {
+            position: absolute;
+            top: -14px;
+            right: 18px;
+            color: var(--lighter-purple);
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 16px;
+            height: 33px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: -2px 0 20px rgba(0,0,0,0.1);
+            
+            @media screen and (max-width: 980px) {
+                right: 50%;
+                transform: translate(50%);
+                min-width: 280px;
+            }
+        }
+
+        &-name {
+            color: #434343;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+        }
+
+        &-was-price {
+            color: #FF0000;
+            font-size: 22px;
+            font-weight: 500;
+            margin: 28px 0 0 0;
+
+            span {
+                text-decoration: line-through;
+            }
+        }
+
+        &-price {
+            display: flex;
+            align-items: flex-end;
+            color: #434343;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 24px;
+            margin: 22px 0 0 0;
+
+            @media screen and (max-width: 450px) {
+                font-size: 34px;
+            }
+
+            span {
+                margin-left: 5px;
+                color: #727272;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px; 
+            }
+
+            &-text {
+            color: #6D6D6D;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 24px; 
+            margin-top: 34px;
+            margin: 12px 0 -12px 0;
+            }
+        }
+
+        &-text {
+            color: #6D6D6D;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 24px; 
+            margin-top: 34px;
+        }
+
+        &-divider {
+            width: 100%;
+            height: 1px;
+            background:#DDD;
+            margin: 22px 0 29px 0;
+        }
+
+        &-point {
+            display: flex;
+            align-items: center;
+            color: #434343;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 24px; 
+            margin-bottom: 18px;
+
+            > svg {
+                margin-right: 10px;
+            }
+        }
+
+        &-btn {
+            display: block;
+            width: 100%;
+            border-radius: 8px;
+            background: var(--lighter-purple);
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFF;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            margin-top: 42px;
+            text-decoration: none;
+            transition: .25s ease-in-out;
+
+            &:hover {
+                box-shadow: 6px 6px 0px rgba(0,0,0,0.35);
+            }
+        }
+
+        &-book-a-call {
+            margin: 22px auto 0 auto;
+            color: #434343;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            display: block;
+        }
+
+        &.primary {
+            background: var(--lighter-purple);
+            width: 358px;
+
+            * {
+                color: #fff !important;
+            }
+
+            .pricing_card-was-price {
+                &, & > span {
+                    color: #FF0000 !important;
+                }
+            }
+
+            .pricing_card-badge {
+                color: var(--lighter-purple) !important;
+                background: #FFF;
+            }
+
+            .pricing_card-btn {
+                color: var(--lighter-purple) !important;
+                background: #fff;
+            }
+        }
+    }
+</style>

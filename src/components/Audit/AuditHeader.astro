@@ -39,6 +39,16 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 24px;
+
+            @media screen and (max-width: 1272px) {
+                padding-left: 24px;
+                align-items: flex-start;
+
+                .header_content {
+                    padding-top: 64px;
+                }
+            }
         }
 
         &_image {
@@ -50,6 +60,21 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
             @media screen and (min-width: 1441px) {
                 border-radius: 0 0 32px 32px;
             }
+
+            @media screen and (max-width: 1100px) {
+                flex: 0 0 400px;
+                width: 400px;
+                height: 556px;
+                object-fit: cover;
+            }
+
+            @media screen and (max-width: 942px) {
+                display: none;
+            }
+        }
+
+        &_content {
+            padding-top: 24px;
         }
 
         &_title {

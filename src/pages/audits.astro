@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import AuditHeader from '../components/Audit/AuditHeader.astro';
 import Process from '../components/Audit/Process.astro';
 import Pricing from '../components/Home/Pricing.astro';
+import FAQs from '../components/Home/FAQs.astro';
+import LatestNews from '../components/Home/LatestNews.astro';
 
 const schemaMetaInfo = `
 <meta itemprop="name" content="Futuremerce - Discover How to Boost Sales and Conversions">
@@ -15,4 +17,6 @@ const schemaMetaInfo = `
 	<AuditHeader />
     <Process />
     <Pricing isAudit={true} />
+    <FAQs />
+    <LatestNews />
 </Layout>
