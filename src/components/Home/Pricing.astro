@@ -51,18 +51,25 @@ const pricing = [
         badge: ''
     },
 ]
+
+interface Props {
+    isAudit?: any;
+}
+
+const { isAudit } = Astro.props as Props;
 ---
 
-<section class="pricing" id="pricing">
+<section class={`pricing ${isAudit ? 'is-audit' : ''}`} id="pricing">
     <Container>
         <Badge text="Pricing" />
-        <h2 class="pricing_title">Membership <span>Levels</span></h2>
-        <p class="pricing_text">Choose a plan that's right for you.</p>
+        <h2 class="pricing_title">{isAudit ? <Fragment set:html={`<span>Affordable</span> Packages For All Stores`} /> : <Fragment set:html={`Membership <span>Levels</span>`} />}</h2>
+        <p class="pricing_text">{isAudit ? 'Unlock the Hidden Potential of Your Shopify Store with a Futuremerce audit.' : 'Choose a plan that\'s right for you.'}</p>
+        {!isAudit ? 
         <div class="pricing_switch">
             <p class="pricing_switch-option active">Billed Monthly</p>
             <div class="pricing_switch-toggle"><div></div></div>
             <p class="pricing_switch-option">Billed Quarterly <span>(Save up to 20%)</span></p>
-        </div>
+        </div> : ''}
         <div class="pricing_limited-spots">
             2/5 spots left. Get onboarded today!
         </div>
@@ -74,7 +81,7 @@ const pricing = [
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
         </div>
-        <p class="pricing_small-text">All prices are in USD.</p>
+        {!isAudit ? <p class="pricing_small-text">All prices are in USD.</p> : ''}
     </Container>
 </section>
 
@@ -135,6 +142,14 @@ const pricing = [
     .pricing {
         margin-bottom: 50px;
         padding-top: 140px;
+
+        &.is-audit {
+            .pricing_text {
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
         
         &_title {
             color: #434343;
@@ -145,7 +160,7 @@ const pricing = [
             line-height: 50px;
             margin: 0 auto 24px auto;
 
-            > span {
+            span {
                 color: var(--lighter-purple);
             }
 

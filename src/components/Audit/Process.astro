@@ -1,0 +1,185 @@
+---
+import Container from "../Container.astro";
+import Badge from '../Badge.astro';
+
+const boxes = [
+    {
+        title: 'SEO Audit',
+        text: `We will review your store and provide actionable steps to boost your SEO rankings.`,
+        icon: 'Globe.svg'
+    },
+    {
+        title: 'Conversion Review',
+        text: `We will analyse your store to identity areas of improvement in your conversion funnel.`,
+        icon: 'Conversion.svg'
+    },
+    {
+        title: 'Technical Audit',
+        text: `Our technical audit includes comprehensive user-acceptance testing and an in-depth speed review.`,
+        icon: 'Programming.svg'
+    },
+]
+
+---
+
+<section class="process" id="how-it-works">
+    <Container>
+        <Badge text="How It Works" light={false}/>
+        <h2 class="process_title">Maximize conversions and boost technical performance through a Futuremerce audit </h2>
+        <div class="process_box-grid">
+            {boxes.map(box => <div class="process_box">
+                <div class="process_box-head">
+                    <h4 class="process_box-title">{box.title}</h4>
+                    <img class="process_box-icon" src={`/Icons/audit-icons/${box.icon}`} alt="" />
+                </div>
+                <p class="process_box-text">{box.text}</p>
+            </div>)}
+        </div>
+        <div class="process_arrows">
+            <svg width="632" height="121" viewBox="0 0 632 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M115.052 119.826C115.682 119.787 116.17 119.383 116.141 118.925L115.676 111.451C115.648 110.993 115.114 110.653 114.483 110.692C113.853 110.731 113.365 111.135 113.394 111.593L113.807 118.236L104.676 118.804C104.045 118.844 103.558 119.247 103.586 119.706C103.615 120.164 104.149 120.504 104.779 120.465L115.052 119.826ZM0.229446 47.0748L114.229 119.633L115.771 118.358L1.77055 45.8L0.229446 47.0748Z" fill="#8B81FF"/>
+                <path d="M515.859 118.929C515.83 119.388 516.318 119.791 516.949 119.83L527.221 120.469C527.852 120.508 528.386 120.168 528.414 119.71C528.443 119.251 527.955 118.847 527.325 118.808L518.193 118.241L518.606 111.598C518.635 111.139 518.147 110.736 517.517 110.696C516.886 110.657 516.352 110.997 516.324 111.456L515.859 118.929ZM630.225 45.8L516.23 118.363L517.771 119.637L631.766 47.0747L630.225 45.8Z" fill="#8B81FF"/>
+                <path d="M314.293 113.707C314.683 114.098 315.317 114.098 315.707 113.707L322.071 107.343C322.462 106.953 322.462 106.319 322.071 105.929C321.681 105.538 321.047 105.538 320.657 105.929L315 111.586L309.343 105.929C308.953 105.538 308.319 105.538 307.929 105.929C307.538 106.319 307.538 106.953 307.929 107.343L314.293 113.707ZM314 -4.37114e-08L314 113L316 113L316 4.37114e-08L314 -4.37114e-08Z" fill="#8B81FF"/>
+            </svg>                
+        </div>
+        <div class="process_box results">
+            <div class="process_box-head">
+                <h4 class="process_box-title">Boost Revenue and Conversions</h4>
+                <img class="process_box-icon" src="/Icons/audit-icons/Positive Dynamic.svg" alt="" />
+            </div>
+            <p class="process_box-text">Use the data to make strategic improvements in your store to boost your conversions and significantly improve your store’s performance.</p>
+        </div>
+        <a href="#pricing" class="process_btn" title="See Pricing">See Pricing <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 8L14.59 6.59L9 12.17V0L7 0V12.17L1.41 6.59L0 8L8 16L16 8Z" fill="white"/>
+        </svg></a>
+    </Container>
+</section>
+
+<style lang="scss">
+    .process {
+        padding: 140px 0;
+        
+        &_title {
+            color: #434343;
+            text-align: center;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 48px;
+            max-width: 938px;
+            margin: 0 auto;
+        }
+
+        &_box-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 55px;
+            margin-top: 110px;
+        }
+
+        &_box {
+            padding: 24px 32px;
+            background: #FFFFFF;
+            box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            width: 340px;
+            height: fit-content;
+
+            &:first-of-type {
+                margin-top: 20px;
+            }
+
+            &:nth-child(2) {
+                margin-top: -24px;
+                position: relative;
+
+                &:before {
+                    content: '';
+                    width: 529px;
+                    height: 95px;
+                    position: absolute;
+                    z-index: -1;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: url('data:image/svg+xml,<svg width="531" height="96" viewBox="0 0 531 96" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0.789074" y1="67.5467" x2="144.789" y2="0.546665" stroke="%238B81FF"/><line x1="407.289" y1="8.59179" x2="530.289" y2="95.5918" stroke="%238B81FF"/></svg>') center/cover no-repeat;
+                }
+            }
+
+            &-head {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            &-title {
+                color: #434343;
+                font-size: 24px;
+                line-height: 28px;
+                font-weight: 700;
+                max-width: 141px;
+            }
+
+            &-text {
+                color: #7A7A7A;
+                font-size: 16px;
+                line-height: 28px;
+                font-weight: 400;
+                margin-top: 8px;
+                width: 100%;
+            }
+
+            &.results {
+                width: 423px;
+                margin: 24px auto 50px;
+                background: var(--lighter-purple);
+                padding-bottom: 32px;
+
+                * {
+                    color: #fff;
+                }
+
+                h4 {
+                    max-width: 222px;
+                }
+
+                p {
+                    max-width: 330px;
+                }
+            }
+        }
+
+        &_arrows {
+            margin: -32px auto 0;
+            width: fit-content;
+        }
+
+        &_btn {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            padding: 16px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: .25s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: var(--lighter-purple);
+            width: fit-content;
+            margin: 0 auto;
+
+            svg {
+                margin-left: 8px;
+                width: 12px;
+                height: 12px;
+            }
+
+            &:hover {
+                box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+            }
+        }
+    }
+</style>

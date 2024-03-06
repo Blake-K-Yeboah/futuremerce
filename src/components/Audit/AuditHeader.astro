@@ -1,0 +1,123 @@
+---
+import auditImage from '../../images/audit-header.png';
+import { Image } from 'astro:assets';
+
+const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="12" fill="#8B81FF"/>
+<path d="M10.152 18.25L4.68945 12.7875L6.05508 11.4219L10.152 15.5188L18.9447 6.72604L20.3103 8.09167L10.152 18.25Z" fill="white"/>
+</svg>
+`;
+
+---
+
+<header class="header">
+    <div class="header_inner">
+        <div class="header_content">
+            <h1 class="header_title">Discover How to <span>Boost Sales</span> and <span> Drive Conversions</span></h1>
+            <p class="header_text">Is your ecommerce store not performing as well as you'd hoped? You're not alone. Many businesses struggle to identify areas for improvement and unlock their store's full potential.
+            <br><br>
+            That's where we come in. At Futuremerce, we offer audits to help:</p>
+            <div class="header_points">
+                <div class="header_point"><Fragment set:html={checkmark} /> Identify critical issues</div>
+                <div class="header_point"><Fragment set:html={checkmark} /> Gain valuable insights</div>
+                <div class="header_point"><Fragment set:html={checkmark} /> Make data-driven decisions</div>
+            </div>
+            <a href="#how-it-works" class="header_button">Learn more <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 0L6.59 1.41L12.17 7H0V9H12.17L6.59 14.59L8 16L16 8L8 0Z" fill="white"/></svg>
+            </a>
+        </div>
+        <Image class="header_image" src={auditImage} alt="" loading="eager"> 
+    </div>
+</header>
+
+<style lang="scss">
+    .header {
+        &_inner {
+            max-width: 1440px;
+            padding-left: 113px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &_image {
+            flex: 0 0 556px;
+            width: 556px;
+            height: auto;
+            border-radius: 0 0 0 32px;
+
+            @media screen and (min-width: 1441px) {
+                border-radius: 0 0 32px 32px;
+            }
+        }
+
+        &_title {
+            color: #434343;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 48px;
+            margin: 0 0 24px;
+            max-width: 549px;
+
+            > span {
+                color: var(--lighter-purple);
+            }
+        }
+
+        &_text {
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: 400;
+            color: #7A7A7A;
+            margin: 24px 0;
+            max-width: 526px;
+        }
+
+        &_points {
+            display:flex;
+            gap: 24px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        &_point {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: #434343;
+            font-weight: 600;
+        }
+
+        &_button {
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            padding: 16px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: .25s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: var(--lighter-purple);
+            width: fit-content;
+            margin-top: 36px;
+
+            svg {
+                margin-left: 8px;
+                width: 12px;
+                height: 12px;
+            }
+
+            &:hover {
+                box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+            }
+
+        }
+    }
+</style>
