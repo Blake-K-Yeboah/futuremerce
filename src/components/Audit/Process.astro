@@ -75,6 +75,11 @@ const boxes = [
             grid-template-columns: repeat(3, 1fr);
             gap: 55px;
             margin-top: 110px;
+
+            @media screen and (max-width: 1172px) {
+                display: flex;
+                justify-content: center;
+            }
         }
 
         &_box {
@@ -84,6 +89,10 @@ const boxes = [
             border-radius: 12px;
             width: 340px;
             height: fit-content;
+
+            @media screen and (max-width: 1172px) {
+                width: 280px;
+            }
 
             &:first-of-type {
                 margin-top: 20px;
@@ -118,6 +127,16 @@ const boxes = [
                 line-height: 28px;
                 font-weight: 700;
                 max-width: 141px;
+
+                @media screen and (max-width: 1172px) {
+                    font-size: 20px;
+                }
+            }
+
+            @media screen and (max-width: 1172px) {
+                &-icon {
+                    width: 48px;
+                }
             }
 
             &-text {
@@ -127,6 +146,10 @@ const boxes = [
                 font-weight: 400;
                 margin-top: 8px;
                 width: 100%;
+
+                @media screen and (max-width: 1172px) {
+                    font-size: 13px;
+                }
             }
 
             &.results {

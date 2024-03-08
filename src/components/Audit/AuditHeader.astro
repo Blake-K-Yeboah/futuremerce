@@ -49,6 +49,14 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
                     padding-top: 64px;
                 }
             }
+
+            @media screen and (max-width: 767px) {
+                padding-right: 24px;
+
+                .header_content {
+                    padding-top: 32px;
+                }
+            }
         }
 
         &_image {
@@ -89,6 +97,17 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
             > span {
                 color: var(--lighter-purple);
             }
+
+            @media screen and (max-width: 767px) {
+                font-size: 28px;
+                line-height: 32px;
+                max-width: 450px;
+            }
+
+            @media screen and (max-width: 440px) {
+                max-width: 300px;
+                line-height: 36px;
+            }
         }
 
         &_text {
@@ -98,6 +117,11 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
             color: #7A7A7A;
             margin: 24px 0;
             max-width: 526px;
+
+            @media screen and (max-width: 767px) {
+             font-size: 14px;   
+             line-height: 24px;
+            }
         }
 
         &_points {
@@ -105,6 +129,14 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
             gap: 24px;
             align-items: center;
             flex-wrap: wrap;
+
+            @media screen and (max-width: 767px) {
+                row-gap: 20px;
+            }
+            
+            @media screen and (max-width: 440px) {
+                row-gap: 14px;
+            }
         }
 
         &_point {
@@ -114,6 +146,10 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
             font-size: 14px;
             color: #434343;
             font-weight: 600;
+
+            @media screen and (max-width: 767px) {
+                font-size: 13px;
+            }
         }
 
         &_button {
@@ -141,6 +177,14 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
 
             &:hover {
                 box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+            }
+
+            @media screen and (max-width: 440px) {
+               width: 100%;
+               
+               svg {
+                transform: rotate(90deg);
+               }
             }
 
         }
