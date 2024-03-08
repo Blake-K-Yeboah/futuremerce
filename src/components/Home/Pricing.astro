@@ -87,7 +87,7 @@ const { isAudit } = Astro.props as Props;
     <Container>
         <Badge text="Pricing" />
         <h2 class="pricing_title">{isAudit ? <Fragment set:html={`<span style="color: var(--lighter-purple);">Affordable</span> Packages For All Stores`} /> : <Fragment set:html={`Membership <span style="color: var(--lighter-purple);">Levels</span>`} />}</h2>
-        <p class="pricing_text">{isAudit ? 'Unlock the Hidden Potential of Your Shopify Store with a Futuremerce audit.' : 'Choose a plan that\'s right for you.'}</p>
+        <p class="pricing_text">{isAudit ? 'Unlock the Hidden Potential of Your Ecommerce Store with a Futuremerce audit.' : 'Choose a plan that\'s right for you.'}</p>
         {!isAudit ? 
         <div class="pricing_switch">
             <p class="pricing_switch-option active">Billed Monthly</p>
