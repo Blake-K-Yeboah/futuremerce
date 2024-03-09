@@ -1,0 +1,44 @@
+---
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/Container.astro';
+
+const links = [
+    {
+        label: 'Home',
+        href: '/'
+    },
+    {
+        label: 'Audits',
+        href: '/audits'
+    },
+    {
+        label: 'Thank You'
+    }
+]
+---
+
+<Layout title="Futuremerce - Thank you for your purchase" metaInfo={{ noIndex: true}}>
+    <Breadcrumbs links={links} />
+    <Container type="legal">
+        <h1 class="page-title">Thanks for your <span>purchase!</span></h1>
+        <div class="page-body">
+            <p>We're now working on your store's audit. We look forward to sharing our insights.</p>
+            <p>We'll be in touch with your audit as soon as it's ready.</p>
+            <p>In the meantime, if you have any questions or concerns please reach out: <a href="mailto:blake@futuremerce.co">blake@futuremerce.co</a></p>
+        </div>
+    </Container>
+</Layout>
+
+<script is:inline>    
+    if(!sessionStorage.getItem('plan-purchased')) {
+        const queryParams = new URLSearchParams(window.location.search);
+
+        sessionStorage.setItem('plan-purchased', true);
+
+        dataLayer.push({
+            event: 'order_confirmation',
+            plan_name: queryParams.get('audit')
+        });
+    }
+</script>

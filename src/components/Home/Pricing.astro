@@ -2,6 +2,9 @@
 import Badge from '../Badge.astro';
 import Container from '../Container.astro';
 import PricingCard from './PricingCard.astro';
+import AuditPricingCard from '../Audit/AuditPricingCard.astro';
+import { Image } from 'astro:assets';
+import Brands from '../../images/Brands.png';
 
 const pricing = [
     {
@@ -51,13 +54,41 @@ const pricing = [
         badge: ''
     },
 ]
+
+const auditsPricing = [
+    {
+        name: 'Essentials Audit',
+        description: 'Identify key issues, and get actionable recommendations.',
+        price: '$99',
+        points: ['Conversion Review', 'Speed Review', 'List of recommendations', 'SEO Audit', 'Delivered in 72 hours'],
+        color: false,
+        badge: '',
+        getStarted: 'https://buy.stripe.com/cN203z68r5hRaDC28h'
+    },
+    {
+        name: 'Growth Audit',
+        description: 'Comprehensive analysis of your entire store to unlock it\'s full potential.',
+        price: '$169',
+        points: ['In-depth Conversion Review', 'Insightful competitor Analysis', 'Strategic recommendations', 'Detailed speed analysis', 'Comprehensive SEO Audit', 'Delivered in 96 hours'],
+        color: 'true',
+        badge: 'MOST VALUE',
+        getStarted: 'https://buy.stripe.com/bIY2bHcwPbGf4fefZ8'
+    }
+]
+
+interface Props {
+    isAudit?: any;
+}
+
+const { isAudit } = Astro.props as Props;
 ---
 
-<section class="pricing" id="pricing">
+<section class={`pricing ${isAudit ? 'is-audit' : ''}`} id="pricing">
     <Container>
         <Badge text="Pricing" />
-        <h2 class="pricing_title">Membership <span>Levels</span></h2>
-        <p class="pricing_text">Choose a plan that's right for you.</p>
+        <h2 class="pricing_title">{isAudit ? <Fragment set:html={`<span style="color: var(--lighter-purple);">Affordable</span> Packages For All Stores`} /> : <Fragment set:html={`Membership <span style="color: var(--lighter-purple);">Levels</span>`} />}</h2>
+        <p class="pricing_text">{isAudit ? 'Unlock the Hidden Potential of Your Ecommerce Store with a Futuremerce audit.' : 'Choose a plan that\'s right for you.'}</p>
+        {!isAudit ? 
         <div class="pricing_switch">
             <p class="pricing_switch-option active">Billed Monthly</p>
             <div class="pricing_switch-toggle"><div></div></div>
@@ -65,7 +96,12 @@ const pricing = [
         </div>
         <div class="pricing_limited-spots">
             2/5 spots left. Get onboarded today!
-        </div>
+        </div> : ''}
+        {isAudit ? <div class="pricing_grid-container is-audit">
+            <div class="pricing_grid active">
+                {auditsPricing.map(priceOption => <AuditPricingCard option={priceOption} />)}
+            </div>
+        </div> : 
         <div class="pricing_grid-container">
             <div class="pricing_grid monthly active">
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="monthly" />)}
@@ -73,15 +109,15 @@ const pricing = [
             <div class="pricing_grid quarterly">
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
-        </div>
-        <p class="pricing_small-text">All prices are in USD.</p>
+        </div>}
+        {!isAudit ? <p class="pricing_small-text">All prices are in USD.</p> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
     </Container>
 </section>
 
 <script is:inline>
     window.updateHeight = () => {
         if (document.querySelector('.pricing_grid-container')) {
-            document.querySelector('.pricing_grid-container').style.height = `${document.querySelector('.pricing_grid.quarterly').clientHeight}px`
+            document.querySelector('.pricing_grid-container').style.height = `${document.querySelector('.pricing_grid.quarterly') ? document.querySelector('.pricing_grid.quarterly').clientHeight : document.querySelector('.pricing_grid').clientHeight}px`
         }
     }
 
@@ -105,36 +141,61 @@ const pricing = [
 </script>
 
 <script>
-    const priceSwitch: HTMLElement = document.querySelector('.pricing_switch-toggle');
+    const priceSwitch: HTMLElement | null = document.querySelector('.pricing_switch-toggle');
 
-    priceSwitch.addEventListener('click', (e) => {
-        document.querySelector('.pricing_switch-option.active').classList.remove('active');
-        document.querySelector('.pricing_grid.active').classList.remove('active');
+    if (priceSwitch) {
+        priceSwitch.addEventListener('click', (e) => {
+            document.querySelector('.pricing_switch-option.active').classList.remove('active');
+            document.querySelector('.pricing_grid.active').classList.remove('active');
 
-        if (priceSwitch.classList.contains('toggled')) {
-            priceSwitch.classList.remove('toggled');
-            document.querySelector('.pricing_switch-option:first-of-type').classList.add('active');
-            document.querySelector('.pricing_grid.monthly').classList.add('active');
-        } else {
-            priceSwitch.classList.add('toggled');
-            document.querySelector('.pricing_switch-option:last-of-type').classList.add('active');
-            document.querySelector('.pricing_grid.quarterly').classList.add('active');
-        }
-    });
-
-    document.querySelectorAll('.pricing_switch-option').forEach(switchEl => {
-        switchEl.addEventListener('click', function(e) {
-            if (!this.classList.contains('active')) {
-                priceSwitch.click();
+            if (priceSwitch.classList.contains('toggled')) {
+                priceSwitch.classList.remove('toggled');
+                document.querySelector('.pricing_switch-option:first-of-type').classList.add('active');
+                document.querySelector('.pricing_grid.monthly').classList.add('active');
+            } else {
+                priceSwitch.classList.add('toggled');
+                document.querySelector('.pricing_switch-option:last-of-type').classList.add('active');
+                document.querySelector('.pricing_grid.quarterly').classList.add('active');
             }
         });
-    })
+
+        document.querySelectorAll('.pricing_switch-option').forEach(switchEl => {
+            switchEl.addEventListener('click', function(e) {
+                if (!this.classList.contains('active')) {
+                    priceSwitch.click();
+                }
+            });
+        })
+    }
 </script>
 
 <style lang="scss">
     .pricing {
         margin-bottom: 50px;
         padding-top: 140px;
+
+        &.is-audit {
+            margin-bottom: -20px;
+
+            .pricing_text {
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @media screen and (max-width: 980px) {
+                .pricing_grid {
+                    max-width: 100% !important;
+                }
+            }
+        }
+
+        &_brands {
+            max-width: 100%;
+            margin: 60px auto 0;
+            height: fit-content;
+            display: block;
+        }
         
         &_title {
             color: #434343;
@@ -145,7 +206,7 @@ const pricing = [
             line-height: 50px;
             margin: 0 auto 24px auto;
 
-            > span {
+            span {
                 color: var(--lighter-purple);
             }
 
@@ -293,6 +354,17 @@ const pricing = [
                 margin: 42px auto 0 auto;
                 position: relative;
                 height: 650px;
+
+                &.is-audit .pricing_grid {
+                    display: flex !important;
+                    justify-content: center;
+                    align-items: center;
+
+                    @media screen and (max-width: 767px) {
+                        flex-direction: column;
+                        row-gap: 32px;
+                    }
+                }
             }
         }
 

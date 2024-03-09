@@ -35,7 +35,42 @@ const questions = [
         q: 'What tech stack does your team use?',
         answer: `Our team has a wide range of experience with Shopify related technologies including, but not limited to: HTML, CSS, Sass, Liquid, and JavaScript. <br><br> If you have very specific needs, or are looking for technical advice regarding your store, feel free to <a href="/contact#book-a-call">book a call</a> with us. We're always happy to help :)`,
     },
-]
+];
+
+const auditQuestions = [
+    {
+        q: "What is a Futuremerce audit?",
+        answer: "A Futuremerce audit includes a SEO audit, conversion review as well as a technical audit to find key issues in your store that are hurting it's conversion rate and performance. <br><br> Futuremerce audit's gather a wide range of data to identify critical issues, gain valuable insights and help you make data-driven decisions to improve your store's performance.",
+    },
+    {
+        q: "Who are these audits for?",
+        answer: "These audits are suitable for stores of all sizes looking to boost their revenue, conversion rate and performance.",
+    },
+    {
+        q: "How is the audit delivered?",
+        answer: "The audit is prepared as a in-depth slideshow presensation that is emailed to you once complete. <br><br> You can ask questions any time, or book a call to run through any recommendations.",
+    },
+    {
+        q: "How long does the process take?",
+        answer: "Depending on the audit you pick, it takes from 3 - 4 business days to deliver your audit.",
+    },
+    {
+        q: "What if I'm unhappy with the results?",
+        answer: "We offer a money-back guarantee on all of our audits because we are confident you'll be happy with the recommendations we provide. <br><br> If you're unhappy, please reach out so we can arrange a refund.",
+    },
+    {
+        q: "Who works on my audit?",
+        answer: "Your audit is prepared by our experienced team of technical specialists and conversion experts.",
+    },
+];
+
+interface Props {
+    isAudit?: any;
+}
+
+const { isAudit } = Astro.props as Props;
+
+const questionsToMap = isAudit ? auditQuestions : questions;
 ---
 
 <section class="faqs" id="faqs">
@@ -43,7 +78,7 @@ const questions = [
         <Badge text="FAQs" />
         <h2 class="faqs_title">Frequently Asked <span>Questions</span></h2>
         <div class="faqs_question-grid">
-        {questions.map(q => <div class="faqs_question-wrapper">
+        {questionsToMap.map(q => <div class="faqs_question-wrapper">
             <div class="faqs_question">
                 <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="36" cy="36" r="16" fill="white"/></g><path d="M28 36.6154V35.3846H35.3846V28H36.6154V35.3846H44V36.6154H36.6154V44H35.3846V36.6154H28Z" fill="black"/><defs><filter id="filter0_d_0_1" x="0" y="0" width="72" height="72" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset/><feGaussianBlur stdDeviation="10"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/></filter></defs></svg>
 

@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import AuditHeader from '../../components/Audit/AuditHeader.astro';
+import Process from '../../components/Audit/Process.astro';
+import Pricing from '../../components/Home/Pricing.astro';
+import FAQs from '../../components/Home/FAQs.astro';
+import LatestNews from '../../components/Home/LatestNews.astro';
+
+const schemaMetaInfo = `
+<meta itemprop="name" content="Futuremerce - Discover How to Boost Sales and Conversions">
+<meta itemprop="description" content="Is your ecommerce store not performing as well as you'd hoped? You're not alone. Many businesses struggle to identify areas for improvement and unlock their store's full potential. That's where we come in. At Futuremerce, we offer audits to help identify critical issues, gain valuable insights and make data-driven decisions.">
+<meta itemprop="image" content="/overview.png">
+`;
+---
+
+<Layout title="Futuremerce - Discover How to Boost Sales and Conversions" metaInfo={{ schemaMetaInfo, canonical: "https://www.futuremerce.com/", description: "Is your ecommerce store not performing as well as you'd hoped? You're not alone. Many businesses struggle to identify areas for improvement and unlock their store's full potential. That's where we come in. At Futuremerce, we offer audits to help identify critical issues, gain valuable insights and make data-driven decisions." }} >
+	<AuditHeader />
+    <Process />
+    <Pricing isAudit={true} />
+    <FAQs isAudit />
+    <LatestNews />
+</Layout>
+
+<script>
+    document.body.classList.add('audits-page');
+</script>

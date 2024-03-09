@@ -26,6 +26,7 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		<meta name="keywords" content="shopify, development, agency">
 		<title>{title}</title>
 		<link href={metaInfo.canonical} rel="canonical">
+		<link rel="sitemap" href="/sitemap-index.xml" />
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
 		{metaInfo && metaInfo.schemaMetaInfo ? <Fragment set:html={metaInfo.schemaMetaInfo} />  : ''}
 
@@ -169,4 +170,33 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 			line-height: 24px;
         }
 	}
+
+	// Audits page fix
+	.pricing.is-audit + script + .faqs {
+		margin-bottom: 120px;
+	}
+
+	.audits-page .navbar {
+		top: 0 !important;
+	}
+
+	.audits-page .navbar:not(.scrolled) {
+		border-bottom: 1px solid #EEE;
+	}
+	
+    .audits-page .cvps {
+        display: none !important;
+    }
+
+	@media screen and (max-width: 710px) {
+		.audits-page {
+			padding-top: 70px;
+		}
+
+		.audits-page .faqs {
+			padding-top: 100px !important
+		}
+	}
+
+
 </style>
