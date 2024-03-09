@@ -29,7 +29,7 @@ const { option } = Astro.props as Props;
 </div>
 
 <script>
-    document.querySelectorAll('.pricing_card-btn').forEach(btn => {
+    document.querySelectorAll('.is-audit pricing_card-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
     // @ts-ignore
             dataLayer.push({
@@ -54,6 +54,12 @@ const { option } = Astro.props as Props;
         padding: 42px 22px 32px;
         height: fit-content;
         width: 330px;
+
+        @media screen and (max-width: 767px) {
+            width: 100% !important;
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
         &-badge {
             position: absolute;

@@ -60,19 +60,19 @@ const auditsPricing = [
         name: 'Essentials Audit',
         description: 'Identify key issues, and get actionable recommendations.',
         price: '$99',
-        points: ['Conversion Review', 'Speed Review', 'List of recommendations', 'SEO Audit', 'Delivered in 48 hours'],
+        points: ['Conversion Review', 'Speed Review', 'List of recommendations', 'SEO Audit', 'Delivered in 72 hours'],
         color: false,
         badge: '',
-        getStarted: '#'
+        getStarted: 'https://buy.stripe.com/cN203z68r5hRaDC28h'
     },
     {
         name: 'Growth Audit',
         description: 'Comprehensive analysis of your entire store to unlock it\'s full potential.',
         price: '$169',
-        points: ['In-depth Conversion Review', 'Insightful competitor Analysis', 'Strategic recommendations', 'Detailed speed analysis', 'Comprehensive SEO Audit', 'Delivered in 72 hours'],
+        points: ['In-depth Conversion Review', 'Insightful competitor Analysis', 'Strategic recommendations', 'Detailed speed analysis', 'Comprehensive SEO Audit', 'Delivered in 96 hours'],
         color: 'true',
-        badge: 'BEST VALUE',
-        getStarted: '#'
+        badge: 'MOST VALUE',
+        getStarted: 'https://buy.stripe.com/bIY2bHcwPbGf4fefZ8'
     }
 ]
 
@@ -182,11 +182,18 @@ const { isAudit } = Astro.props as Props;
                 margin-left: auto;
                 margin-right: auto;
             }
+
+            @media screen and (max-width: 980px) {
+                .pricing_grid {
+                    max-width: 100% !important;
+                }
+            }
         }
 
         &_brands {
             max-width: 100%;
             margin: 60px auto 0;
+            height: fit-content;
             display: block;
         }
         
@@ -352,6 +359,11 @@ const { isAudit } = Astro.props as Props;
                     display: flex !important;
                     justify-content: center;
                     align-items: center;
+
+                    @media screen and (max-width: 767px) {
+                        flex-direction: column;
+                        row-gap: 32px;
+                    }
                 }
             }
         }

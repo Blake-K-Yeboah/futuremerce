@@ -30,7 +30,7 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		{metaInfo && metaInfo.noIndex ? <meta name="robots" content="noindex"> : ''}
 		{metaInfo && metaInfo.schemaMetaInfo ? <Fragment set:html={metaInfo.schemaMetaInfo} />  : ''}
 
-		<!-- Google Tag Manager
+		<!-- Google Tag Manager -->
 		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -191,6 +191,10 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 	@media screen and (max-width: 710px) {
 		.audits-page {
 			padding-top: 70px;
+		}
+
+		.audits-page .faqs {
+			padding-top: 100px !important
 		}
 	}
 

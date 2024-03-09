@@ -30,6 +30,17 @@ const checkmark = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
     </div>
 </header>
 
+<script is:inline>
+    document.querySelector('.header_button').addEventListener('click', function(e) {
+        dataLayer.push({
+            event: 'button_click',
+            button_text: e.target.textContent.trim(),
+            button_url: e.target.href,
+            button_location: 'Header',
+        });
+    });
+</script>
+
 <style lang="scss">
     .header {
         &_inner {
