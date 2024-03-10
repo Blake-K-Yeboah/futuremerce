@@ -18,7 +18,7 @@ const {links} = Astro.props as Props;
         <div class="breadcrumbs_links">
             {links.map(link => {
                 if (link['href']) {
-                    return <a href={link.href} class="breadcrumbs_link bold">{link.label}</a>;
+                    return <a href={link.href} class="breadcrumbs_link bold" title={link.label}>{link.label}</a>;
                 } else {
                     return <span class="breadcrumbs_link">{link.label}</span>
                 }

@@ -25,7 +25,7 @@ const { option } = Astro.props as Props;
         {point} 
     </div>)}
     {!option.color ? <div class="pricing_card-spacer"></div> : ''}
-    <a class="pricing_card-btn" href={option.getStarted}>Get Started</a>
+    <a class="pricing_card-btn" href={option.getStarted} title="Get Started">Get Started</a>
 </div>
 
 <script>

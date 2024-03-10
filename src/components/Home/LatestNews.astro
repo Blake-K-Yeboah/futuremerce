@@ -15,7 +15,7 @@ const sortedPosts = await [...posts].sort((a, b) => Date.parse(b.frontmatter.dat
         <div class="latest-news_posts">
             {sortedPosts.slice(0, 3).map(post => <PostCard post={post} />)}
         </div>
-        <a class="latest-news_btn" href="/blog">View All Articles</a>
+        <a class="latest-news_btn" href="/blog" title="View all articles">View All Articles</a>
     </Container>
 </section>
 
