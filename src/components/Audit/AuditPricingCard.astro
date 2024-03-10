@@ -9,7 +9,7 @@ const { option } = Astro.props as Props;
 <div class={`pricing_card ${option.color ? 'primary' : ''}`}>
     {option.badge != '' ? <div class="pricing_card-badge">{option.badge}</div> : ''}
     <h4 class="pricing_card-name">{option.name}</h4>
-    <div class="pricing_card-price">{option.price}</div>
+    <div class="pricing_card-price">{option.price} {option.wasPrice ? <div class="pricing_card-was-price">Was <em>{option.wasPrice}</em></div> : ''}</div>
     <p class="pricing_card-text">{option.description}</p>
     <div class="pricing_card-divider"></div>
     {option.points.map(point => <div class="pricing_card-point">
@@ -92,13 +92,14 @@ const { option } = Astro.props as Props;
         }
 
         &-was-price {
-            color: #FF0000;
-            font-size: 22px;
-            font-weight: 500;
-            margin: 28px 0 0 0;
+            opacity: .9;
+            font-size: 24px;
+            font-weight: 600;
+            padding: 8px 0 0 8px;
+            text-decoration: line-through;
 
-            span {
-                text-decoration: line-through;
+            @media screen and (max-width: 450px) {
+                font-size: 18px;
             }
         }
 
@@ -201,12 +202,6 @@ const { option } = Astro.props as Props;
 
             * {
                 color: #fff !important;
-            }
-
-            .pricing_card-was-price {
-                &, & > span {
-                    color: #FF0000 !important;
-                }
             }
 
             .pricing_card-badge {
