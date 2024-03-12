@@ -40,5 +40,10 @@ const links = [
             event: 'order_confirmation',
             plan_name: queryParams.get('audit')
         });
+
+        const value =  queryParams.get('audit').includes('essentials') ? 99.00 : 169.00;
+
+        // @ts-ignore
+        fbq('track', 'Purchase', {currency: "USD", value });
     }
 </script>

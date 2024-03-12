@@ -31,14 +31,14 @@ const { option } = Astro.props as Props;
 <script>
     document.querySelectorAll('.is-audit pricing_card-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
-    // @ts-ignore
+            // @ts-ignore
             dataLayer.push({
                 event: 'button_click',
-    // @ts-ignore
+                // @ts-ignore
                 button_text: e.target.textContent,
-    // @ts-ignore
+                // @ts-ignore
                 button_url: e.target.href,
-    // @ts-ignore
+                // @ts-ignore
                 button_location: 'Pricing Card - ' + e.target.parentNode.querySelector('.pricing_card-name').textContent,
             });
         });

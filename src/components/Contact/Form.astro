@@ -47,6 +47,9 @@ import Container from '../Container.astro';
 <script is:inline>
     if (window.location.href.includes('#success')) {
         document.querySelector('.form_success').style.display = 'block';
+        
+        // @ts-ignore
+        fbq('track', 'Contact', {});
     }
 
     document.querySelector('.form_btn').addEventListener('click', function(e) {
