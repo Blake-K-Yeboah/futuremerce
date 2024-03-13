@@ -42,6 +42,11 @@ const boxes = [
                 <path d="M314.293 113.707C314.683 114.098 315.317 114.098 315.707 113.707L322.071 107.343C322.462 106.953 322.462 106.319 322.071 105.929C321.681 105.538 321.047 105.538 320.657 105.929L315 111.586L309.343 105.929C308.953 105.538 308.319 105.538 307.929 105.929C307.538 106.319 307.538 106.953 307.929 107.343L314.293 113.707ZM314 -4.37114e-08L314 113L316 113L316 4.37114e-08L314 -4.37114e-08Z" fill="#8B81FF"/>
             </svg>                
         </div>
+        <div class="process_mobile-arrow">
+            <svg width="16" height="48" viewBox="0 0 16 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.29289 47.7071C7.68342 48.0976 8.31658 48.0976 8.7071 47.7071L15.0711 41.3431C15.4616 40.9526 15.4616 40.3195 15.0711 39.9289C14.6805 39.5384 14.0474 39.5384 13.6569 39.9289L8 45.5858L2.34314 39.9289C1.95262 39.5384 1.31945 39.5384 0.92893 39.9289C0.538406 40.3195 0.538406 40.9526 0.92893 41.3431L7.29289 47.7071ZM7 -4.37114e-08L7 47L9 47L9 4.37114e-08L7 -4.37114e-08Z" fill="#8B81FF"/>
+            </svg>                
+        </div>
         <div class="process_box results">
             <div class="process_box-head">
                 <h4 class="process_box-title">Boost Revenue and Conversions</h4>
@@ -84,6 +89,16 @@ const boxes = [
                 font-size: 24px;
                 line-height: 32px;
                 max-width: 800px;
+            }
+        }
+
+        &_mobile-arrow {
+            display: none;
+
+            @media screen and (max-width: 970px) {
+                display: flex;
+                justify-content: center;
+                margin: 20px auto;
             }
         }
 
@@ -203,18 +218,6 @@ const boxes = [
                     width: 100%;
                     max-width: 500px;
                     position: relative;
-                    margin-top: 80px;
-
-                    &:before {
-                        content: '';
-                        width: 16px;
-                        height: 47px;
-                        background: url('data:image/svg+xml,<svg width="16" height="47" viewBox="0 0 16 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.29289 46.7071C7.68342 47.0976 8.31658 47.0976 8.7071 46.7071L15.0711 40.3431C15.4616 39.9526 15.4616 39.3195 15.0711 38.9289C14.6805 38.5384 14.0474 38.5384 13.6569 38.9289L8 44.5858L2.34314 38.9289C1.95262 38.5384 1.31945 38.5384 0.92893 38.9289C0.538406 39.3195 0.538406 39.9526 0.92893 40.3431L7.29289 46.7071ZM7 -4.37114e-08L7 46L9 46L9 4.37114e-08L7 -4.37114e-08Z" fill="%238B81FF"/></svg>') center/cover no-repeat;
-                        position: absolute;
-                        top: -64px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                    }
                 }
 
                 * {
