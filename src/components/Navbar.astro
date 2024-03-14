@@ -32,7 +32,14 @@ const links: Link[] = [
     },
 ];
 ---
-
+<aside class="audits-bar">
+    <p class="audits-bar_text">
+        Boost your store's conversion rate and performance with a growth audit.
+        <a class="audits-bar_link" href="/audits">Learn more </a>
+    </p>
+    <div class="audits-bar_close"></div>
+</aside>
+<!--  HIDE CVPS
 <aside class="cvps">
     <div class="cvps_item">
         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.11133 24.82V22.6267C4.11133 21.9449 4.27888 21.3973 4.61399 20.984C4.94911 20.5698 5.37311 20.2302 5.88599 19.9653C7.01933 19.3875 8.13488 18.9413 9.23266 18.6267C10.3296 18.312 11.734 18.1547 13.446 18.1547C14.1127 18.1547 14.7024 18.1755 15.2153 18.2173C15.7291 18.2582 16.1833 18.3195 16.578 18.4013L15.3727 19.6067C15.1282 19.5622 14.8384 19.5311 14.5033 19.5133C14.1673 19.4964 13.8144 19.488 13.4447 19.488C11.8669 19.488 10.5189 19.6515 9.40066 19.9787C8.28155 20.3049 7.322 20.6902 6.52199 21.1347C6.11666 21.348 5.83577 21.572 5.67933 21.8067C5.52288 22.0404 5.44466 22.3138 5.44466 22.6267V23.488H13.266L14.5993 24.8213L4.11133 24.82ZM20.5887 26.2773L16.9113 22.6L17.8553 21.656L20.5887 24.3893L27.322 17.656L28.266 18.6L20.5887 26.2773ZM13.4447 15.18C12.3451 15.18 11.4038 14.788 10.6207 14.004C9.83755 13.22 9.44555 12.2787 9.44466 11.18C9.44466 10.0795 9.83666 9.13733 10.6207 8.35333C11.4029 7.5711 12.3442 7.17999 13.4447 7.17999C14.5451 7.17999 15.4873 7.5711 16.2713 8.35333C17.0536 9.13733 17.4447 10.0795 17.4447 11.18C17.4447 12.2795 17.0536 13.2209 16.2713 14.004C15.4873 14.788 14.5451 15.18 13.4447 15.18ZM13.4447 13.8467C14.178 13.8467 14.806 13.5853 15.3287 13.0627C15.8513 12.54 16.1122 11.9124 16.1113 11.18C16.1113 10.4467 15.8504 9.81866 15.3287 9.29599C14.8069 8.77333 14.1789 8.51244 13.4447 8.51333C12.7113 8.51333 12.0838 8.77421 11.562 9.29599C11.0402 9.81777 10.7789 10.4458 10.778 11.18C10.778 11.9133 11.0393 12.5409 11.562 13.0627C12.0847 13.5844 12.7122 13.8458 13.4447 13.8467Z" fill="white"/></svg>
@@ -65,6 +72,7 @@ const links: Link[] = [
         </div>
     </div>        
 </aside>
+ -->
 <nav class="navbar">
     <Container type="nav">
         <a class="navbar_brand" href="/" title="Home">
@@ -134,7 +142,59 @@ const links: Link[] = [
 </script>
 
 <style lang="scss">
-    .cvps {
+    .audits-bar {
+        display: flex !important;
+
+        @media screen and (max-width: 767px) {
+            height: 80px !important;
+        }
+
+        &_text {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            color: #FFF;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 500;
+            padding: 0 24px;
+
+            @media screen and (max-width: 767px) {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 4px;
+                
+                a {
+                    font-weight: 600;
+                }
+            }
+        }
+
+        &_link {
+            text-decoration: underline;
+            color: #FFF;
+        }
+
+        &_close {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: .65; 
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40px' height='40px' viewbox='0 0 40 40'%3E%3Cpath d='M 10,10 L 30,30 M 30,10 L 10,30' stroke='white' stroke-width='4' stroke-linecap='butt' /%3E%3C/svg%3E");
+            background-size: 100%;
+            width: 20px;
+            height: 20px;
+
+            @media screen and (min-width: 1248px) {
+                right: calc(50% - 580px);
+            transform: translate(50%, -50%);
+            }
+        }
+    }
+    .cvps, .audits-bar {
         position: fixed;
         top: 0;
         left: 0;
@@ -194,11 +254,15 @@ const links: Link[] = [
         left: 0;
         width: 100vw;
         height: 115px;
-        z-index: 98;
+        z-index: 100;
         transition: .4s ease-in-out;
         
         @media screen and (max-width: 942px) {
             height: 75px;
+        }
+
+        @media screen and (max-width: 767px) {
+            top: 80px;
         }
 
         &_menu-btn {
@@ -251,6 +315,7 @@ const links: Link[] = [
         &.scrolled {
             height: 75px;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            top: 0;
         }
 
         &_brand {
@@ -345,7 +410,7 @@ const links: Link[] = [
     }
 </style>
 
-
+<!-- HIDE CVPS
 <script>
     // @ts-ignore
     import Glide, {Swipe, Autoplay} from 'https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.modular.esm.js';
@@ -354,6 +419,7 @@ const links: Link[] = [
     var glide = new Glide('.cvps.glide', { type: 'carousel', focusAt: 'center', perView: 1, dragThreshold: 1, autoplay: 2000 }).mount({ Swipe, Autoplay });
     glide.play();
 </script>
+ -->
 
 <script is:inline>
     window.addEventListener('scroll', () => {
@@ -364,5 +430,10 @@ const links: Link[] = [
        } else {
         document.querySelector('.navbar').classList.remove('scrolled')
        }
+    });
+
+    document.querySelector('.audits-bar_close').addEventListener('click', (e) => {
+        document.querySelector('.navbar').style.top = 0;
+        document.querySelector('.audits-bar').remove();
     });
 </script>
