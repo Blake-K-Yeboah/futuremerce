@@ -1,15 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Home/Header.astro';
+import RecentBrands from '../components/Home/RecentBrands.astro';
+import Hiring from '../components/Home/Hiring.astro';
 import Process from '../components/Home/Process.astro';
 import Testimonial from '../components/Home/Testimonial.astro';
-import WhyChooseUs from '../components/Home/WhyChooseUs.astro';
-import ScopeOfWork from '../components/Home/ScopeOfWork.astro';
-import Pricing from '../components/Home/Pricing.astro';
-import FAQs from '../components/Home/FAQs.astro';
-import CallToAction from '../components/CallToAction.astro';
-import LatestNews from '../components/Home/LatestNews.astro';
-import RecentBrands from '../components/Home/RecentBrands.astro';
+import TextGrids from '../components/Home/TextGrids.astro';
 
 const schemaMetaInfo = `
 <meta itemprop="name" content="Futuremerce - Shopify development as a subscription">
@@ -21,12 +17,8 @@ const schemaMetaInfo = `
 <Layout title="Futuremerce - Shopify Development as a Subscription" metaInfo={{ schemaMetaInfo, canonical: "https://www.futuremerce.com/", description: "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." }} >
 	<Header />
 	<RecentBrands />
+	<Hiring />
 	<Process />
 	<Testimonial />
-	<WhyChooseUs />
-	<ScopeOfWork />
-	<Pricing />
-	<FAQs />
-	<CallToAction />
-	<LatestNews />
+	<TextGrids />
 </Layout>

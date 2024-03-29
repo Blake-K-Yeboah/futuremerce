@@ -3,26 +3,41 @@ import Badge from '../Badge.astro';
 import Step from './Step.astro';
 import Container from '../Container.astro';
 
-const steps: string[] = [
-`Subscribe to a plan & request as much development as you'd like.`,
-`Receive your completed work within a few business days on average.`,
-`We'll revise the work until you're 100% satisfied and happy.`
+interface Step {
+    title: string;
+    text: string;
+}
+
+const steps: Step[] = [
+    {
+        title: 'Flexibility',
+        text: 'Subscribe to a plan & request as much development as you\'d like.',
+    },
+    {
+        title: 'Speedy',
+        text: 'Receive your completed work within a few business days on average.',
+    },
+    {
+        title: 'Quality',
+        text: 'Top-of-the-industry developers guarantee elite-level bug-free code.',
+    },
 ]
 ---
 
 <section class="process" id="how-it-works">
     <Container>
-        <Badge text="How It Works" light={false}/>
-        <h2 class="process_title">We didn't <span>re-invent</span> the wheel, just <span>development</span></h2>
+        <Badge text="The Solution" light={false}/>
+        <h2 class="process_title">Embrace the new era of <span>development</span></h2>
+        <p class="process_text">Here’s why Futuremerce is the best choice for your project. No, we’re not exaggerating.</p>
         <div class="process_steps">
-            {steps.map((step, index) => <Step text={step} num={index + 1} />)}
+            {steps.map((step, index) => <Step text={step.text} title={step.title} index={index} />)}
         </div>
     </Container>
 </section>
 
 <style lang="scss">
     .process {
-        padding-top: 72px;
+        padding-top: 130px;
         
         &_title {
             color: #434343;
@@ -31,7 +46,7 @@ const steps: string[] = [
             font-style: normal;
             font-weight: 700;
             line-height: 50px;
-            max-width: 545px;
+            max-width: 500px;
             margin: 0 auto;
 
             > span {
@@ -47,6 +62,21 @@ const steps: string[] = [
             @media screen and (max-width: 450px) {
                 font-size: 26px;
                 line-height: 32px;
+            }
+        }
+
+        &_text {
+            color: #434343;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px;
+            max-width: 436px;
+            margin: 32px auto 40px;
+            
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
             }
         }
 

@@ -2,12 +2,13 @@
 interface Props {
     text: string;
     light?: boolean;
+    outline?: boolean;
 }
 
-const { text, light } = Astro.props as Props;
+const { text, light, outline } = Astro.props as Props;
 ---
 
-<div class={`badge ${light ? 'light' : ''}`}>
+<div class={`badge ${light ? 'light' : ''} ${outline ? 'outline' : ''}`}>
     {text}
 </div>
 
@@ -28,6 +29,12 @@ const { text, light } = Astro.props as Props;
         &.light {
             background: #fff;
             color: #232323;
+        }
+
+        &.outline {
+            border: 1px solid var(--lighter-purple);
+            background: #fff;
+            margin: 0 0 28px;
         }
     }
 </style>

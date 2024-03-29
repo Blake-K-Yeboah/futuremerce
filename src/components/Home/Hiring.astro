@@ -1,0 +1,120 @@
+---
+const boxes = [
+    {
+        title: 'Dev Agencies',
+        negatives: [
+            'Huge costs ($30K+ for a store)',
+            'Months (if not years) of development.',
+            'Poor communication'
+        ]
+    },
+    {
+        title: 'Freelancers',
+        negatives: [
+            'There’s a reason people talk down on Upwork and Fiverr.',
+            'It cost you $500. Do you really expect it to be good?'
+        ]
+    },
+    {
+        title: 'In-house developers',
+        negatives: [
+            'Paying $120,000 + benefits',
+            'Ongoing training costs you time and money'
+        ]
+    }
+];
+---
+
+<section class="hiring">
+    <h2 class="hiring_title">Hiring Shopify developers <span>shouldn't</span> be a <span>headache</span></h2>
+    <div class="hiring_grid">
+        {boxes.map(box => <div class="hiring_box">
+            <p class="hiring_box-title">{box.title}</p>
+            <ul class="hiring_box-negatives">
+                {box.negatives.map(n => <li>{n}</li>)}
+            </ul>
+        </div>)}
+    </div>
+</section>
+
+<style lang="scss">
+.hiring {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_title {
+        color: #434343;
+        text-align: center;
+        font-size: 42px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 56px;
+        margin: 0 auto 24px auto;
+        max-width: 600px;
+
+        span {
+            color: var(--lighter-purple);
+        }
+
+        @media screen and (max-width: 942px) {
+            font-size: 32px;
+            line-height: 40px;
+        }
+
+        @media screen and (max-width: 450px) {
+            font-size: 26px;
+            line-height: 32px;
+        }
+    }
+
+    &_grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 29px;
+        margin-top: 53px;
+        max-width: 1050px;
+    }
+
+    &_box {
+        padding: 24px;
+        border-radius: 12px;
+        background: #FFF;
+        box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.05);
+
+        &-title {
+            color: #434343;
+            font-size: 22px;
+            line-height: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        &-negatives {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 0;
+
+            li {
+                position: relative;
+                list-style: none;
+                padding-left: 34px;
+                color: #9B9B9B;
+                font-size: 16px;
+                line-height: 20px;
+            }
+
+            li:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 20px;
+                height: 18.87px;
+                background: url('data:image/svg+xml,<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0.104858C4.489 0.104858 0 4.34129 0 9.54222C0 14.7432 4.489 18.9796 10 18.9796C15.511 18.9796 20 14.7432 20 9.54222C20 4.34129 15.511 0.104858 10 0.104858ZM10 1.99233C14.4301 1.99233 18 5.36135 18 9.54222C18 13.7231 14.4301 17.0921 10 17.0921C5.56988 17.0921 2 13.7231 2 9.54222C2 5.36135 5.56988 1.99233 10 1.99233ZM6.70703 5.10003L5.29297 6.43453L8.58594 9.54222L5.29297 12.6499L6.70703 13.9844L10 10.8767L13.293 13.9844L14.707 12.6499L11.4141 9.54222L14.707 6.43453L13.293 5.10003L10 8.20772L6.70703 5.10003Z" fill="%23FF3636"/></svg>') center/cover no-repeat;
+            }
+        }
+    }
+}
+</style>

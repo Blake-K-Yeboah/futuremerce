@@ -1,0 +1,89 @@
+---
+// Components
+import { Image } from "astro:assets";
+import Badge from "../Badge.astro";
+
+// Images
+import devImage from '../../images/Developer.png';
+import expensesImage from '../../images/Decrease your expenses.png';
+---
+
+<section class="text-grid">
+    <div class="text-grid_content">
+        <Badge text="Subscription-based Development" outline={true} />
+        <h2 class="text-grid_title">Pay a Fraction of the Cost. Skyrocket your margins</h2>
+        <p class="text-grid_text">Pay only for time spent in development. <br> Not a minute more.</p>
+    </div>
+    <Image class="text-grid_image" src={expensesImage} alt="" loading="lazy" />
+</section>
+
+<section class="text-grid alternate">
+    <div class="text-grid_content">
+        <Badge text="Guaranteed Quality" outline={true} />
+        <h2 class="text-grid_title">From a 10x Developer</h2>
+        <p class="text-grid_text bold">You don’t need to spend hours on research, interviews, and looking at portfolios</p>
+        <ul class="text-grid_list">
+            <li class="text-grid_list-item">Hes worked with dozens of satisfied store owners </li>
+            <li class="text-grid_list-item">Attention to detail, bug-free deliverables and best practices are a given. Not a wish list.</li>
+        </ul>
+    </div>
+    <Image class="text-grid_image" src={devImage} alt="" loading="lazy" />
+</section>
+
+<style lang="scss">
+    .text-grid {
+        display: flex;
+        align-items: center;
+        max-width: 1024px;
+        margin: 54px auto 0;
+        justify-content: center;
+
+        &.alternate {
+            flex-direction: row-reverse;
+
+            .text-grid_image {
+                position: relative;
+                left: -80px;
+            }
+
+            .text-grid_title {
+                max-width: 300px;
+            }
+        }
+
+        &_title {
+            color: #434343;
+            font-size: 42px;
+            line-height: 50px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        &_text {
+            color: #434343;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 24px;
+            margin-top: 32px;
+            max-width: 430px;
+
+            &.bold {
+                font-weight: 700;
+            }
+        }
+
+        &_list {
+            margin-top: 16px;
+            padding-left: 20px;
+        }
+
+        &_list-item {
+            color: #434343;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 22px;
+            max-width: 430px;
+            margin-top: 5px;
+        }
+    }
+</style>
