@@ -436,4 +436,19 @@ const links: Link[] = [
         document.querySelector('.navbar').style.top = 0;
         document.querySelector('.audits-bar').remove();
     });
+
+    document.body.addEventListener('click', (e) => {
+        if (e.target.classList.contains('navbar_link')) {
+            e.preventDefault();
+
+            const url = e.target.href;
+
+            if (url.includes('/#') && window.location.pathname == '/') {
+                const el = url.split('/#')[1];
+                document.getElementById(el).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+    })
 </script>

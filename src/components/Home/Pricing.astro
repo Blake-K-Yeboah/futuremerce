@@ -8,21 +8,6 @@ import Brands from '../../images/Brands.png';
 
 const pricing = [
     {
-        name: 'Lite',
-        monthly: {
-            price: '$2,299',
-            getStarted: 'https://buy.stripe.com/00gbMh0O7aCb132005',
-        },
-        quarterly: {
-            price: '$1,999',
-            getStarted: 'https://buy.stripe.com/aEU4jPeEX25FeTSbIO',
-        },
-        description: ['For non Shopify Plus stores.','Perfect for smaller businesses'],
-        requestsAtATime: 'One request at a time',
-        color: false,
-        badge: ''
-    },
-    {
         name: 'Regular',
         monthly: {
             price: '$4,999',
@@ -50,7 +35,7 @@ const pricing = [
         },
         description: ['Double the requests.','Pause or cancel anytime'],
         requestsAtATime: 'Two requests at a time',
-        color: true,
+        color: false,
         badge: ''
     },
 ]
@@ -87,17 +72,14 @@ const { isAudit } = Astro.props as Props;
 <section class={`pricing ${isAudit ? 'is-audit' : ''}`} id="pricing">
     <Container>
         <Badge text="Pricing" />
-        <h2 class="pricing_title">{isAudit ? <Fragment set:html={`<span style="color: var(--lighter-purple);">Affordable</span> Packages For All Stores`} /> : <Fragment set:html={`Membership <span style="color: var(--lighter-purple);">Levels</span>`} />}</h2>
-        <p class="pricing_text">{isAudit ? 'Unlock the Hidden Potential of Your Ecommerce Store with a Futuremerce audit.' : 'Choose a plan that\'s right for you.'}</p>
+        <h2 class="pricing_title">{isAudit ? <Fragment set:html={`<span style="color: var(--lighter-purple);">Affordable</span> Packages For All Stores`} /> : 'Choose your plan'}</h2>
+        <p class="pricing_text">{isAudit ? 'Unlock the Hidden Potential of Your Ecommerce Store with a Futuremerce audit.' : 'What suits you best'}</p>
         {!isAudit ? 
         <div class="pricing_switch">
             <p class="pricing_switch-option active">Billed Monthly</p>
             <div class="pricing_switch-toggle"><div></div></div>
             <p class="pricing_switch-option">Billed Quarterly <span>(Save up to 20%)</span></p>
-        </div>
-        <div class="pricing_limited-spots">
-            2/5 spots left. Get onboarded today!
-        </div> : ''}
+        </div>: ''}
         {isAudit ? <div class="pricing_grid-container is-audit">
             <div class="pricing_grid active">
                 {auditsPricing.map(priceOption => <AuditPricingCard option={priceOption} />)}
@@ -139,6 +121,19 @@ const { isAudit } = Astro.props as Props;
     setTimeout(() => {
         window.updateHeight();
     }, 2000);
+
+    document.querySelectorAll('.pricing_grid-container:not(.is-audit) .pricing_grid').forEach(grid => {
+        const clone = grid.querySelector('.pricing_card:last-of-type').cloneNode(true);
+        clone.querySelector('.pricing_card-name').remove();
+        clone.querySelectorAll('.pricing_card-point').forEach(point => point.remove());
+        clone.querySelector('.pricing_card-price').innerHTML = 'Book a Call';
+        clone.querySelector('.pricing_card-text').innerHTML = 'Learn more about how Futuremerce works and how it can help you.';
+        clone.querySelector('.pricing_card-btn').innerHTML = 'Book a call';
+        clone.querySelector('.pricing_card-btn').setAttribute('href', '/contact#book-a-call');
+        clone.classList.add('book-a-call-card');
+
+        grid.appendChild(clone);
+    });
 </script>
 
 <script>

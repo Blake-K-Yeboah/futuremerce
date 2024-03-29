@@ -1,45 +1,40 @@
 ---
-import Badge from '../Badge.astro';
 import Container from '../Container.astro';
 
 const services = [
     {
-        title: `App Installation`,
-        text: `Our team can help install apps to ensure a seamless integration with your store and no downtime for your customers.`,
+        title: `Feature Board`,
+        text: `Add as many feature request to your board as you’d like`,
     },
     {
-        title: `Ongoing Support`,
-        text: `We offer continuous support while you’re a member to troubleshoot issues and ensure your store operates smoothly.`,
+        title: `Lightning Fast Delivery`,
+        text: `Get your development work one at a time in just a few days on average`,
     },
     {
-        title: `Speed Optimization`,
-        text: `We can help a variety of ways including image compression , code optimization, app evaluation and more.`,
+        title: `Top-notch quality`,
+        text: `High quality development at your finger tips whenever you need it.`,
     },
     {
-        title: `Theme Development`,
-        text: `From adding new features, to optimizing the layout for conversions, our experienced team can help with all your shopify theme needs including custom builds.`,
+        title: `Fixed monthly rate`,
+        text: `No surprises here! Pay the same fixed price each month.`,
     },
     {
-        title: `Analytics`,
-        text: `Our team can help analyze and setup customized reporting for your store, delivering clear and actionable insights.`,
+        title: `Flexible`,
+        text: `Pause or cancel at anytime you want, so you only pay for time actually used`,
     },
     {
-        title: `Audits & Consultancy`,
-        text: `We offer insights and strategy to help grow your Shopify business from technical performance to conversion optimization.`,
+        title: `Done For You`,
+        text: `Set it and forget it. No needed extra management`,
     },
 ]
 ---
 <section class="scope-of-work">
     <Container>
-        <Badge text="Scope Of Work"/>
-        <h2 class="scope-of-work_title">How We Can <span>Help</span>?</h2>
+        <h2 class="scope-of-work_title">Membership <span>Benefits</span></h2>
+        <p class="scope-of-work_text">Perks so good you'll never need to go anywhere else for your coding needs. Seriously</p>
         <div class="scope-of-work_grid">
             {services.map((service, i) => { return <div class="scope-of-work_grid-item">
-                    <div class="scope-of-work_grid-item-icon">
-                        <div>
-                            <img src={`/Icons/scope-of-work/icon-${i + 1}.svg`} alt="">
-                        </div>
-                    </div>
+                    <img src={`/Icons/scope-of-work/icon-${i + 1}.svg`} alt="">
                     <h3 class="scope-of-work_grid-item-title">{service.title}</h3>
                     <p class="scope-of-work_grid-item-text">{service.text}</p>
                 </div>
@@ -50,7 +45,7 @@ const services = [
 
 <style lang="scss">
     .scope-of-work {
-        margin: 280px 0 0 0;
+        margin: 124px 0 0 0;
         
             @media screen and (max-width: 710px) {
                 margin-top: 165px;
@@ -64,7 +59,7 @@ const services = [
             font-weight: 700;
             line-height: 50px;
             max-width: 545px;
-            margin: 0 auto 100px auto;
+            margin: 0 auto 24px auto;
 
             > span {
                 color: var(--lighter-purple);
@@ -80,6 +75,21 @@ const services = [
                 font-size: 26px;
                 line-height: 32px;
                 margin-bottom: 45px;
+            }
+        }
+
+        &_text {
+            color: #434343;
+            text-align: center;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px;
+            max-width: 436px;
+            margin: 0 auto 80px;
+            
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
             }
         }
 
@@ -110,6 +120,11 @@ const services = [
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+
+                img {
+                    width: 87px;
+                    height: 87px;
+                }
 
                 &-icon {
                     width: 87px;

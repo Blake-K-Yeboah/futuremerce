@@ -20,7 +20,7 @@ if (option.name == 'Enterprise') {
     <div class="pricing_card-price">{option[type].salePrice ? option[type].salePrice : option[type].price} <span>/ month</span></div>
     {type == 'quarterly' && <div class="pricing_card-price-text">Billed every 3 months</div>}
     <p class="pricing_card-text">{option.description[0]}<br>{option.description[1]}</p>
-    <div class="pricing_card-divider"></div>
+    <a class="pricing_card-btn" href={option[type].getStarted} title="Get started">Get Started</a>
     {planPoints.map(point => <div class="pricing_card-point">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="12" fill="#8B81FF"/>
@@ -28,26 +28,48 @@ if (option.name == 'Enterprise') {
         </svg>
         {point} 
     </div>)}
-    <a class="pricing_card-btn" href={option[type].getStarted} title="Get started">Get Started</a>
-    <a class="pricing_card-book-a-call" href="/contact#book-a-call" title="Book a call">Book a Call</a>
 </div>
 
 <script>
     document.querySelectorAll('.pricing_card-btn, .pricing_card-book-a-call').forEach(btn => {
         btn.addEventListener('click', function(e) {
-    // @ts-ignore
+            // @ts-ignore
+            const button_location = e.target.parentNode.classList.contains('book-a-call-card') ? 'Pricing Card - Book A Call' : 'Pricing Card - ' + e.target.parentNode.querySelector('.pricing_card-name').textContent + ' ('+document.querySelector('.pricing_switch-option.active').textContent.split(' ')[1]+')';
+            
+            // @ts-ignore
             dataLayer.push({
                 event: 'button_click',
-    // @ts-ignore
+                // @ts-ignore
                 button_text: e.target.textContent,
-    // @ts-ignore
+                // @ts-ignore
                 button_url: e.target.href,
-    // @ts-ignore
-                button_location: 'Pricing Card - ' + e.target.parentNode.querySelector('.pricing_card-name').textContent + ' ('+document.querySelector('.pricing_switch-option.active').textContent.split(' ')[1]+')',
+                // @ts-ignore
+                button_location,
             });
         });
     });
 </script>
+
+<style is:inline>
+    .book-a-call-card .pricing_card-price {
+        margin-top: 46px;
+    }
+
+    .book-a-call-card .pricing_card-price-text {
+        opacity: 0;
+        touch-action: none;
+        user-select: none;
+    }
+
+    @media screen and (max-width: 980px) {
+        .book-a-call-card .pricing_card-price {
+            margin-top: 0px;
+        }
+        .book-a-call-card .pricing_card-btn {
+            margin-bottom: 0;
+        }
+    }
+</style>
 
 <style lang="scss">
     .pricing_card {
@@ -162,6 +184,7 @@ if (option.name == 'Enterprise') {
             font-size: 15px;
             font-weight: 700;
             margin-top: 42px;
+            margin-bottom: 32px;
             text-decoration: none;
             transition: .25s ease-in-out;
 
