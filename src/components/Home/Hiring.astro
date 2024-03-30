@@ -31,7 +31,7 @@ const boxes = [
         {boxes.map(box => <div class="hiring_box">
             <p class="hiring_box-title">{box.title}</p>
             <ul class="hiring_box-negatives">
-                {box.negatives.map(n => <li>{n}</li>)}
+                {box.negatives.map(n => <li><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 -0.00769043C4.489 -0.00769043 0 4.48131 0 9.99231C0 15.5033 4.489 19.9923 10 19.9923C15.511 19.9923 20 15.5033 20 9.99231C20 4.48131 15.511 -0.00769043 10 -0.00769043ZM10 1.99231C14.4301 1.99231 18 5.56219 18 9.99231C18 14.4224 14.4301 17.9923 10 17.9923C5.56988 17.9923 2 14.4224 2 9.99231C2 5.56219 5.56988 1.99231 10 1.99231ZM6.70703 5.28528L5.29297 6.69934L8.58594 9.99231L5.29297 13.2853L6.70703 14.6993L10 11.4064L13.293 14.6993L14.707 13.2853L11.4141 9.99231L14.707 6.69934L13.293 5.28528L10 8.57825L6.70703 5.28528Z" fill="#FF3636"/></svg>{n}</li>)}
             </ul>
         </div>)}
     </div>
@@ -105,20 +105,13 @@ const boxes = [
             li {
                 position: relative;
                 list-style: none;
-                padding-left: 34px;
+                padding-left: 0;
                 color: #9B9B9B;
                 font-size: 16px;
                 line-height: 20px;
-            }
-
-            li:before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 20px;
-                height: 18.87px;
-                background: url('data:image/svg+xml,<svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 0.104858C4.489 0.104858 0 4.34129 0 9.54222C0 14.7432 4.489 18.9796 10 18.9796C15.511 18.9796 20 14.7432 20 9.54222C20 4.34129 15.511 0.104858 10 0.104858ZM10 1.99233C14.4301 1.99233 18 5.36135 18 9.54222C18 13.7231 14.4301 17.0921 10 17.0921C5.56988 17.0921 2 13.7231 2 9.54222C2 5.36135 5.56988 1.99233 10 1.99233ZM6.70703 5.10003L5.29297 6.43453L8.58594 9.54222L5.29297 12.6499L6.70703 13.9844L10 10.8767L13.293 13.9844L14.707 12.6499L11.4141 9.54222L14.707 6.43453L13.293 5.10003L10 8.20772L6.70703 5.10003Z" fill="%23FF3636"/></svg>') center/cover no-repeat;
+                display: flex;
+                align-items: start;
+                gap: 14px;
             }
         }
     }
