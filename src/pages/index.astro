@@ -34,3 +34,20 @@ const schemaMetaInfo = `
 	<CallToAction />
 	<LatestNews />
 </Layout>
+
+<style is:inline>
+/* Fix CTA Buttons */
+.call-to-action_btns {
+    gap: 16px;
+  }
+  
+  .call-to-action_btns > a:first-of-type {
+    color: var(--lighter-purple);
+    background: #fff;
+  }
+  
+  .call-to-action_btns > a:last-of-type {
+    color: #fff;
+    background: rgba(255,255,255,.19);
+  }
+</style>
