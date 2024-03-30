@@ -8,13 +8,23 @@
         padding: 52px 24px;
         background: var(--lighter-purple);
         margin-top: 100px;
-    
+
+        @media screen and (max-width: 767px) {
+            padding: 40px 24px;
+            margin-top: 75px;
+        }
+
         &_text {
             color: #fff;
             text-align: center;
             font-size: 42px;
             line-height: 50px;
             font-weight: 700;
+
+            @media screen and (max-width: 767px) {
+                font-size: 28px;
+                line-height: 36px;
+            }
         }
     }
 </style>

@@ -1,8 +1,3 @@
----
-import heroImage from '../../images/hero-image.png';
-import { Image } from 'astro:assets';
----
-
 <header class="header">
     <h1 class="header_title">The <span>  Shopify Developers</span> 
     you’ve been looking for</h1>
@@ -119,13 +114,13 @@ import { Image } from 'astro:assets';
             @media screen and (max-width: 942px) {
                 font-size: 32px;
                 line-height: 50px;
-                max-width: 560px;
+                max-width: 510px;
 
                 > span {
                     margin: 0 0 0 .35ch;
 
                     &:before {
-                        width: 285px;
+                        width: 335px;
                         height: 55px;
                     }
 
@@ -139,10 +134,10 @@ import { Image } from 'astro:assets';
             @media screen and (max-width: 710px) {
                 padding: 0 24px;
                 line-height: 58px;
-                max-width: 425px;
+                max-width: 472px;
 
                 > span {
-                    margin: 0 .35ch 0 0;
+                    margin: 0 .35ch 0 .5ch;
                     display: inline-block;
 
                     &:before {
@@ -150,12 +145,13 @@ import { Image } from 'astro:assets';
                         top: 2.5px;
                         transform: none;
                         height: 50px;
+                        width: 340px;
                     }
                     
                     &:after {
-                        bottom: -15px;
+                        bottom: -17px;
                         transform: scale(.75);
-                        right: -25px;
+                        right: -27px;
 
                     }
                 }
@@ -166,8 +162,20 @@ import { Image } from 'astro:assets';
                 line-height: 46px;
 
                 > span:before {
-                    width: 235px;
+                    width: 280px;
                     height: 40px;
+                }
+            }
+
+            @media screen and (max-width: 327px) {
+                font-size: 24px;
+                line-height: 43px;
+
+                > span:before {
+                    width: 260px;
+                }
+                > span:after {
+                    bottom: -23px;
                 }
             }
         }

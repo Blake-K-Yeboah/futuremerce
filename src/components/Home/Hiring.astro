@@ -51,7 +51,8 @@ const boxes = [
         font-weight: 700;
         line-height: 56px;
         margin: 0 auto 24px auto;
-        max-width: 600px;
+        max-width: 616px;
+        padding: 0 8px;
 
         span {
             color: var(--lighter-purple);
@@ -73,7 +74,12 @@ const boxes = [
         grid-template-columns: repeat(3, 1fr);
         gap: 29px;
         margin-top: 53px;
-        max-width: 1050px;
+        max-width: 1098px;
+        padding: 0 24px;
+        @media screen and (max-width: 942px) {
+            grid-template-columns: 1fr;
+            margin-top: 24px;
+        }
     }
 
     &_box {

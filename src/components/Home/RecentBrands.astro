@@ -18,6 +18,9 @@ import { Image } from 'astro:assets';
     .recent-brands {
         padding: 60px 24px 120px;
         margin-bottom: 40px;
+            @media screen and (max-width: 450px) {
+                padding: 24px 24px 100px;
+            }
 
         &_title {
             color: #222;
@@ -34,9 +37,10 @@ import { Image } from 'astro:assets';
             }
 
             @media screen and (max-width: 450px) {
-                font-size: 22px;
-                line-height: 32px;
+                font-size: 18px;
+                line-height: 26px;
                 max-width: 250px;
+                opacity: .5;
             }
         }
 
@@ -49,6 +53,10 @@ import { Image } from 'astro:assets';
             gap: 24px;
             margin: 0 auto;
 
+            @media screen and (max-width: 942px) {
+                gap: 12px;
+            }
+
             &-img {
                 height: 80px;
                 width: 80px;
@@ -59,6 +67,15 @@ import { Image } from 'astro:assets';
                     height: 50px;
                     width: fit-content;
                     border-radius: 0;
+                }
+                
+                @media screen and (max-width: 942px) {
+                    width: 50px;
+                    height: 50px;
+
+                    &:last-of-type {
+                        height: 30px;
+                    }
                 }
             }
         }

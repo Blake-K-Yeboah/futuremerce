@@ -34,9 +34,27 @@ import expensesImage from '../../images/Decrease your expenses.png';
     .text-grid {
         display: flex;
         align-items: center;
+        width: calc(100% - 32px);
         max-width: 1024px;
         margin: 54px auto 0;
         justify-content: center;
+
+        @media screen and (max-width: 942px) {
+            flex-direction: column-reverse !important;
+            max-width: 500px;
+
+            .text-grid_image {
+                transform: scale(1.25) translateX(-.125);
+                width: 100%;
+            }
+
+            .text-grid_content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
 
         &.alternate {
             flex-direction: row-reverse;
@@ -44,11 +62,24 @@ import expensesImage from '../../images/Decrease your expenses.png';
             .text-grid_image {
                 position: relative;
                 left: -80px;
+
+                @media screen and (max-width: 942px) {
+                    left: 0;
+                }
             }
 
             .text-grid_title {
                 max-width: 300px;
+
+                @media screen and (max-width: 942px) {
+                    max-width: unset;
+                }
             }
+        }
+
+        &_image {
+            width: 50%;
+            height: fit-content;
         }
 
         &_title {
@@ -57,6 +88,12 @@ import expensesImage from '../../images/Decrease your expenses.png';
             line-height: 50px;
             text-align: left;
             font-weight: 700;
+
+            @media screen and (max-width: 942px) {
+                text-align: center;
+                font-size: 30px;
+                line-height: 38px;
+            }
         }
 
         &_text {
@@ -66,6 +103,11 @@ import expensesImage from '../../images/Decrease your expenses.png';
             line-height: 24px;
             margin-top: 32px;
             max-width: 430px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 16px;
+                line-height: 22px;
+            }
 
             &.bold {
                 font-weight: 700;
@@ -84,6 +126,12 @@ import expensesImage from '../../images/Decrease your expenses.png';
             line-height: 22px;
             max-width: 430px;
             margin-top: 5px;
+
+            @media screen and (max-width: 942px) {
+                font-size: 15px;
+                line-height: 20px;
+                text-align: left;
+            }
         }
     }
 </style>
