@@ -72,6 +72,30 @@
                 }
             }
 
+            @keyframes texthighlight {
+                from {
+                    width: 0;
+                    height: 0;
+                }
+
+                to {
+                    width: 520px;
+                    height: 75px;
+                }
+            }
+
+            @keyframes cursormovement {
+                from {
+                    bottom: 41px;
+                    right: calc(100% - 7px);
+                }
+
+                to {
+                    bottom: -31px;
+                    right: -38px;
+                }
+            }
+
         &_title {
             color: #434343;
             text-align: center;
@@ -90,24 +114,31 @@
                     content: '';
                     border: 1px solid var(--lighter-purple);
                     background: #E8E5FF;
+                    position: absolute;
                     width: 520px;
                     height: 75px;
-                    position: absolute;
                     z-index: -1;
-                    left: 50%;
-                    top: 50%;
-                    transform: translate(-50%, -50%);
+                    left: -15px;
+
+                    @media screen and (min-width: 943px) {
+                        animation-name: texthighlight;
+                        animation-duration: 2s;
+                    }
                  }
 
                  &:after {
                     content: '';
                     position: absolute;
                     z-index: -1;
-                    bottom: -31px;
-                    right: -38px;
                     width: 33px;
                     height: 33px;
+                    bottom: -31px;
+                    right: -38px;
                     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="43" height="43" viewBox="0 0 43 43" fill="none"><path d="M23.7067 20.6548L31.6149 30.2422L28.4345 32.8669L20.5243 23.2817L16.5677 29.2878L11.6466 9.28214L30.3553 17.9118L23.7067 20.6548Z" fill="%23212121"/></svg>');
+                    @media screen and (min-width: 943px) {
+                        animation-name: cursormovement;
+                        animation-duration: 2s;
+                    }
                  }
             }
 
@@ -122,6 +153,9 @@
                     &:before {
                         width: 335px;
                         height: 55px;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
                     }
 
                     &:after {
