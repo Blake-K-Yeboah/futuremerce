@@ -3,7 +3,7 @@ title: Costly Shopify mistakes to avoid in 2024
 slug: costly-shopify-mistakes-to-avoid-in-2024
 excerpt: In this article, we’ll cover some of the most common, costly mistakes Shopify store owners make and how you can avoid them.
 date: "2024-01-29"
-category: CRO
+category: Development
 ---
 
 Starting and running a Shopify store can fun, but also very challenging.
