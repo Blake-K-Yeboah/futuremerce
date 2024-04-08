@@ -49,12 +49,12 @@ const schemaMetaInfo = `
 `;
 ---
 
-<Layout title={`Futuremerce - ${frontmatter.title}`} metaInfo={{ description: frontmatter.exceprt, canonical: "https://www.futuremerce.com/posts/"+frontmatter.slug, itemType: 'http://schema.org/BlogPosting', schemaMetaInfo}}>
+<Layout title={frontmatter.title} metaInfo={{ description: frontmatter.excerpt, canonical: "https://www.futuremerce.com/posts/"+frontmatter.slug, itemType: 'http://schema.org/BlogPosting', schemaMetaInfo}}>
     <Breadcrumbs links={links} />
     <Container type="article">
       <h1 class="title">{frontmatter.title}</h1>
       <span class="category">{frontmatter.category}</span>
-      <img src={`/post-thumbnails/${frontmatter.slug}.webp`} alt={frontmatter.title} class="image" loading="eager"/>
+      <img src={`/post-thumbnails/${frontmatter.slug}.webp`} alt={frontmatter.title} class="image" loading="eager" fetchpriority="high"/>
       <div class="header-row">
         <p class="date">{`${date}${ending} ${month} ${year}`}</p>
         <Share frontmatter={frontmatter} /> 

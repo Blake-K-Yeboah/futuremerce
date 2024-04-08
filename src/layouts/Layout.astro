@@ -41,16 +41,16 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://futuremerce.com/" />
-		<meta property="og:title" content="Futuremerce - Shopify Development as a Subscription" />
-		<meta property="og:description" content="Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." />
-		<meta property="og:image" content="/overview.png" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={metaInfo ? metaInfo.description : "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service."} />
+		<meta property="og:image" content="/Overview.png" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://futuremerce.com/" />
-		<meta property="twitter:title" content="Futuremerce - Shopify Development as a Subscription" />
-		<meta property="twitter:description" content="Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service." />
-		<meta property="twitter:image" content="/overview.png" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={metaInfo ? metaInfo.description : "Streamline Your Shopify Success with a Development Plan. We replace unreliable freelancers and expensive agencies with a simple, subscription service."} />
+		<meta property="twitter:image" content="/Overview.png" />
 
 		<!-- Google Recaptcha  -->
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -72,7 +72,7 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 		<slot transition:animate="fade"/>
 		<Footer />
 
-		<script src="//code.tidio.co/s8qfy20qy7wgk9mo01jo9f42r2gjrwnf.js" async defer is:inline></script>
+		<script src="//code.tidio.co/s8qfy20qy7wgk9mo01jo9f42r2gjrwnf.js" fetchpriority="low" async defer is:inline></script>
 	</body>
 </html>
 
