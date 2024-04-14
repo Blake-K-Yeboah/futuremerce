@@ -11,11 +11,11 @@ const pricing = [
         name: 'Regular',
         monthly: {
             price: '$4999',
-            getStarted: 'https://buy.stripe.com/bIY9E97cv4dN2766oo',
+            getStarted: 'https://buy.stripe.com/14k5nTbsLcKj4fefZ9',
         },
         quarterly: {
             price: '$3999',
-            getStarted: 'https://buy.stripe.com/cN28A5cwPeSr6nm9AB',
+            getStarted: 'https://buy.stripe.com/3cs6rXfJ1eSr3ba7sE',
         },
         description: ['One request at a time.','Pause or cancel anytime'],
         requestsAtATime: 'One request at a time',
@@ -27,11 +27,11 @@ const pricing = [
         name: 'Pro',
         monthly: {
             price: '$7999',
-            getStarted: 'https://buy.stripe.com/dR67w1aoH39J9zy5km',
+            getStarted: 'https://buy.stripe.com/eVa5nTfJ139JbHG7sF',
         },
         quarterly: {
             price: '$6999',
-            getStarted: 'https://buy.stripe.com/5kA03z0O77pZfXW9AD',
+            getStarted: 'https://buy.stripe.com/14k4jPdAT7pZeTScN0',
         },
         description: ['Double the requests.','Pause or cancel anytime'],
         requestsAtATime: 'Two requests at a time',
@@ -93,7 +93,7 @@ const { isAudit } = Astro.props as Props;
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
         </div>}
-        {!isAudit ? <p class="pricing_small-text">All prices are in USD.</p> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
+        {!isAudit ? <p class="pricing_small-text">All prices are in AUD.</p> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
     </Container>
 </section>
 
