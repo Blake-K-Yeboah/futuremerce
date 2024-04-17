@@ -10,11 +10,11 @@ const pricing = [
     {
         name: 'Regular',
         monthly: {
-            price: '$4999',
+            price: 'A$4999',
             getStarted: 'https://buy.stripe.com/14k5nTbsLcKj4fefZ9',
         },
         quarterly: {
-            price: '$3999',
+            price: 'A$3999',
             getStarted: 'https://buy.stripe.com/3cs6rXfJ1eSr3ba7sE',
         },
         description: ['One request at a time.','Pause or cancel anytime'],
@@ -26,11 +26,11 @@ const pricing = [
     {
         name: 'Pro',
         monthly: {
-            price: '$7999',
+            price: 'A$7999',
             getStarted: 'https://buy.stripe.com/eVa5nTfJ139JbHG7sF',
         },
         quarterly: {
-            price: '$6999',
+            price: 'A$6999',
             getStarted: 'https://buy.stripe.com/14k4jPdAT7pZeTScN0',
         },
         description: ['Double the requests.','Pause or cancel anytime'],
@@ -93,7 +93,7 @@ const { isAudit } = Astro.props as Props;
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
         </div>}
-        {!isAudit ? <p class="pricing_small-text">All prices are in AUD.</p> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
+        {!isAudit ? <div class="pricing_bottom">Don't need recurring work? Reach out, let's discuss your project. <a href="/contact" title="Contact us" aria-label="Contact us">Contact Us</a></div> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
     </Container>
 </section>
 
@@ -191,6 +191,33 @@ const { isAudit } = Astro.props as Props;
             margin: 60px auto 0;
             height: fit-content;
             display: block;
+        }
+
+        &_bottom {
+            border-radius: 12px;
+            background: #FFF;
+            box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.05);
+            margin: 24px auto 0;
+            width: 100%;
+            max-width: 1072px;
+            padding: 24px;
+                color: #434343;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            text-align: center;
+
+            > a {
+                color: var(--lighter-purple);
+                text-decoration: none;
+            }
+
+            @media screen and (max-width: 980px) {
+                max-width: 500px;
+                margin: -20px auto 0;
+                text-align: left;
+                padding: 24px 22px;
+            }
         }
         
         &_title {
