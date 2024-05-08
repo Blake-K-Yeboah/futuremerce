@@ -10,11 +10,11 @@ const pricing = [
     {
         name: 'Regular',
         monthly: {
-            price: 'A$4999',
+            price: '$4999',
             getStarted: 'https://buy.stripe.com/14k5nTbsLcKj4fefZ9',
         },
         quarterly: {
-            price: 'A$3999',
+            price: '$3999',
             getStarted: 'https://buy.stripe.com/3cs6rXfJ1eSr3ba7sE',
         },
         description: ['One request at a time.','Pause or cancel anytime'],
@@ -26,11 +26,11 @@ const pricing = [
     {
         name: 'Pro',
         monthly: {
-            price: 'A$7999',
+            price: '$7999',
             getStarted: 'https://buy.stripe.com/eVa5nTfJ139JbHG7sF',
         },
         quarterly: {
-            price: 'A$6999',
+            price: '$6999',
             getStarted: 'https://buy.stripe.com/14k4jPdAT7pZeTScN0',
         },
         description: ['Double the requests.','Pause or cancel anytime'],
@@ -93,7 +93,7 @@ const { isAudit } = Astro.props as Props;
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
         </div>}
-        {!isAudit ? <div class="pricing_bottom">Don't need recurring work? Reach out, let's discuss your project. <a href="/contact" title="Contact us" aria-label="Contact us">Contact Us</a></div> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
+        {!isAudit ? <div class="pricing_bottom">Not sure if a plan is right? Reach out, let's discuss your project. <a href="/contact" title="Contact us" aria-label="Contact us">Contact Us</a></div> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
     </Container>
 </section>
 
