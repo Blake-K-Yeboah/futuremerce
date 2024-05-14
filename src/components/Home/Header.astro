@@ -7,7 +7,7 @@
         </a>
         <!--<a href="#how-it-works" class="secondary">How It Works</a>-->
     </div>
-    <div class="header_limited-spots">Limited spots <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.6667C11.1296 13.6667 13.6667 11.1296 13.6667 8C13.6667 4.87039 11.1296 2.33333 8 2.33333C4.87039 2.33333 2.33333 4.87039 2.33333 8C2.33333 11.1296 4.87039 13.6667 8 13.6667Z" stroke="#D80000" stroke-width="1.33333"/><path d="M3.33333 1.86933C2.7253 2.22039 2.22039 2.72531 1.86933 3.33333M12.6667 1.86933C13.2747 2.22039 13.7796 2.72531 14.1307 3.33333M8 4.33333V7.83333C8 7.92533 8.07466 8 8.16666 8H11" stroke="#D80000" stroke-width="1.33333" stroke-linecap="round"/></svg></div>
+    <div class="header_available-now"><div></div> Available now</div>
     <!--<Image class="header_image" src={heroImage} alt="" loading="eager"> -->
 </header>
 
@@ -41,34 +41,44 @@
         @media screen and (max-width: 710px) {
             padding-top: 40px;
         }
-
+                
         @keyframes pulse {
             0% {
-                opacity: 1;
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(0, 225, 0, 0.7);
             }
 
-            50% {
-                opacity: 0;
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 5px rgba(0, 225, 0, 0);
             }
 
             100% {
-                opacity: 1;
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(0, 225, 0, 0);
             }
         }
 
-            &_limited-spots {
+            &_available-now {
                 margin: 22px 0 0 0;
                 display: flex;
                 align-items: center;
                 gap: 4px;
-                color: #D80000;
+                color: black;
                 font-size: 15px;
                 font-style: normal;
                 font-weight: 600;
                 line-height: normal;
                 
-                svg {
-                    animation: pulse 1.5s infinite;
+                > div {
+                    background: rgb(0, 204, 0);
+                    border-radius: 50%;
+                    margin: 10px 5px;
+                    height: 10px;
+                    width: 10px;
+                    box-shadow: 0 0 0 0 rgba(0, 204, 0, 1);
+                    transform: scale(1);
+                    animation: pulse 2s infinite;
                 }
             }
 
