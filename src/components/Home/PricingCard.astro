@@ -6,11 +6,8 @@ interface Props {
 
 const { option, type } = Astro.props as Props;
 
-let planPoints = [option.requestsAtATime, 'Same day onboarding','Unlimited revisions','No lock-in contracts','Pause or cancel anytime','Easy credit-card payments'];
+let planPoints = [option.requestsAtATime, 'Ongoing maintanence','Unlimited revisions','No lock-in contracts','Pause or cancel anytime','Easy credit-card payments'];
 
-if (option.name == 'Enterprise') {
-    planPoints = [option.requestsAtATime, 'Weekly 1:1 Meetings', ...planPoints.slice(1, 5)]
-}
 ---
 
 <div class={`pricing_card ${option.color ? 'primary' : ''}`}>
