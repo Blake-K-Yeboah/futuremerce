@@ -6,7 +6,7 @@ interface Props {
 
 const { option, type } = Astro.props as Props;
 
-let planPoints = [option.requestsAtATime, 'Ongoing maintanence','Unlimited revisions','No lock-in contracts','Pause or cancel anytime','Easy credit-card payments'];
+let planPoints = [option.requestsAtATime, 'Ongoing maintenance & support', 'Unlimited revisions', 'No lock-in contracts', 'Pause or cancel anytime'];
 
 ---
 
@@ -221,6 +221,16 @@ let planPoints = [option.requestsAtATime, 'Ongoing maintanence','Unlimited revis
             .pricing_card-btn {
                 color: var(--lighter-purple) !important;
                 background: #fff;
+            }
+
+            svg  {
+                circle {
+                    fill: #fff;
+                }
+
+                path {
+                    fill: var(--lighter-purple);
+                }
             }
         }
     }

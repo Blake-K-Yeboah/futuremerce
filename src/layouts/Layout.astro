@@ -136,6 +136,12 @@ if (metaInfo && metaInfo.itemType) itemType = metaInfo.itemType;
 	body {
 		font-family: 'Montserrat', sans-serif;
 		padding-top: 115px;
+
+		@media screen and (max-width: 767px) {
+			&[itemtype*="Blog"] {
+				padding-top: 80px;
+			}
+		}
 	}
 
 	// Page Title

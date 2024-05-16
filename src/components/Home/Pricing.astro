@@ -18,7 +18,7 @@ const pricing = [
             getStarted: 'https://buy.stripe.com/00g3fL68rdOneTS4gv',
         },
         description: ['One request at a time.','Pause or cancel anytime'],
-        requestsAtATime: 'One request at a time',
+        requestsAtATime: 'Perfect for smaller stores',
         color: false,
         badge: ''
 
@@ -34,8 +34,8 @@ const pricing = [
             getStarted: 'https://buy.stripe.com/fZedUp9kD4dN2767sJ',
         },
         description: ['Double the requests.','Pause or cancel anytime'],
-        requestsAtATime: 'Two requests at a time',
-        color: false,
+        requestsAtATime: 'Best bang for your buck',
+        color: true,
         badge: ''
     },
 ]
@@ -93,14 +93,18 @@ const { isAudit } = Astro.props as Props;
                 {pricing.map(priceOption => <PricingCard option={priceOption} type="quarterly" />)}
             </div>
         </div>}
-        {!isAudit ? <div class="pricing_bottom">Not sure if a plan is right? Reach out, let's discuss your project. <a href="/contact" title="Contact us" aria-label="Contact us">Contact Us</a></div> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
+        {!isAudit ? <div class="pricing_bottom">Not sure if a plan is right for you? <a href="/contact#book-a-call" title="Book a free consultation" aria-label="Book a free consultation">Book a free consultation</a></div> : <Image alt="" class="pricing_brands" loading="lazy" src={Brands} />}
     </Container>
 </section>
 
 <script is:inline>
     window.updateHeight = () => {
         if (document.querySelector('.pricing_grid-container')) {
-            document.querySelector('.pricing_grid-container').style.height = `${document.querySelector('.pricing_grid.quarterly') ? document.querySelector('.pricing_grid.quarterly').clientHeight : document.querySelector('.pricing_grid').clientHeight}px`
+            let newHeight = document.querySelector('.pricing_grid.quarterly').clientHeight;
+
+            if (window.innerWidth < 768) newHeight += 40;
+            
+            document.querySelector('.pricing_grid-container').style.height = `${newHeight}px`
         }
     }
 
@@ -122,18 +126,17 @@ const { isAudit } = Astro.props as Props;
         window.updateHeight();
     }, 2000);
 
-    document.querySelectorAll('.pricing_grid-container:not(.is-audit) .pricing_grid').forEach(grid => {
-        const clone = grid.querySelector('.pricing_card:last-of-type').cloneNode(true);
-        clone.querySelector('.pricing_card-name').remove();
-        clone.querySelectorAll('.pricing_card-point').forEach(point => point.remove());
-        clone.querySelector('.pricing_card-price').innerHTML = 'Book a Call';
-        clone.querySelector('.pricing_card-text').innerHTML = 'Learn more about how Futuremerce works and how it can help you.';
-        clone.querySelector('.pricing_card-btn').innerHTML = 'Book a call';
-        clone.querySelector('.pricing_card-btn').setAttribute('href', '/contact#book-a-call');
-        clone.classList.add('book-a-call-card');
-
-        grid.appendChild(clone);
-    });
+    // document.querySelectorAll('.pricing_grid-container:not(.is-audit) .pricing_grid').forEach(grid => {
+    //     const clone = grid.querySelector('.pricing_card:last-of-type').cloneNode(true);
+    //     clone.querySelector('.pricing_card-name').remove();
+    //     clone.querySelectorAll('.pricing_card-point').forEach(point => point.remove());
+    //     clone.querySelector('.pricing_card-price').innerHTML = 'Book a Call';
+    //     clone.querySelector('.pricing_card-text').innerHTML = 'Learn more about how Futuremerce works and how it can help you.';
+    //     clone.querySelector('.pricing_card-btn').innerHTML = 'Book a call';
+    //     clone.querySelector('.pricing_card-btn').setAttribute('href', '/contact#book-a-call');
+    //     clone.classList.add('book-a-call-card');
+    //     grid.appendChild(clone);
+    // });
 </script>
 
 <script>
@@ -153,6 +156,9 @@ const { isAudit } = Astro.props as Props;
                 document.querySelector('.pricing_switch-option:last-of-type').classList.add('active');
                 document.querySelector('.pricing_grid.quarterly').classList.add('active');
             }
+
+            // @ts-ignore
+            window.updateHeight();
         });
 
         document.querySelectorAll('.pricing_switch-option').forEach(switchEl => {
@@ -199,12 +205,12 @@ const { isAudit } = Astro.props as Props;
             box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.05);
             margin: 24px auto 0;
             width: 100%;
-            max-width: 1072px;
+                max-width: 767px;
             padding: 24px;
                 color: #434343;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
-            line-height: 24px;
+            line-height: 26px;
             text-align: center;
 
             > a {
@@ -343,7 +349,7 @@ const { isAudit } = Astro.props as Props;
 
         &_grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
             margin-top: 12px;
             transition: opacity .5s ease;
@@ -357,6 +363,7 @@ const { isAudit } = Astro.props as Props;
                 max-width: 500px;
                 left: 50%;
                 transform: translateX(-50%);
+                gap: 16px;
             }
 
             @media screen and (max-width: 450px) {
@@ -373,7 +380,7 @@ const { isAudit } = Astro.props as Props;
 
             &-container {
                 width: 100%;
-                max-width: 1072px;
+                max-width: 767px;
                 margin: 42px auto 0 auto;
                 position: relative;
                 height: 650px;

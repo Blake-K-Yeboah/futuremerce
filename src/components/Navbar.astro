@@ -261,7 +261,7 @@ const links: Link[] = [
         }
 
         @media screen and (max-width: 767px) {
-            top: 40px;
+            top: 0px;
             height: 80px !important;
         }
 
@@ -427,11 +427,6 @@ const links: Link[] = [
        } else {
         document.querySelector('.navbar').classList.remove('scrolled')
        }
-    });
-
-    document.querySelector('.audits-bar_close').addEventListener('click', (e) => {
-        document.querySelector('.navbar').style.top = 0;
-        document.querySelector('.audits-bar').remove();
     });
 
     document.body.addEventListener('click', (e) => {
