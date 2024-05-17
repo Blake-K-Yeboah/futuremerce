@@ -34,9 +34,9 @@ const filteredPosts = await posts.filter(post => featured.includes(post.frontmat
                     </div>
                     <div class="post-slide_content">
                         <p class="post-slide_content-date">{`${date}${ending} ${month} ${year}`}</p>
-                        <a class="post-slide_content-title" href={`/posts/${post.frontmatter.slug}`} title={post.frontmatter.title}>{post.frontmatter.title}</a>
+                        <a class="post-slide_content-title" href={`/posts/${post.frontmatter.slug}/`} title={post.frontmatter.title}>{post.frontmatter.title}</a>
                         <p class="post-slide_content-text">{post.frontmatter.excerpt}</p>
-                        <a class="post-slide_content-cta" href={`/posts/${post.frontmatter.slug}`} aria-label={post.frontmatter.title} title="Read more">READ MORE <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_169_538)"><path d="M8.086 4.50001L5.0505 1.46451L5.7575 0.757507L10 5.00001L9.6465 5.35351L5.7575 9.24251L5.0505 8.53551L8.086 5.50001L0 5.50001V4.50001H8.086Z" fill="#8B81FF"/></g><defs><clipPath id="clip0_169_538"><rect width="10" height="10" fill="white" transform="matrix(0 1 -1 0 10 0)"/></clipPath></defs></svg></a>
+                        <a class="post-slide_content-cta" href={`/posts/${post.frontmatter.slug}/`} aria-label={post.frontmatter.title} title="Read more">READ MORE <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_169_538)"><path d="M8.086 4.50001L5.0505 1.46451L5.7575 0.757507L10 5.00001L9.6465 5.35351L5.7575 9.24251L5.0505 8.53551L8.086 5.50001L0 5.50001V4.50001H8.086Z" fill="#8B81FF"/></g><defs><clipPath id="clip0_169_538"><rect width="10" height="10" fill="white" transform="matrix(0 1 -1 0 10 0)"/></clipPath></defs></svg></a>
                     </div>
                 </li>)
             })}

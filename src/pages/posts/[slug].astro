@@ -49,7 +49,7 @@ const schemaMetaInfo = `
 `;
 ---
 
-<Layout title={frontmatter.title} metaInfo={{ description: frontmatter.excerpt, canonical: "https://www.futuremerce.com/posts/"+frontmatter.slug, itemType: 'http://schema.org/BlogPosting', schemaMetaInfo}}>
+<Layout title={frontmatter.title + " - Futuremerce"} metaInfo={{ description: frontmatter.excerpt, canonical: "https://www.futuremerce.com/posts/"+frontmatter.slug+"/", itemType: 'http://schema.org/BlogPosting', schemaMetaInfo}}>
     <Breadcrumbs links={links} />
     <Container type="article">
       <h1 class="title">{frontmatter.title}</h1>

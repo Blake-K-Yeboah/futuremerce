@@ -24,7 +24,7 @@ This includes the amount of third-party tools you’re using, the amount and siz
 
 All of these factors play a vital role in your store’s speed so its important to examine each and make the necessary adjustments.
 
-We have a whole other article talking about how you can improve your store’s speed. We highly suggest you [check it out](</[posts/improve-your-shopify-store-speed](http://localhost:4321/posts/improve-your-shopify-store-speed)>).
+We have a whole other article talking about how you can improve your store’s speed. We highly suggest you [check it out](/posts/improve-your-shopify-store-speed/).
 
 By improving your store’s sped, we can guarantee you’ll convert more users and deliver a much better experience to your customers.
 
@@ -69,4 +69,4 @@ Improving your conversion rate is a tricky but vital process to grow your store 
 
 We hope you’ve found this article useful and learned a thing or two.
 
-We’d highly recommend you cehckout our [conversion focused design tips](<[/posts/design-tips-to-improve-your-shopify-store](http://localhost:4321/posts/design-tips-to-improve-your-shopify-store)>) articles to learn more about how you can boost your conversion rate through your design.
+We’d highly recommend you cehckout our [conversion focused design tips](/posts/design-tips-to-improve-your-shopify-store/) articles to learn more about how you can boost your conversion rate through your design.

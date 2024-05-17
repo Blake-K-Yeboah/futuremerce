@@ -7,7 +7,7 @@ interface Props {
 const { post, hidden = false } = Astro.props as Props;
 ---
 
-<a class={`post ${hidden ? 'hidden' : ''}`} href={`/posts/${post.frontmatter.slug}`} data-category={post.frontmatter.category} aria-label={post.frontmatter.title} title={post.frontmatter.title} itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
+<a class={`post ${hidden ? 'hidden' : ''}`} href={`/posts/${post.frontmatter.slug}/`} data-category={post.frontmatter.category} aria-label={post.frontmatter.title} title={post.frontmatter.title} itemid={"https://www.futuremerce.com/posts/"+post.frontmatter.slug+"/"} itemscope itemtype="http://schema.org/BlogPosting">
     <img src={`/post-thumbnails/${post.frontmatter.slug}.webp`} alt={post.frontmatter.title} class="post_image" loading="lazy"/>
     <span class="post_badge">{post.frontmatter.category}</span>
     <h4 class="post_title">{post.frontmatter.title}</h4>
