@@ -6,7 +6,8 @@ import Container from './Container.astro'
 
 interface Link {
     label: string;
-    href: string;
+    href?: string;
+    sublinks?: Link[]
 }
 
 const links: Link[] = [
@@ -15,8 +16,29 @@ const links: Link[] = [
         href: '/#how-it-works',
     },
     {
-        label: 'Benefits',
-        href: '/#benefits'
+        label: 'Services',
+        sublinks: [
+            {
+                label: 'Shopify Web Development',
+                href: '#todo'
+            },
+            {
+                label: 'Speed Optimisation',
+                href: '#todo'
+            },
+            {
+                label: 'Shopify Plus Development',
+                href: '#todo'
+            },
+            {
+                label: 'Performance & Maintenance',
+                href: '#todo'
+            },
+            {
+                label: 'Shopify Store Migration',
+                href: '#todo'
+            },
+        ]
     },
     {
         label: 'Pricing',
@@ -31,6 +53,11 @@ const links: Link[] = [
         href: '/blog/'
     },
 ];
+
+const chevronSVG = `<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.00003 9.33334C6.7667 9.33334 6.53337 9.21668 6.4167 9.10001L2.5667 5.25001C2.2167 4.90001 2.2167 4.31668 2.5667 3.96668C2.9167 3.61668 3.50003 3.61668 3.85003 3.96668L7.00003 7.11668L10.15 3.96668C10.5 3.61668 11.0834 3.61668 11.4334 3.96668C11.7834 4.31668 11.7834 4.90001 11.4334 5.25001L7.70003 8.98334C7.4667 9.21668 7.23337 9.33334 7.00003 9.33334Z" fill="black"/>
+</svg>`
+
 ---
 <aside class="cvps">
     <div class="cvps_item">
@@ -70,7 +97,12 @@ const links: Link[] = [
             <Image src={logo} alt="Futuremerce Logo">
         </a>
         <div class="navbar_links">
-            {links.map(link => <a href={link.href} class="navbar_link" title={link.label}>{link.label}</a>)}
+            {links.map(link => {
+                return (<div>
+                    <a href={link.href ? link.href : '#'} class="navbar_link" title={link.label}>{link.label} {link.sublinks ? <Fragment set:html={chevronSVG} /> : ''}</a>
+                    {link.sublinks ? <div class="navbar_submenu">{link.sublinks.map(link => <a href={link.href ? link.href : '#'} class="navbar_sublink" title={link.label}>{link.label}</a>)}</div>: ''}
+                </div>)
+            })}
         </div>
         <div class="navbar_btns">
             <a href="/contact#book-a-call" class="navbar_btn" title="Book a call">Book A Call</a>
@@ -79,7 +111,7 @@ const links: Link[] = [
     </Container>
     <div class="mobile-menu">
         <div class="mobile-menu_links">
-            {links.map(link => <a href={link.href} class="navbar_link" title={link.label}>{link.label}</a>)}
+            {links.map(link => <a href={link.href} class="navbar_link" title={link.label}>{link.label} {link.sublinks ? <Fragment set:html={chevronSVG} /> : ''}</a>)}
         </div>
             <a href="/contact#book-a-call" class="navbar_btn mobile" title="Book a call">Book A Call</a>
     </div>
@@ -117,8 +149,7 @@ const links: Link[] = [
             });
         });
 
-    document.querySelectorAll('.navbar_link').forEach(link => {
-        link.addEventListener('click', function(e) {
+        const linkClickListener = (e) => {
             if (e.target.href.includes('blog')) {
                 window.location.pathname = '/blog'
             }
@@ -128,7 +159,14 @@ const links: Link[] = [
                 link_text: e.target.textContent,
                 link_url: e.target.href,
             });
-        });
+        }
+
+    document.querySelectorAll('.navbar_link').forEach(link => {
+        link.addEventListener('click', linkClickListener);
+    });
+
+    document.querySelectorAll('.navbar_sublink').forEach(link => {
+        link.addEventListener('click', linkClickListener);
     });
 
     // if (window.location.href.includes('audits')) {
@@ -335,6 +373,18 @@ const links: Link[] = [
             justify-content: center;
             gap: 28px;
 
+            > div {
+                position: relative;
+                width: fit-content;
+
+                &:hover {
+                    .navbar_submenu {
+                        opacity: 1;
+                        max-height: 300px;
+                    }
+                }
+            }
+
             @media screen and (max-width: 942px) {
                 display: none;
             }
@@ -348,6 +398,9 @@ const links: Link[] = [
             line-height: normal;
             text-decoration: none;
             transition: .2s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 6px;
 
             &:hover {
                 color: var(--lighter-purple);
@@ -389,7 +442,7 @@ const links: Link[] = [
             transition: .2s ease-in-out;
 
             &:hover {
-                        box-shadow: 6px 6px 0px rgba(0,0,0,0.15);
+                box-shadow: 6px 6px 0px rgba(0,0,0,0.15);
             }
 
             &.mobile {
@@ -406,6 +459,68 @@ const links: Link[] = [
                  }
             }
         }
+        
+
+        &_submenu {
+            position: absolute;
+            top: calc(100% + 26px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            z-index: 1;
+            width: 275px;
+            box-shadow: 0 20px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            opacity: 0;
+            height: fit-content;
+            max-height: 0;
+            overflow: hidden;
+            transition: .4s ease-in-out;
+        }
+
+        &_sublink {
+            color: #232323;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: .2s ease-in-out;
+            opacity: .75;
+
+            &:first-of-type {
+                margin-top: 24px;
+            }
+
+            &:last-of-type {
+                margin-bottom: 24px;
+            }
+
+            &:hover {
+                color: var(--lighter-purple);
+            }
+        }
+    }
+</style>
+
+<style is:global>
+    /* Fix Submenu Hover */
+    .navbar_link > svg path, .navbar_link > svg {
+        transition: .2s ease-in-out;
+    }
+
+    .navbar_link:hover > svg path {
+        fill: var(--lighter-purple);
+    }
+    
+    .navbar_link:hover > svg {
+        transform: rotate(180deg);
+    }
+
+    /* FIx Mobile Menu Chevron Size */
+    .mobile-menu_links a > svg {
+        transform: scale(1.35) translateX(3px);
     }
 </style>
 
